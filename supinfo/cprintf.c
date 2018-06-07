@@ -28,10 +28,13 @@ void ini_ListFormat_Token(Format list_format[NB_FORMATS])
 
 void formatCmp(va_list av, char c) 
 { 
-	size_t check_format = false; 
-	Format list_format[NB_FORMATS]; 
+	size_t check_format; 
+	Format list_format[NB_FORMATS];
+	FORMATS_TOKEN current_format;
+	
+	check_format = false;
 	ini_ListFormat_Token(list_format); 
-	FORMATS_TOKEN current_format = INT; 
+	current_format = INT; 
 	while (current_format != NO_FORMAT) 
 	{ 
 		if (list_format[current_format].token == c) 
@@ -53,12 +56,20 @@ void cprintf(char *str, ...)
 { 
 	va_list av; 
 	size_t i; 
-	va_start(av, str); 
-	for (i = 0; str[i]; i++) 
+
+	i = 0;
+	va_start(av, str);
+	while (str[i])
+	{ 
 		if (is_Token('%', str[i]) == true) 
-			formatCmp(av, str[++i]); 
+		{	
+			i++;
+			formatCmp(av, str[i]);	
+		} 
 		else 
 			putCh(str[i]); 
+		i++;
+	}
 	va_end(av); 
 	putCh('\n'); 
 }

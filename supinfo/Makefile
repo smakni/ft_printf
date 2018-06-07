@@ -20,7 +20,10 @@ all: 	build
 build:	$(OBJS) 
 		$(CC) $(OPT) $(NAME) $(OBJS) $(CFLAGS) 
 
-clear:	
-		$(RM) $(OBJS) $(NAME)
+clean:	
+		$(RM) $(OBJS)
 
-re: 	clear all
+fclean: clean
+		$(RM) $(NAME)
+
+re: 	fclean all
