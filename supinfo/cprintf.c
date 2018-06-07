@@ -51,12 +51,14 @@ void formatCmp(va_list av, char c)
 
 void cprintf(char *str, ...)
 { 
-	va_list av; size_t i; va_start(av, str); 
+	va_list av; 
+	size_t i; 
+	va_start(av, str); 
 	for (i = 0; str[i]; i++) 
-	if (is_Token('%', str[i]) == true) 
-	formatCmp(av, str[++i]); 
-	else 
-	putCh(str[i]); 
+		if (is_Token('%', str[i]) == true) 
+			formatCmp(av, str[++i]); 
+		else 
+			putCh(str[i]); 
 	va_end(av); 
 	putCh('\n'); 
 }
