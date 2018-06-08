@@ -1,11 +1,7 @@
 #include "cprintf.h" 
 
 bool is_Token(char token, char c) { if (c == token) return true; return false; }
-bool is_Format(size_t bool_format) { if (bool_format != true) return true; return false; } 
-
-char get_Integer() { return 'd'; } 
-char get_Char() { return 'c'; } 
-char get_String() { return 's'; } 
+bool is_Format(size_t bool_format) { if (bool_format != true) return true; return false; }
 
 p_func get_IntAff() { return affInt; } 
 p_func get_ChAff() { return affCh; } 
@@ -15,9 +11,9 @@ p_func get_StrAff() { return affStr; }
 
 void ini_ListFormat_Token(Format list_format[NB_FORMATS]) 
 { 
-	list_format[INT].token = get_Integer(); 
-	list_format[CHAR].token = get_Char(); 
-	list_format[STR].token = get_String(); 
+	list_format[INT].token = 'd'; 
+	list_format[CHAR].token = 'c'; 
+	list_format[STR].token = 's';
 	list_format[INT].next_format = CHAR; 
 	list_format[CHAR].next_format = STR; 
 	list_format[STR].next_format = NO_FORMAT; 
