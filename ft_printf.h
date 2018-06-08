@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/08 16:02:04 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/08 17:03:22 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include <stdarg.h>
 #include <string.h>
 
-#define conv "sSpdDioOuUxXcC"
-#define flag "#0-+ hljz"
-#define dhflag "hh"
-#define dlflag "ll"
+#define conv 	"sSpdDioOuUxXcC"
+#define flag 	"#0-+ hljz"
+#define dhflag 	"hh"
+#define dlflag 	"ll"
 
 /*
 typedef struct s_format
