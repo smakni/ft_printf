@@ -15,7 +15,7 @@ void putInteger(int nb);
 
 /*SYSTEM*/ 
 
-size_t _strlen(const char *str); 
+//size_t _strlen(const char *str); 
 
 /*PRINTF*/ 
 
