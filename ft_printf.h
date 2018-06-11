@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/08 17:03:22 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/11 20:50:28 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,22 @@
 #define dhflag 	"hh"
 #define dlflag 	"ll"
 
-/*
+
 typedef struct s_format
 {
-	char token;
-	char token_f;
-	char *str;
-}				format;
-*/
+	char 	*str;
+	int		len;
+	void	*pf;
+
+}				t_format;
+
 
 int		ft_printf(const char *format, ...);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int nb);
+void    *ft_memalloc(size_t size);
+size_t  ft_strlen(const char *str);
+char    *ft_itoa(int n);
 
 #endif
