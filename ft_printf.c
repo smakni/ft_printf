@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 18:56:02 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 19:35:14 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	ft_check_conv(char *str)
 
 	i = 0;
 	j = 0;
+	if (str[i + 1] == '%')
+		return ('%');
 	while (str[i])
 	{
 		if (ft_strchr(str, conv[j]) == 0)
@@ -80,19 +82,18 @@ int		check_precision(char *str)
 
 	i = 0;
 	start = 0;
+	if (ft_strchr(str, '.') == 0)
+		return (1);
 	while(str[start] != '.')
 		start++;
 	start++;
+	if (str[start + 1] < '0' && str[start + 1] > '9')
+		return (1);
 	while (str[start + i] >= '0' && str[start + i] <= '9')
 		i++;
 	precision = ft_atoi(ft_strsub(str, start, i));
 	return (precision);
 }
-
-/*char	*check_size(char *str)
-{
-	int i;
-}*/
 
 void	ft_analyse(t_format **arg)
 {
@@ -129,7 +130,7 @@ int		ft_printf(const char *format, ...)
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1] != '%')
+		if (format[i] == '%')
 		{
 			tmp = ft_strsub(tmp, ft_strlen_c(tmp, '%'), ft_strlen_c(format, '\0') - ft_strlen_c(format, '%'));
 			arg->type = ft_check_conv(tmp);
