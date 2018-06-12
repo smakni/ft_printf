@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 10:28:08 by smakni            #+#    #+#              #
-#    Updated: 2018/05/31 16:22:00 by smakni           ###   ########.fr        #
+#    Updated: 2018/06/12 19:39:09 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstmove_last.c 			 \
 			ft_llast.c ft_strtoupper.c ft_atoi.c ft_strlcat.c			 	 \
 			ft_strtolower.c ft_sqrt.c ft_factorial.c ft_print_bits.c		 \
-			ft_strsub_free.c ft_strjoin_free.c
+			ft_strsub_free.c ft_strjoin_free.c ft_strlen_c.c
 
 OBJS	=	$(SRCS:.c=.o)
 

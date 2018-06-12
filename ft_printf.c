@@ -6,21 +6,11 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 19:35:14 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 19:38:17 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_strlen_c(const char *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && str[i] != c)
-		i++;
-	return (i);
-}
 
 char	ft_check_conv(char *str)
 {

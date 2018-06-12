@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:28:24 by smakni            #+#    #+#             */
-/*   Updated: 2018/05/31 16:21:23 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 19:39:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int					ft_isprint(int c);
 int					ft_power(int nb, int power);
 int					ft_factorial(int nb);
 int					ft_sqrt(int nb);
+int					ft_strlen_c(const char *str, char c);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 t_list				*ft_lstnew(void	const	*content, size_t content_size);
