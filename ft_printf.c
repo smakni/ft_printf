@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 19:38:17 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 20:44:42 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int		ft_printf(const char *format, ...)
 			ft_putstr("\n--------\n");
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_c(tmp, arg->type) - ft_strlen_c(tmp, '%'));
 			ft_analyse(&arg);
+			i+= ft_strlen(arg->str);
 		}
 		else
 			ft_putchar(format[i]);
