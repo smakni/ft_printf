@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 18:32:59 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 20:41:38 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main()
 	x = 27;
 	l = '?';
 	str = "world";
-	ft_printf("hello %+5454.5485d\n", str);
+	ft_printf("hello %+5454.5485dblabla\n", str);
 	//printf("hello %s\n", str);
 	return (0);
 }
