@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/11 20:03:00 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/12 18:32:59 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		main()
 
 	x = 27;
 	l = '?';
-	str = "sabri";
-	ft_printf("salut je suis %s\nt'es sur ?\nOui c'est moi %s!\nOk et tu as quel age %c\nJ'ai %dans", str, str, l, x);
+	str = "world";
+	ft_printf("hello %+5454.5485d\n", str);
+	//printf("hello %s\n", str);
 	return (0);
 }
