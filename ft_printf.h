@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/11 23:20:21 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/12 18:29:56 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
 
 #define conv 	"sSpdDioOuUxXcC"
-#define flag 	"#0-+ hhlljz"
+#define flag 	"#0-+ "
+//#define CONV	(str[i] != s || str[i] != 'S' || str[i] != 'p' \
+//				|| str[i] != 'd' || str[i] != 'D' || str[i] )
+
+#define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
+				|| str[i] == '-'|| str[i] == '0')
 
 // une fonction d'analise de la conversion
 // stockage dans structure
@@ -28,8 +34,12 @@
 typedef struct s_format
 {
 	char 	*str;
-	int		len;
-	void	*pf;
+	char	*option;
+	int		width;
+	int		precision;
+	char	*size;
+	char	type;
+	char	*res;
 }				t_format;
 
 int		ft_printf(const char *format, ...);
@@ -39,5 +49,35 @@ void	ft_putnbr(int nb);
 void    *ft_memalloc(size_t size);
 size_t  ft_strlen(const char *str);
 char    *ft_itoa(int n);
+char    *ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strncpy(char *dst, const char *src, size_t len);
+int     ft_atoi(const char *str);
+char	*ft_strchr(const char *s, int c);
+
+/*char	*ft_conv(char c, va_list av)
+{
+	t_format arg;
+	char 	*str;
+	char	*l;
+	int		x;
+
+	pf1 = &ft_putstr;
+	if (c == 's')
+	{
+		str = va_arg(av, char *);
+		return (str);
+	}
+	if (c == 'd')
+	{
+		x = va_arg(av, int);
+		return (ft_itoa(x));
+	}
+	if (c == 'c')
+	{
+		l = va_arg(av, char *);
+		return(l);
+	}
+	return(NULL);
+}*/
 
 #endif
