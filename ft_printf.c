@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+//bug sur ft_check_conv
+
 char	ft_check_conv(char *str)
 {
 	int i;
@@ -19,16 +21,12 @@ char	ft_check_conv(char *str)
 
 	i = 0;
 	j = 0;
-	if (str[i + 1] == '%')
-		return ('%');
 	while (str[i])
 	{
-		if (ft_strchr(str, conv[j]) == 0)
+		while (ft_strchr(str, conv[j]) == 0)
 			j++;
 		i++;
 	}
-	if (conv[j] == '\0')
-		return ('z');
 	return (conv[j]);
 }
 
@@ -126,7 +124,7 @@ int		ft_printf(const char *format, ...)
 	j = 0;
 	while (tmp[i])
 	{
-		if (tmp[i] == '%')
+		if (tmp[i] == '%' && tmp[i + 1] != '%')
 		{
 			arg->type = ft_check_conv(tmp);
 			ft_putstr("\n--------\n");
@@ -140,7 +138,7 @@ int		ft_printf(const char *format, ...)
 			ft_putstr(tmp);
 			ft_putstr("============");
 		}
-		else
+		else 
 			ft_putchar(tmp[i]);
 		i++;
 	}

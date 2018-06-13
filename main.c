@@ -21,7 +21,7 @@ int		main()
 	x = 27;
 	l = '?';
 	str = "world";
-	ft_printf("hello%+5454.5485sblabla%546.23d6554646\n", str, x);
+	ft_printf("blabla%cblalbo", str, x);
 	//printf("hello %s\n", str);
 	return (0);
 }
