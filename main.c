@@ -21,7 +21,11 @@ int		main()
 	x = 27;
 	l = '?';
 	str = "world";
+<<<<<<< HEAD
 	ft_printf("aknd%#1651.1566chcoiuqhc%d", str);
+=======
+	ft_printf("hello %+5454.5485dblabla\n", str);
+>>>>>>> parent of 5528b42... fix multiple arg
 	//printf("hello %s\n", str);
 	return (0);
 }
