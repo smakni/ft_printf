@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/13 15:24:55 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/12 20:44:42 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_check_conv(char *str)
+char	ft_check_conv(char *str)
 {
 	int i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (str[i] && (ft_strchr(str, conv[j]) != 0))
+	if (str[i + 1] == '%')
+		return ('%');
+	while (str[i])
 	{
+		if (ft_strchr(str, conv[j]) == 0)
+			j++;
 		i++;
-		j++;
 	}
-	if (str[i] == '\0')
-		return (NULL);
-	return (&conv[j - 1]);
+	if (conv[j] == '\0')
+		return ('z');
+	return (conv[j]);
 }
 
 char 	*check_option(char *str)
@@ -87,6 +90,10 @@ void	ft_analyse(t_format **arg)
 	ft_putstr("ft_analyse = ");
 	ft_putstr((*arg)->str);
 	ft_putstr("\n--------\n");
+	ft_putstr("len = ");
+	(*arg)->len = ft_strlen((*arg)->str);
+	ft_putnbr((*arg)->len);
+	ft_putstr("\n--------\n");
 	(*arg)->option = check_option((*arg)->str);
 	ft_putstr("option = ");
 	ft_putstr((*arg)->option);
@@ -110,42 +117,31 @@ int		ft_printf(const char *format, ...)
 	va_list 	av;
 	char 		*tmp;
 	int 		i;
+	int			j;
 	t_format 	*arg;
 
 	tmp = (char *)format;
 	va_start(av, format);
 	i = 0;
-<<<<<<< HEAD
 	j = 0;
-=======
->>>>>>> parent of 5528b42... fix multiple arg
-	while (format[i])
+	while (tmp[i])
 	{
-		if (format[i] == '%')
+		if (tmp[i] == '%')
 		{
-<<<<<<< HEAD
-			tmp = ft_strsub(tmp, ft_strlen_c(tmp, '%') + j, ft_strlen(tmp) - ft_strlen_c(tmp, '%'));
-			arg->type = *ft_check_conv(tmp);
-=======
-			tmp = ft_strsub(tmp, ft_strlen_c(tmp, '%'), ft_strlen_c(format, '\0') - ft_strlen_c(format, '%'));
 			arg->type = ft_check_conv(tmp);
->>>>>>> parent of 5528b42... fix multiple arg
 			ft_putstr("\n--------\n");
 			ft_putstr("type = ");
 			ft_putchar(arg->type);
 			ft_putstr("\n--------\n");
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_c(tmp, arg->type) - ft_strlen_c(tmp, '%'));
 			ft_analyse(&arg);
-<<<<<<< HEAD
+			tmp = ft_strsub(tmp, ft_strlen(arg->str) + i + 1, ft_strlen(tmp) - (ft_strlen(arg->str) + i));
+			ft_putstr("tmp = ");
+			ft_putstr(tmp);
 			ft_putstr("============");
 		}
-		else 
-=======
-			i+= ft_strlen(arg->str);
-		}
 		else
->>>>>>> parent of 5528b42... fix multiple arg
-			ft_putchar(format[i]);
+			ft_putchar(tmp[i]);
 		i++;
 	}
 	ft_putstr("END\n");
