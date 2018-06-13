@@ -90,6 +90,10 @@ void	ft_analyse(t_format **arg)
 	ft_putstr("ft_analyse = ");
 	ft_putstr((*arg)->str);
 	ft_putstr("\n--------\n");
+	ft_putstr("len = ");
+	(*arg)->len = ft_strlen((*arg)->str);
+	ft_putnbr((*arg)->len);
+	ft_putstr("\n--------\n");
 	(*arg)->option = check_option((*arg)->str);
 	ft_putstr("option = ");
 	ft_putstr((*arg)->option);
@@ -113,16 +117,17 @@ int		ft_printf(const char *format, ...)
 	va_list 	av;
 	char 		*tmp;
 	int 		i;
+	int			j;
 	t_format 	*arg;
 
 	tmp = (char *)format;
 	va_start(av, format);
 	i = 0;
-	while (format[i])
+	j = 0;
+	while (tmp[i])
 	{
-		if (format[i] == '%')
+		if (tmp[i] == '%')
 		{
-			tmp = ft_strsub(tmp, ft_strlen_c(tmp, '%'), ft_strlen_c(format, '\0') - ft_strlen_c(format, '%'));
 			arg->type = ft_check_conv(tmp);
 			ft_putstr("\n--------\n");
 			ft_putstr("type = ");
@@ -130,10 +135,13 @@ int		ft_printf(const char *format, ...)
 			ft_putstr("\n--------\n");
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_c(tmp, arg->type) - ft_strlen_c(tmp, '%'));
 			ft_analyse(&arg);
-			i+= ft_strlen(arg->str);
+			tmp = ft_strsub(tmp, ft_strlen(arg->str) + i + 1, ft_strlen(tmp) - (ft_strlen(arg->str) + i));
+			ft_putstr("tmp = ");
+			ft_putstr(tmp);
+			ft_putstr("============");
 		}
 		else
-			ft_putchar(format[i]);
+			ft_putchar(tmp[i]);
 		i++;
 	}
 	ft_putstr("END\n");

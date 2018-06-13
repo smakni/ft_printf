@@ -34,6 +34,7 @@
 typedef struct s_format
 {
 	char 	*str;
+	int		len;
 	char	*option;
 	int		width;
 	int		precision;
@@ -54,6 +55,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len);
 int     ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
 int		ft_strlen_c(const char *str, char c);
+char	*ft_strcpy(char *dst, const char *src);
 
 /*char	*ft_conv(char c, va_list av)
 {
