@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 01:40:13 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/15 01:49:14 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int		main()
 	l = '?';
 	str = "world";
 	//ft_putstr("main = ");
-	ft_printf("bld%+0382428.4702udda%Ucbla%01cbla%cbla%c", str, x, str);
-	//printf("\n123456789%%+56486.54d123456789%%45.53s123456789%%4645c");
+	//ft_printf("bld%+0382a428.4702udda%Ucbla%01cbla%cbla%c", str, x, str);
+	printf("\n%+2.4d", x);
+	printf("\n%+2z3.4d", x);
 	//printf("hello %s\n", str);
 	return (0);
 }
