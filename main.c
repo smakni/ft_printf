@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/14 12:17:24 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/14 14:51:16 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		main()
 	l = '?';
 	str = "world";
 	//ft_putstr("main = ");
-	ft_printf("hello%68468.6486Usuowefhou%+84.6468diuoehfuoq%d", str, x, str);
-	printf("hello%%68468.6486Usuowefhou%%+84.6468diuoehfuoq%%d\n");
+	ft_printf("123456789%+56486.54d123456789%45.53s123456789%4645c%c", str, x, str);
+	printf("\n123456789%%+56486.54d123456789%%45.53s123456789%%4645c");
 	//printf("hello %s\n", str);
 	return (0);
 }

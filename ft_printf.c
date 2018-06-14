@@ -6,11 +6,26 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/14 12:15:18 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/14 14:50:22 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_strlen_from(char *str, char start, char end)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i] && str[i] != start)
+		i++;
+	while (str[i + count] && str[i + count] != end)
+		count++;
+	return (count);
+}
+
 
 char	ft_check_conv(char *str)
 {
@@ -96,19 +111,19 @@ void	ft_analyse(t_format **arg)
 {
 	ft_putstr("ft_analyse = ");
 	ft_putstr((*arg)->str);
-	ft_putstr("\n--------\n");
+	ft_putstr("\n");
 	ft_putstr("len = ");
 	(*arg)->len = ft_strlen((*arg)->str);
 	ft_putnbr((*arg)->len);
-	ft_putstr("\n--------\n");
+	ft_putstr("\n");
 	(*arg)->option = check_option((*arg)->str);
 	ft_putstr("option = ");
 	ft_putstr((*arg)->option);
-	ft_putstr("\n--------\n");
+	ft_putstr("\n");
 	(*arg)->width = check_widht((*arg)->str);
 	ft_putstr("width = ");
 	ft_putnbr((*arg)->width);
-	ft_putstr("\n--------\n");
+	ft_putstr("\n");
 	(*arg)->precision = check_precision((*arg)->str);
 	ft_putstr("precision = ");
 	ft_putnbr((*arg)->precision);
@@ -127,24 +142,26 @@ int		ft_printf(const char *format, ...)
 	va_start(av, format);
 	i = 0;
 	j = 0;
-	while (tmp[i])
+	while (format[i])
 	{
-		if (tmp[i] == '%')
+		if (format[i] == '%')
 		{
 			arg->type = ft_check_conv(tmp);
-			ft_putstr("\n--------\n");
-			ft_putstr("type = ");
+			ft_putstr("\n--------\n");;
+			ft_putstr(tmp);
+			ft_putstr("\ntype = ");
 			ft_putchar(arg->type);
-			ft_putstr("\n--------\n");
-			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_c(tmp, arg->type) - ft_strlen_c(tmp, '%'));
+			ft_putchar('\n');
+			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(&arg);
-			tmp = ft_strsub(tmp, ft_strlen(arg->str) + i + 1, ft_strlen(tmp) - (ft_strlen(arg->str) + i));
+			tmp = ft_strsub(tmp, ft_strlen_c(tmp, arg->type) + 1, ft_strlen_from(tmp, '%', '\0'));
+			i += ft_strlen(arg->str);
 		}
 		else
-			ft_putchar(tmp[i]);
+			ft_putchar(format[i]);
 		i++;
 	}
-	ft_putstr("END\n");
+	ft_putstr("\nEND\n");
 	va_end(av);
 	return (i);
 }
