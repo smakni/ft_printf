@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 20:44:42 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/14 12:15:18 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,24 @@ char	ft_check_conv(char *str)
 
 	i = 0;
 	j = 0;
-	if (str[i + 1] == '%')
-		return ('%');
+	while (str[i] && str[i] != '%')
+		i++;
+	i++;
+	if (str[i] == conv[j])
+		return (conv[j]);
 	while (str[i])
 	{
-		if (ft_strchr(str, conv[j]) == 0)
-			j++;
+		if (str[i] != conv[j])
+		{
+			j = 0;
+			while (conv[j] && str[i] != conv[j])
+				j++;
+			if (str[i] == conv[j])
+				return (conv[j]);
+		}
 		i++;
 	}
-	if (conv[j] == '\0')
-		return ('z');
-	return (conv[j]);
+	return ('Z');
 }
 
 char 	*check_option(char *str)
@@ -106,10 +113,6 @@ void	ft_analyse(t_format **arg)
 	ft_putstr("precision = ");
 	ft_putnbr((*arg)->precision);
 	ft_putstr("\n--------\n");
-	/*(*arg)->size = check_size((*arg)->str);
-	ft_putstr("size = ");
-	ft_putstr((*arg)->size);
-	ft_putstr("\n--------\n");*/
 }
 
 int		ft_printf(const char *format, ...)
@@ -136,9 +139,6 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_c(tmp, arg->type) - ft_strlen_c(tmp, '%'));
 			ft_analyse(&arg);
 			tmp = ft_strsub(tmp, ft_strlen(arg->str) + i + 1, ft_strlen(tmp) - (ft_strlen(arg->str) + i));
-			ft_putstr("tmp = ");
-			ft_putstr(tmp);
-			ft_putstr("============");
 		}
 		else
 			ft_putchar(tmp[i]);
