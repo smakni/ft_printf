@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 19:39:17 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/14 12:07:11 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 #define conv 	"sSpdDioOuUxXcC"
 #define flag 	"#0-+ "
-//#define CONV	(str[i] != s || str[i] != 'S' || str[i] != 'p' \
-//				|| str[i] != 'd' || str[i] != 'D' || str[i] )
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
