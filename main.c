@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/12 20:41:38 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/14 12:17:24 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int		main()
 	x = 27;
 	l = '?';
 	str = "world";
-	ft_printf("hello%+5454.5485sblabla%546.23d6554646\n", str, x);
+	//ft_putstr("main = ");
+	ft_printf("hello%68468.6486Usuowefhou%+84.6468diuoehfuoq%d", str, x, str);
+	printf("hello%%68468.6486Usuowefhou%%+84.6468diuoehfuoq%%d\n");
 	//printf("hello %s\n", str);
 	return (0);
 }
