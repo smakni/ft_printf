@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 01:59:52 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/15 17:07:57 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 #include <stdio.h>
 
 #define conv 	"sSpdDioOuUxXcC"
-#define flag 	"#0-+ "
+#define s_opt 	"-+#0 "
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
 
-// une fonction d'analise de la conversion
-// stockage dans structure
+// une fonction d'analise de la conversion OK
+// stockage dans structure OK
 // fonction de conversion de la structure
-// fonction d'affichage de la conversion
+// \> sous fonction pour chaque flag > modif du res de la structure petit
+// a petit > 
+// fonction d'affichage de res
 
 typedef struct s_format
 {

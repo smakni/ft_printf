@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 02:04:45 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/15 17:45:21 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_strlen_from(char *str, char start, char end)
 }
 
 
-char	ft_check_conv(char *str)
+char	check_conv(char *str)
 {
 	int i;
 	int	j;
@@ -130,6 +130,29 @@ void	ft_analyse(t_format **arg)
 	ft_putstr("\n--------\n");
 }
 
+char 	*ft_conv(t_format **arg, va_list av)
+{
+	char c;
+	
+
+	if ((*arg)->type == 'd' || (*arg)->type == 'i')
+		return ((*arg)->res = ft_itoa(va_arg(av, int)));
+	if ((*arg)->type == 'c')
+		ft_putchar(va_arg(av, int));
+	if ((*arg)->type == 's')
+		return ((*arg)->res = va_arg(av, char *));
+	return (NULL);
+}
+
+void	ft_width(t_format **arg)
+{
+	if (!((*arg)->res = ft_memalloc((*arg)->width)))
+		return ;
+	return ;
+}
+
+void	ft_option1(t_format **arg);
+
 int		ft_printf(const char *format, ...)
 {
 	va_list 	av;
@@ -146,7 +169,7 @@ int		ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			arg->type = ft_check_conv(tmp);
+			arg->type = check_conv(tmp);
 			ft_putstr("\n--------\n");;
 			ft_putstr(tmp);
 			ft_putstr("\ntype = ");
@@ -154,16 +177,17 @@ int		ft_printf(const char *format, ...)
 			ft_putchar('\n');
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(&arg);
+			ft_conv(&arg, av);
+			if (arg->type != 'c')
+				ft_putstr(arg->res);
 			tmp = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += ft_strlen(arg->str);
+			ft_strdel(&arg->str);
 		}
 		else
 			ft_putchar(format[i]);
 		i++;
 	}
-	//ft_strdel(&tmp);
-	//ft_strdel(&arg->str);
-	//ft_strdel(&arg->option);
 	ft_putstr("\nEND\n");
 	va_end(av);
 	return (i);
