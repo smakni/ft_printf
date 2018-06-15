@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/14 12:07:11 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/15 01:59:52 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int     ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
 int		ft_strlen_c(const char *str, char c);
 char	*ft_strcpy(char *dst, const char *src);
+void    ft_strdel(char **as);
 
 /*char	*ft_conv(char c, va_list av)
 {
