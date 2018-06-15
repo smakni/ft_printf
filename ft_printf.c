@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 17:45:21 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/15 19:00:01 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,49 +109,47 @@ int		check_precision(char *str)
 
 void	ft_analyse(t_format **arg)
 {
-	ft_putstr("ft_analyse = ");
+	/*ft_putstr("ft_analyse = ");
 	ft_putstr((*arg)->str);
 	ft_putstr("\n");
-	ft_putstr("len = ");
+	ft_putstr("len = ";*/
 	(*arg)->len = ft_strlen((*arg)->str);
-	ft_putnbr((*arg)->len);
-	ft_putstr("\n");
+	//ft_putnbr((*arg)->len);
+	//ft_putstr("\n");
 	(*arg)->option = check_option((*arg)->str);
-	ft_putstr("option = ");
-	ft_putstr((*arg)->option);
-	ft_putstr("\n");
+	//ft_putstr("option = ");
+	//ft_putstr((*arg)->option);
+	//ft_putstr("\n");
 	(*arg)->width = check_widht((*arg)->str);
-	ft_putstr("width = ");
-	ft_putnbr((*arg)->width);
-	ft_putstr("\n");
+	//ft_putstr("width = ");
+	//ft_putnbr((*arg)->width);
+	//ft_putstr("\n");
 	(*arg)->precision = check_precision((*arg)->str);
-	ft_putstr("precision = ");
-	ft_putnbr((*arg)->precision);
-	ft_putstr("\n--------\n");
+	//ft_putstr("precision = ");
+	//ft_putnbr((*arg)->precision);
+	//ft_putstr("\n--------\n");
 }
 
-char 	*ft_conv(t_format **arg, va_list av)
+void	conversion_d(t_format **arg, va_list av)
 {
-	char c;
-	
+	(*arg)->res = ft_itoa(va_arg(av, int));
+}
 
-	if ((*arg)->type == 'd' || (*arg)->type == 'i')
-		return ((*arg)->res = ft_itoa(va_arg(av, int)));
+void	conversion_s(t_format **arg, va_list av)
+{
+	(*arg)->res = va_arg(av, char *);
+}
+
+void 	ft_conv(t_format **arg, va_list av)
+{
+	if ((*arg)->type == 'd')
+		conversion_d(arg, av);
 	if ((*arg)->type == 'c')
 		ft_putchar(va_arg(av, int));
 	if ((*arg)->type == 's')
-		return ((*arg)->res = va_arg(av, char *));
-	return (NULL);
-}
-
-void	ft_width(t_format **arg)
-{
-	if (!((*arg)->res = ft_memalloc((*arg)->width)))
-		return ;
+		conversion_s(arg, av);
 	return ;
 }
-
-void	ft_option1(t_format **arg);
 
 int		ft_printf(const char *format, ...)
 {
@@ -170,11 +168,11 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			arg->type = check_conv(tmp);
-			ft_putstr("\n--------\n");;
+			/*ft_putstr("\n--------\n");;
 			ft_putstr(tmp);
 			ft_putstr("\ntype = ");
 			ft_putchar(arg->type);
-			ft_putchar('\n');
+			ft_putchar('\n');*/
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(&arg);
 			ft_conv(&arg, av);
