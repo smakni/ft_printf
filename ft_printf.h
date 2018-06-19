@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 17:07:57 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 12:38:04 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_strchr(const char *s, int c);
 int		ft_strlen_c(const char *str, char c);
 char	*ft_strcpy(char *dst, const char *src);
 void    ft_strdel(char **as);
+void    *ft_memset(void *b, int c, size_t len);
 
 /*char	*ft_conv(char c, va_list av)
 {

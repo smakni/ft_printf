@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/15 19:00:01 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 15:00:42 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strlen_from(char *str, char start, char end)
 {
-	int i;
+	int i;	
 	int count;
 
 	i = 0;
@@ -109,17 +109,17 @@ int		check_precision(char *str)
 
 void	ft_analyse(t_format **arg)
 {
-	/*ft_putstr("ft_analyse = ");
-	ft_putstr((*arg)->str);
-	ft_putstr("\n");
-	ft_putstr("len = ";*/
+	//ft_putstr("\nft_analyse = ");
+	//ft_putstr((*arg)->str);
+	//ft_putstr("\n");
+	//ft_putstr("len = ");
 	(*arg)->len = ft_strlen((*arg)->str);
 	//ft_putnbr((*arg)->len);
 	//ft_putstr("\n");
 	(*arg)->option = check_option((*arg)->str);
-	//ft_putstr("option = ");
-	//ft_putstr((*arg)->option);
-	//ft_putstr("\n");
+	ft_putstr("\noption = ");
+	ft_putstr((*arg)->option);
+	ft_putstr("\n");
 	(*arg)->width = check_widht((*arg)->str);
 	//ft_putstr("width = ");
 	//ft_putnbr((*arg)->width);
@@ -132,6 +132,7 @@ void	ft_analyse(t_format **arg)
 
 void	conversion_d(t_format **arg, va_list av)
 {
+
 	(*arg)->res = ft_itoa(va_arg(av, int));
 }
 
@@ -140,12 +141,33 @@ void	conversion_s(t_format **arg, va_list av)
 	(*arg)->res = va_arg(av, char *);
 }
 
+void	conversion_c(t_format **arg, va_list av)
+{
+	int		w;
+	unsigned char c;
+
+	if (ft_strlen((*arg)->option) != 0)
+		return ;
+	c = (va_arg(av, int));
+	if ((*arg)->width > 1)
+		w = (*arg)->width - 1;
+	else 
+		w = 0;
+	if (!((*arg)->res = ft_memalloc(w)))
+		return ;
+	if ((*arg)->width > 1 && ft_strlen((*arg)->option) == 0)
+		ft_memset((*arg)->res, ' ', w);
+	ft_putstr((*arg)->res);
+	ft_putchar(c);
+}
+
+
 void 	ft_conv(t_format **arg, va_list av)
 {
 	if ((*arg)->type == 'd')
 		conversion_d(arg, av);
 	if ((*arg)->type == 'c')
-		ft_putchar(va_arg(av, int));
+		conversion_c(arg, av);
 	if ((*arg)->type == 's')
 		conversion_s(arg, av);
 	return ;
@@ -168,18 +190,13 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			arg->type = check_conv(tmp);
-			/*ft_putstr("\n--------\n");;
-			ft_putstr(tmp);
-			ft_putstr("\ntype = ");
-			ft_putchar(arg->type);
-			ft_putchar('\n');*/
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, '%') + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(&arg);
 			ft_conv(&arg, av);
 			if (arg->type != 'c')
 				ft_putstr(arg->res);
 			tmp = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
-			i += ft_strlen(arg->str);
+			i += arg->len;
 			ft_strdel(&arg->str);
 		}
 		else
