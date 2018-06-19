@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/19 18:07:40 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 18:43:11 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	conversion_d(t_format **arg, va_list av)
 {
 	/*if (check_str((*arg)->str) != 0)
 	{
-		//(*arg)->res = NULL;
 		return ;
 	}*/
 	(*arg)->res = ft_itoa(va_arg(av, int));
+	ft_putstr((*arg)->res);
 }
 
 void	conversion_s(t_format **arg, va_list av)
 {
 	(*arg)->res = va_arg(av, char *);
+	ft_putstr((*arg)->res);
 }
 
 void	conversion_c(t_format **arg, va_list av)
