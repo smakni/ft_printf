@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/19 17:35:35 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 20:54:17 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void    *ft_memalloc(size_t size);
 size_t  ft_strlen(const char *str);
 char    *ft_itoa(int n);
 char    *ft_strsub(char const *s, unsigned int start, size_t len);
+char    *ft_strsub_free(char *s, unsigned int start, size_t len);
 char	*ft_strncpy(char *dst, const char *src, size_t len);
 int     ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
