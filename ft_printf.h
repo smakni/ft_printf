@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/19 12:38:04 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 17:35:35 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,17 @@
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
 
+#define OPTION_ARG ((*arg)->str[i] == ' ' || (*arg)->str[i] == '#' \
+					|| (*arg)->str[i] == '+' || (*arg)->str[i] == '-' \
+					|| (*arg)->str[i] == '0')
+
 // une fonction d'analise de la conversion OK
 // stockage dans structure OK
 // fonction de conversion de la structure
+// fonction pour check error
 // \> sous fonction pour chaque flag > modif du res de la structure petit
 // a petit > 
-// fonction d'affichage de res
+// affichage de res
 
 typedef struct s_format
 {
@@ -43,7 +48,21 @@ typedef struct s_format
 	char	*res;
 }				t_format;
 
+//------ft_printf
+
 int		ft_printf(const char *format, ...);
+void	conversion_d(t_format **arg, va_list av);
+void	conversion_s(t_format **arg, va_list av);
+void	conversion_c(t_format **arg, va_list av);
+char	check_conv(char *str);
+char 	*check_option(char *str);
+int 	check_widht(char *str);
+int		check_precision(char *str);
+int 	check_str(char *str);
+
+
+//------libft
+
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int nb);
@@ -58,31 +77,5 @@ int		ft_strlen_c(const char *str, char c);
 char	*ft_strcpy(char *dst, const char *src);
 void    ft_strdel(char **as);
 void    *ft_memset(void *b, int c, size_t len);
-
-/*char	*ft_conv(char c, va_list av)
-{
-	t_format arg;
-	char 	*str;
-	char	*l;
-	int		x;
-
-	pf1 = &ft_putstr;
-	if (c == 's')
-	{
-		str = va_arg(av, char *);
-		return (str);
-	}
-	if (c == 'd')
-	{
-		x = va_arg(av, int);
-		return (ft_itoa(x));
-	}
-	if (c == 'c')
-	{
-		l = va_arg(av, char *);
-		return(l);
-	}
-	return(NULL);
-}*/
 
 #endif
