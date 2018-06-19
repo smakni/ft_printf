@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/19 18:43:11 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/19 21:32:20 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,27 @@
 
 void	conversion_d(t_format **arg, va_list av)
 {
-	/*if (check_str((*arg)->str) != 0)
+	int			len_nb;
+	char		*nb;
+	int			i;
+	int			w;
+
+
+	i = 0;
+	nb = ft_itoa(va_arg(av, int));
+	len_nb = ft_strlen(nb);
+	if ((*arg)->width > 1)
 	{
-		return ;
-	}*/
-	(*arg)->res = ft_itoa(va_arg(av, int));
+		w = (*arg)->width;
+		(*arg)->res = ft_memalloc(w);
+	}
+	if ((*arg)->width > 1 && ft_strchr((*arg)->option, '0') != 0)
+		ft_memset((*arg)->res, '0', w - len_nb);
+	while (i < len_nb)
+	{
+		(*arg)->res[w - len_nb + i] = nb[i];
+		i++;
+	}
 	ft_putstr((*arg)->res);
 }
 
