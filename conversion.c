@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 14:09:47 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 14:51:18 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	conversion_d(t_format *arg, va_list av)
 			(arg)->res[(arg)->width - len_nb + i] = nb[i];
 		if (ft_strchr((arg)->option, ' ') != 0 && ft_strchr((arg)->option, '0') != 0)
 			(arg)->res[0] = ' ';
-		arg->res[arg->width + 1] = '\0';
 	}
 	else
 		conversion_d2(arg, len_nb, nb);
@@ -75,19 +74,18 @@ void	conversion_c(t_format *arg, va_list av)
 	int				i;
 
 	i = 0;
-	while ((arg)->str[i] != (arg)->type)
+	while (arg->str[i] != arg->type)
 	{	
-		if((arg)->str[i] <= '0' || (arg)->str[i] > '9')
+		if(arg->str[i] <= '0' || arg->str[i] > '9')
 			return ;
 		i++;
 	}
-	if ((arg)->width > 1) 
+	if (arg->width > 1) 
 	{
-		if (!((arg)->res = ft_memalloc((arg)->width)))
+		if (!(arg->res = ft_memalloc(arg->width)))
 			return ;
-		ft_memset((arg)->res, ' ', (arg)->width - 1);
-		arg->res[arg->width] = '\0';
-		ft_putstr((arg)->res);
+		ft_memset(arg->res, ' ', arg->width - 1);
+		ft_putstr(arg->res);
 		ft_strdel(&(arg)->res);
 	}
 	ft_putchar(va_arg(av, int));
