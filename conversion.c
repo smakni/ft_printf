@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 14:51:18 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 15:11:25 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@ void	conversion_d2(t_format *arg,int len_nb, char *nb)
 {
 	int i;
 
-	i = -1;
+	i = 0;
 	if (arg->width > len_nb)
 	{
 		arg->res = ft_memalloc(arg->width + 1);
-		while (nb[i] && nb[i++])
+		while (arg->res[i] || i < len_nb)
+		{
 			arg->res[i] = nb[i];
-		while (arg->res[i++])
+			i++;
+		}
+		while (i < arg->width)
 		{
 			arg->res[i] = ' ';
-			ft_putchar(arg->res[i]);
+			i++;
 		}
+		arg->res[i] = '\0';
 	}
 	else
 		arg->res = nb;
-	i++;
-	arg->res[i] = '\0';
 }
 
 void	conversion_d(t_format *arg, va_list av)
