@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 14:12:31 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:11:38 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
 #include <stdio.h>
 
 #define conv 	"sSpdDioOuUxXcC"
+#define HH		"hh"
+#define LL		"ll"
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
+
 
 // une fonction d'analise de la conversion OK
 // stockage dans structure OK
@@ -54,5 +57,6 @@ char 	*check_option(char *str);
 int 	check_widht(char *str);
 int		check_precision(char *str);
 int 	check_str(char *str);
+char	*check_size(char *str);
 
 #endif

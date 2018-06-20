@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 15:13:38 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 17:42:27 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_analyse(t_format *arg)
 	arg->option = check_option(arg->str);
 	arg->width = check_widht(arg->str);
 	arg->precision = check_precision(arg->str);
+	arg->size = check_size(arg->str);
 }
 
 void	ft_aff_param(t_format *arg)
@@ -57,6 +58,9 @@ void	ft_aff_param(t_format *arg)
 	ft_putstr("\n");
 	ft_putstr("res = ");
 	ft_putstr(arg->res);
+	ft_putstr("\n");
+	ft_putstr("size = ");
+	ft_putstr(arg->size);
 	ft_putstr("\n--------\n");
 }
 void 	ft_conversion(t_format *arg, va_list av)
@@ -74,7 +78,8 @@ void	free_arg(t_format *arg)
 {
 	ft_strdel(&arg->str);
 	ft_strdel(&arg->option);
-	ft_strdel(&arg->size);
+	if (arg->size != HH && arg->size != LL)
+		ft_strdel(&arg->size);
 }
 
 void	init_struc(t_format *arg)
@@ -88,6 +93,9 @@ void	init_struc(t_format *arg)
 	arg->type = 0;
 	arg->res = NULL;
 }
+
+void	ft_aff(char *tmp, t_format);
+
 int		ft_printf(const char *format, ...)
 {
 	va_list 	av;
@@ -108,7 +116,7 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			//ft_aff_param(arg);
+			ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
 			free_arg(arg);
