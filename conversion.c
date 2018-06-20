@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 04:54:24 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 05:17:48 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,20 @@ void	conversion_d2(t_format *arg,int len_nb, char *nb)
 	int i;
 
 	i = -1;
-	if (arg->width > 1)
-		arg->res = ft_memalloc((arg)->width + 1);
-	if (arg->width > 1 && ft_strchr((arg)->option, '0') != 0)
-		ft_memset((arg)->res, '0', (arg)->width);
-	else if ((arg)->width > 1 && ft_strchr((arg)->option, ' ') != 0)
-		ft_memset((arg)->res, ' ', (arg)->width);
-	if (ft_strchr((arg)->option, ' ') != 0 && ft_strchr((arg)->option, '0') != 0)
-		(arg)->res[0] = ' ';
-	while (i++ < len_nb)
-		arg->res[i] = nb[i];
+	if (arg->width > len_nb)
+	{
+		arg->res = ft_memalloc(arg->width + 1);
+		while (nb[i] && nb[i++])
+			arg->res[i] = nb[i];
+		while (arg->res[i++])
+		{
+			arg->res[i] = ' ';
+			ft_putchar(arg->res[i]);
+		}
+	}
+	else
+		arg->res = nb;
+	i++;
 	arg->res[i] = '\0';
 }
 
@@ -45,7 +49,7 @@ void	conversion_d(t_format *arg, va_list av)
 			(arg)->res = ft_memalloc((arg)->width);
 		if ((arg)->width > 1 && ft_strchr((arg)->option, '0') != 0)
 			ft_memset((arg)->res, '0', (arg)->width - len_nb);
-		else if ((arg)->width > 1 && ft_strchr((arg)->option, ' ') != 0)
+		else if (((arg)->width > 1 && ft_strchr((arg)->option, ' ') != 0) || ft_strlen(arg->option) == 0)
 			ft_memset((arg)->res, ' ', (arg)->width - len_nb);
 		while (i++ < len_nb)
 			(arg)->res[(arg)->width - len_nb + i] = nb[i];

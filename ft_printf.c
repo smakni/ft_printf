@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 04:52:54 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 05:07:40 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			//ft_aff_param(arg);
+			ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
 			free_arg(arg);

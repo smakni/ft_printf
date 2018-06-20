@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 03:57:53 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 04:57:36 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 #include <stdio.h>
 
 #define conv 	"sSpdDioOuUxXcC"
-#define s_opt 	"-+#0 "
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
