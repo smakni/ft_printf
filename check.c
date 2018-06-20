@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/19 17:38:54 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 02:52:05 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,14 @@ int 	check_widht(char *str)
 {
 	int i;
 	int width;
+	char *tmp;
 
 	i = 0;
 	while (OPTION)
 		i++;
-	width = ft_atoi(ft_strsub(str, i, ft_strlen_c(str, '.')));
+	tmp = ft_strsub(str, i, ft_strlen_c(str, '.'));
+	width = ft_atoi(tmp);
+	ft_strdel(&tmp);
 	return (width);
 }
 
@@ -88,7 +91,7 @@ int		check_precision(char *str)
 		return (1);
 	while (str[start + i] >= '0' && str[start + i] <= '9')
 		i++;
-	precision = ft_atoi(ft_strsub(str, start, i));
+	precision = ft_atoi(ft_strsub_free(str, start, i));
 	return (precision);
 }
 
