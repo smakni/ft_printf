@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 17:11:38 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/20 23:54:10 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ int 	check_widht(char *str);
 int		check_precision(char *str);
 int 	check_str(char *str);
 char	*check_size(char *str);
+void	ft_analyse(t_format *arg);
+void 	ft_conversion(t_format *arg, va_list av);
+void	ft_aff_param(t_format *arg);
 
 #endif
