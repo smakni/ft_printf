@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
+#    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 10:28:08 by smakni            #+#    #+#              #
-#    Updated: 2018/06/12 19:39:09 by smakni           ###   ########.fr        #
+#    Updated: 2018/06/20 23:40:16 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,15 +40,17 @@ LM		=	ar rc
 
 RM		=	rm -f
 
-all	:	 $(NAME)
+all		:	$(NAME)
 
-$(NAME): $(OBJS)
-		 $(LM) $(NAME) $(OBJS)
+$(NAME)	:	$(OBJS)
+			$(LM) $(NAME) $(OBJS)
 
-clean:
-		 $(RM) $(OBJS)
+.PHONY	:	all
+
+clean	:
+			 $(RM) $(OBJS)
 			
-fclean:  clean
-		 $(RM) $(NAME)
+fclean	:	clean
+			$(RM) $(NAME)
 
-re:		 fclean all
+re		:	fclean all

@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/06/20 20:41:39 by sabri            ###   ########.fr        #
+#    Updated: 2018/06/20 23:38:29 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ RM		=	rm -f
 all :		$(NAME)
 
 $(NAME)	:	$(OBJS)
-			$(LM) $(NAME) $(OBJS) libft/libft.a
+			$(LM) $(NAME) $(OBJS)
 
-.PHONY 	: 	$(NAME)
+.POHONY : 	all
 
 clean	:	
 			$(RM) $(OBJS)
