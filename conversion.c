@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 12:19:56 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 14:09:47 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	conversion_s(t_format *arg, va_list av)
 
 void	conversion_c(t_format *arg, va_list av)
 {
-	unsigned char	c;
 	int				i;
 
 	i = 0;
@@ -82,7 +81,6 @@ void	conversion_c(t_format *arg, va_list av)
 			return ;
 		i++;
 	}
-	c = (va_arg(av, int));
 	if ((arg)->width > 1) 
 	{
 		if (!((arg)->res = ft_memalloc((arg)->width)))
@@ -92,6 +90,6 @@ void	conversion_c(t_format *arg, va_list av)
 		ft_putstr((arg)->res);
 		ft_strdel(&(arg)->res);
 	}
-	ft_putchar(c);
+	ft_putchar(va_arg(av, int));
 }
 

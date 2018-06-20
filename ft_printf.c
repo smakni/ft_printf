@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 12:27:27 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 14:13:17 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	init_struc(t_format *arg)
 	arg->len = 0;
 	arg->option = NULL;
 	arg->width = 0;
+	arg->precision = 0;
 	arg->size = NULL;
 	arg->type = 0;
 	arg->res = NULL;
