@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 05:07:40 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 12:27:27 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void 	ft_conversion(t_format *arg, va_list av)
 
 void	free_arg(t_format *arg)
 {
-	free(arg->str);
-	free(arg->option);
-	free(arg->size);
+	ft_strdel(&arg->str);
+	ft_strdel(&arg->option);
+	ft_strdel(&arg->size);
 }
 
 void	init_struc(t_format *arg)
@@ -107,7 +107,7 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			ft_aff_param(arg);
+			//ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
 			free_arg(arg);
@@ -117,7 +117,7 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	free(arg);
-	free(tmp);
+	ft_strdel(&tmp);
 	ft_putstr("\nEND\n");
 	va_end(av);
 	return (i);
