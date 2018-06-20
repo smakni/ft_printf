@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 01:41:35 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 03:57:53 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_format
 
 int		ft_printf(const char *format, ...);
 void	conversion_d(t_format *arg, va_list av);
+void	conversion_d2(t_format *arg, int len_nb, char *nb);
 void	conversion_s(t_format *arg, va_list av);
 void	conversion_c(t_format *arg, va_list av);
 char	check_conv(char *str);

@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 02:46:43 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/20 04:52:54 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void 	ft_conversion(t_format *arg, va_list av)
 
 void	free_arg(t_format *arg)
 {
-	//free(arg->res);
 	free(arg->str);
 	free(arg->option);
 	free(arg->size);
@@ -112,16 +111,14 @@ int		ft_printf(const char *format, ...)
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
 			free_arg(arg);
-			//free(arg);
 		}
 		else
 			ft_putchar(format[i]);
 		i++;
 	}
-	//free(arg->str);
 	free(arg);
 	free(tmp);
 	ft_putstr("\nEND\n");
-	//va_end(av);
+	va_end(av);
 	return (i);
 }
