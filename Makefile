@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/06/21 12:33:44 by sabri            ###   ########.fr        #
+#    Updated: 2018/06/21 13:50:14 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,9 @@ SRCS	=	ft_printf.c		\
 			conversion.c 	\
 			analyse.c		
 
-LIBS	=	./libft/*c
+LIBS	=	libft/*.c
 
 OBJS	=	$(SRCS:.c=.o)
-
-OBJF	=	$(LIBS:c=.o)
 
 LM		=	ar rc
 
@@ -33,15 +31,16 @@ RM		=	rm -f
 
 all :		$(NAME)
 
-$(NAME)	:	$(OBJS) $(OBJF)
+$(NAME)	:	$(OBJS)
 			$(LM) $(NAME) $(OBJS) $(OBJF)
-
-.POHONY : 	all
+			@echo "[BUILD OK]"
 
 clean	:	
-			$(RM) $(OBJS) $(OBJF)
+			$(RM) $(OBJS)
 
 fclean	:	clean
 			$(RM) $(NAME)
 
 re		:	fclean all
+
+.POHONY : 	all
