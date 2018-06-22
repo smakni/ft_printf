@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/20 16:36:15 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/22 12:27:16 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	conversion_d2(t_format *arg,int len_nb, char *nb)
 		arg->res = nb;
 }
 
-void	conversion_d(t_format *arg, va_list av)
+void	conversion_d(t_format *arg, va_list av) //check precisison avant check largeur
 {
 	int			len_nb;
 	char		*nb;
@@ -64,6 +64,14 @@ void	conversion_d(t_format *arg, va_list av)
 	ft_strdel(&nb);
 	ft_strdel(&(arg)->res);
 }
+
+/*void	precision_d(t_format *arg, int len_nb)
+{
+	if (arg->precision > len_nb)
+		ft_memset_from(arg->res, arg->width - arg->precision, '0', arg->precision - len_nb);
+}*/
+
+
 
 void	conversion_s(t_format *arg, va_list av)
 {
