@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:26:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/22 12:23:32 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/24 01:38:13 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	*ft_memset_from(void *b, size_t start, int c, size_t len)
 
 	tmp = (unsigned char *)b;
 	i = 0;
-	while (i < start)
-		i++;
-	while (i < (start + len))
+	while (i < len)
 	{
 		tmp[start + i] = (unsigned char)c;
 		i++;
