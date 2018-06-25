@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/06/21 13:50:14 by sabri            ###   ########.fr        #
+#    Updated: 2018/06/25 23:20:09 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,10 @@ CFLAGS	+= -Wall -Werror -Wextra
 
 SRCS	=	ft_printf.c		\
 			check.c 		\
+			analyse.c		\
 			conversion.c 	\
-			analyse.c		
+			conversion_d.c	
+
 
 LIBS	=	libft/*.c
 
