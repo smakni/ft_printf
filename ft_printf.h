@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/23 02:20:47 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/25 23:05:03 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int 	check_str(char *str);
 char	*check_size(char *str);
 void 	ft_conversion(t_format *arg, va_list av);
 void	conversion_d(t_format *arg, va_list av);
-void	conversion_d2(t_format *arg, int len_nb, char *nb);
+char	*conversion_d1(char *nb);
+void	conversion_d2(t_format *arg, char *nb, int len_nb, int i);
+void	conversion_d3(t_format *arg, char *nb, int len_nb, int i);
+void	conversion_d4(t_format *arg, char *nb, int len_nb, int i);
 void	conversion_s(t_format *arg, va_list av);
 void	conversion_c(t_format *arg, va_list av);
 void	ft_aff_param(t_format *arg);
