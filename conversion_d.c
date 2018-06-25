@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/25 23:12:47 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/25 23:42:50 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	conversion_d(t_format *arg, va_list av)
 	tmp = NULL;
 	nb = ft_itoa(va_arg(av, int));
 	if (nb > 0 && ft_strchr(arg->option, '+') != 0)
-		nb = conversion_d1(nb);
+		nb = conversion_d1(arg, nb);
 	len_nb = ft_strlen(nb);
 	if (arg->width < len_nb && arg->precision < len_nb)
 		arg->res = ft_strdup(nb);
@@ -36,7 +36,11 @@ void	conversion_d(t_format *arg, va_list av)
 	ft_strdel(&arg->res);
 }
 
-char	*conversion_d1(char *nb)
+//revoir le if initial 
+//gere conversion de precisison avec '-' et '+'
+//pour stocker le nb final a envoyer dans la suite de la fonction
+
+char	*conversion_d1(t_format *arg, char *nb)
 {
 	int i;
 	int len_nb;
@@ -44,11 +48,14 @@ char	*conversion_d1(char *nb)
 
 	i = 0;
 	len_nb = ft_strlen(nb);
-	tmp = ft_memalloc(len_nb + 1);
+	if (len_nb < arg->precision)
+		tmp = ft_memalloc(arg->precision + 1);
+	else
+		tmp = ft_memalloc(len_nb + 1);
 	tmp[0] = '+';
 	while (nb[i])
 	{
-		tmp[i + 1] = nb[i];
+		tmp[arg->precision - len_nb + i + 1] = nb[i];
 		i++;
 	}
 	i = 0;

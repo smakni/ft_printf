@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/25 23:07:02 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/25 23:40:03 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int		main()
 	int 	x;
 	char 	c;
 
-	x = 25;
+	x = -25;
 	c = '!';
 	str = "Sabri";
-	ft_printf("j'ai %10d ans et je m'appele %s%c", x, str, c);
+	ft_printf("j'ai %10.5d ans et je m'appele %s%c", x, str, c);
+	printf("j'ai %10.5d ans et je m'appele %s%c", x, str, c);
 	//printf("j'ai %15.10d ans et je m'appele %2s%15c", x, str, c);
 	//ft_printf("%.2s", str);
 	//printf("%.2s", str);
