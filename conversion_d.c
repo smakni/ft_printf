@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/25 23:42:50 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/26 19:56:27 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,59 +21,95 @@ void	conversion_d(t_format *arg, va_list av)
 
 	i = 0;
 	tmp = NULL;
-	nb = ft_itoa(va_arg(av, int));
-	if (nb > 0 && ft_strchr(arg->option, '+') != 0)
-		nb = conversion_d1(arg, nb);
+	nb = NULL;
+	nb = conversion_d1(arg, av);
 	len_nb = ft_strlen(nb);
+	if (arg->precision > len_nb)
+		nb = conversion_d2(arg, nb);
 	if (arg->width < len_nb && arg->precision < len_nb)
 		arg->res = ft_strdup(nb);
 	else if (arg->width >= arg->precision)
-		conversion_d2(arg, nb, len_nb, i);
-	else if (arg->width < arg->precision)
 		conversion_d3(arg, nb, len_nb, i);
+	else if (arg->width < arg->precision)
+		conversion_d4(arg, nb, len_nb, i);
+	//arg->res = nb;
 	ft_strdel(&nb);
 	ft_putstr(arg->res);
-	ft_strdel(&arg->res);
+	//ft_strdel(&arg->res);
 }
 
 //revoir le if initial 
 //gere conversion de precisison avec '-' et '+'
 //pour stocker le nb final a envoyer dans la suite de la fonction
 
-char	*conversion_d1(t_format *arg, char *nb)
+char	*conversion_d1(t_format *arg, va_list av)
 {
 	int i;
 	int len_nb;
 	char *tmp;
+	char *nb;
 
 	i = 0;
+	nb = ft_itoa(va_arg(av, int));
 	len_nb = ft_strlen(nb);
-	if (len_nb < arg->precision)
-		tmp = ft_memalloc(arg->precision + 1);
-	else
-		tmp = ft_memalloc(len_nb + 1);
-	tmp[0] = '+';
-	while (nb[i])
+	if (ft_strchr(arg->option, '+') != 0 && nb[0] != '-') 
 	{
-		tmp[arg->precision - len_nb + i + 1] = nb[i];
-		i++;
+		tmp = ft_memalloc(len_nb + 1);
+		tmp[0] = '+';
+		while (nb[i])
+		{
+			tmp[i + 1] = nb[i];
+			i++;
+		}
+		ft_strdel(&nb);
+		nb = tmp;
 	}
-	i = 0;
-	ft_strdel(&nb);
-	nb = ft_strdup(tmp);
-	ft_strdel(&tmp);
 	return (nb);
 }
 
-void	conversion_d2(t_format *arg, char *nb, int len_nb, int i)
+char 	*conversion_d2(t_format *arg, char *nb)
+{
+	int i;
+	char *tmp;
+
+	i = 0;
+	if (nb[0] == '-' || nb[0] == '+')
+	{
+		tmp = ft_memalloc(arg->precision + 1);
+		ft_memset(tmp, '0', arg->precision + 1);
+		tmp[0] = nb[0];
+		while (nb[i])
+		{
+			tmp[arg->precision - ft_strlen(nb) + i] = nb[i + 1];
+			i++;
+		}
+		ft_strdel(&nb);
+		nb = tmp;
+	}
+	else
+	{
+		tmp = ft_memalloc(arg->precision);
+		ft_memset(tmp, '0', arg->precision);
+		while (nb[i])
+		{
+			tmp[arg->precision - ft_strlen(nb) + i] = nb[i];
+			i++;
+		}
+		ft_strdel(&nb);
+		nb = tmp;
+	}
+	return (nb);
+	
+	
+}
+
+void	conversion_d3(t_format *arg, char *nb, int len_nb, int i)
 {
 		arg->res = ft_memalloc(arg->width + 1);	
 		if (ft_strchr(arg->option, '0') != 0)
 			ft_memset(arg->res, '0', arg->width);
 		else
 			ft_memset(arg->res, ' ', arg->width);
-		if (arg->precision > len_nb)
-			ft_memset_from(arg->res, arg->width - arg->precision, '0', arg->precision);
 		if (ft_strchr(arg->option, '-') != 0)
 			while (nb[i])
 			{
@@ -81,14 +117,14 @@ void	conversion_d2(t_format *arg, char *nb, int len_nb, int i)
 				i++;
 			}
 		else
-			while (i < len_nb)
+			while (nb[i])
 			{
 				arg->res[arg->width - len_nb + i] = nb[i];
 				i++;
 			}
 }
 
-void	conversion_d3(t_format *arg, char *nb, int len_nb, int i)
+void	conversion_d4(t_format *arg, char *nb, int len_nb, int i)
 {
 		arg->res = ft_memalloc(arg->precision + 1);
 		ft_memset(arg->res, '0', arg->precision - len_nb);
