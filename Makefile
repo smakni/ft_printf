@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
+#    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/06/25 23:20:09 by sabri            ###   ########.fr        #
+#    Updated: 2018/06/26 21:04:20 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,16 @@ RM		=	rm -f
 all :		$(NAME)
 
 $(NAME)	:	$(OBJS)
+			make -C libft
 			$(LM) $(NAME) $(OBJS) $(OBJF)
 			@echo "[BUILD OK]"
 
 clean	:	
+			make clean -C libft 
 			$(RM) $(OBJS)
 
 fclean	:	clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) libft/libft.a
 
 re		:	fclean all
 
