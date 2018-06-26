@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/26 23:56:17 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/27 00:24:17 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char 	*conversion_d2(t_format *arg, char *nb)
 	if (nb[0] == '-' || nb[0] == '+')
 	{
 		tmp = ft_memalloc(arg->precision + 1);
-		ft_memset(tmp, '0', arg->precision + 1);
+		ft_memset(tmp, '0', arg->precision);
 		tmp[0] = nb[0];
 		i++;
 		while (nb[i])
@@ -87,7 +87,7 @@ char 	*conversion_d2(t_format *arg, char *nb)
 	}
 	else
 	{
-		tmp = ft_memalloc(arg->precision);
+		tmp = ft_memalloc(arg->precision + 1);
 		ft_memset(tmp, '0', arg->precision);
 		while (nb[i])
 		{
@@ -105,7 +105,7 @@ char 	*conversion_d2(t_format *arg, char *nb)
 void	conversion_d3(t_format *arg, char *nb, int len_nb, int i)
 {
 		arg->res = ft_memalloc(arg->width + 2);	
-		if (ft_strchr(arg->option, '0') != 0)
+		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
 			ft_memset(arg->res, '0', arg->width);
 		else
 			ft_memset(arg->res, ' ', arg->width);
