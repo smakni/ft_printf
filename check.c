@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/23 01:01:51 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/26 18:53:34 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		check_precision(char *str)
 	i = 0;
 	start = 0;
 	if (ft_strchr(str, '.') == 0)
-		return (-1);
+		return (0);
 	while(str[start] != '.')
 		start++;
 	start++;
