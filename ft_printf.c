@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/23 01:05:56 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/26 19:31:26 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	free_arg(t_format *arg)
 	if (arg->size != HH && arg->size != LL)
 		ft_strdel(&arg->size);
 	arg->type = 0;
+	ft_strdel(&arg->res);
 }
 
 void	init_struc(t_format *arg)
@@ -35,8 +36,6 @@ void	init_struc(t_format *arg)
 	arg->type = 0;
 	arg->res = NULL;
 }
-
-void	ft_aff(char *tmp, t_format);
 
 int		ft_printf(const char *format, ...)
 {
@@ -58,7 +57,7 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			//ft_aff_param(arg);
+			ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
 			free_arg(arg);
