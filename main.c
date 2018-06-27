@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/27 15:50:41 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/27 20:42:50 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,35 @@ int		main()
 	char 	*test1;
 	char	*test2;
 	char	*test3;
+	char 	*test4;
+	char	*test5;
+	char	*test6;
 	int 	x;
 	char 	c;
 
-	x = 25;
+	x = +25;
 	c = '!';
 	str = "Sabri";
-	test1 = "j'ai %-14.2d ans et je m'appele %.8s%4c\n";
-	test2 = "j'ai %-14.5d ans et je m'appele %.8s%.4c\n";
-	test3 = "j'ai %07.4d ans et je m'appele %.8s%0c\n";
+	test1 = "(1)j'ai %14.2d ans et je m'appele %.9s%4c\n";
+	test2 = "(2)j'ai %-14.5d ans et je m'appele %5.5s%.4c\n";
+	test3 = "(3)j'ai %-07.4d ans et je m'appele %-s%0c\n";
+	test4 = "(4)j'ai %-014d ans et je m'appele %0.8s%4c\n";
+	test5 = "(5)j'ai %-5d ans et je m'appele %.2s%.4c\n";
+	test6 = "(6)j'ai %+7.4d ans et je m'appele %-010.2s%0c\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>ft_printf<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
 	ft_printf(test3, x, str, c);
+	ft_printf(test4, x, str, c);
+	ft_printf(test5, x, str, c);
+	ft_printf(test6, x, str, c);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>printf<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, str, c);
 	printf(test2, x, str, c);
 	printf(test3, x, str, c);
-	//printf("j'ai %15.10d ans et je m'appele %2s%15c", x, str, c);
-	//ft_printf("%.2s", str);
-	//printf("%.2s", str);
-	//ft_printf("%10.4d", x);
-	//printf("%4.4d", x);
-	//ft_putstr("------------\n");
-	//printf("%5c", c); 							
-	//printf("\n%+2z3.4d", x);
-	//printf("hello %s\n", str);
+	printf(test4, x, str, c);
+	printf(test5, x, str, c);
+	printf(test6, x, str, c);
+	printf("\n>>>>>>>>>>>>>>>>>>>>>>RESULT<<<<<<<<<<<<<<<<<<<\n\n");
 	return (0);
 }
