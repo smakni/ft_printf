@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/26 18:53:34 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/27 20:38:59 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int 	check_widht(char *str)
 	i = 0;
 	while (OPTION)
 		i++;
-	tmp = ft_strsub(str, i, ft_strlen_c(str, '.'));
+	if (ft_strchr(str, '.') != 0)
+		tmp = ft_strsub(str, i, ft_strlen_c(str, '.'));
+	else
+		tmp = ft_strsub(str, i, ft_strlen(str) - i);
 	width = ft_atoi(tmp);
 	ft_strdel(&tmp);
 	return (width);
