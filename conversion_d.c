@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/27 15:41:26 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/27 20:41:10 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	conversion_d(t_format *arg, va_list av)
 	if (arg->width <= len_nb)
 		arg->res = ft_strdup(nb);
 	else if (arg->width > arg->precision)
-		conversion_d3(arg, nb, len_nb, i);
+		conversion_d3(arg, nb, i, len_nb);
 	else if (arg->width < arg->precision)
 		conversion_d4(arg, nb, len_nb, i);
 	ft_strdel(&nb);
@@ -97,17 +97,29 @@ char 	*conversion_d2(t_format *arg, char *nb)
 	
 }
 
-void	conversion_d3(t_format *arg, char *nb, int len_nb, int i)
+void	conversion_d3(t_format *arg, char *nb, int i, int len_nb)
 {
-		arg->res = ft_memalloc(arg->width + 2);	
-		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
-			ft_memset(arg->res, '0', arg->width);
+		arg->res = ft_memalloc(arg->width + 1);	
+		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0 && arg->precision == 0)
+			ft_memset(arg->res, '0', arg->width + 1);
 		else
 			ft_memset(arg->res, ' ', arg->width);
 		if (ft_strchr(arg->option, '-') != 0)
 			while (nb[i])
 			{
 				arg->res[i] = nb[i];
+				i++;
+			}
+		else if (arg->precision > len_nb && ft_isdigit(nb[0]))
+			while (nb[i])
+			{
+				arg->res[arg->width - arg->precision + i] = nb[i];
+				i++;
+			}
+		else if (arg->precision > len_nb)
+			while (nb[i])
+			{
+				arg->res[arg->width - arg->precision + i - 1] = nb[i];
 				i++;
 			}
 		else
