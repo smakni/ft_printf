@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/27 00:24:17 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/27 15:41:26 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ void	conversion_d(t_format *arg, va_list av)
 		conversion_d3(arg, nb, len_nb, i);
 	else if (arg->width < arg->precision)
 		conversion_d4(arg, nb, len_nb, i);
-	//arg->res = nb;
 	ft_strdel(&nb);
 	ft_putstr(arg->res);
 	//ft_strdel(&arg->res);
 }
-
-//revoir le if initial 
-//gere conversion de precisison avec '-' et '+'
-//pour stocker le nb final a envoyer dans la suite de la fonction
 
 char	*conversion_d1(t_format *arg, va_list av)
 {
@@ -73,7 +68,7 @@ char 	*conversion_d2(t_format *arg, char *nb)
 	i = 0;
 	if (nb[0] == '-' || nb[0] == '+')
 	{
-		tmp = ft_memalloc(arg->precision + 1);
+		tmp = ft_memalloc(arg->precision + 2);
 		ft_memset(tmp, '0', arg->precision);
 		tmp[0] = nb[0];
 		i++;
