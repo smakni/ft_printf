@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/26 19:36:20 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/27 19:41:20 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void 	ft_conversion(t_format *arg, va_list av);
 void	conversion_d(t_format *arg, va_list av);
 char	*conversion_d1(t_format *arg, va_list av);
 char 	*conversion_d2(t_format *arg, char *nb);
-void	conversion_d3(t_format *arg, char *nb, int len_nb, int i);
+void	conversion_d3(t_format *arg, char *nb, int i, int len_nb);
 void	conversion_d4(t_format *arg, char *nb, int len_nb, int i);
 void	conversion_s(t_format *arg, va_list av);
 void	conversion_c(t_format *arg, va_list av);
