@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/26 19:31:40 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/27 15:46:31 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ void	conversion_c(t_format *arg, va_list av)
 	int				i;
 
 	i = 0;
-	while (arg->str[i] != arg->type)
-	{	
-		if(arg->str[i] <= '0' || arg->str[i] > '9')
-			return ;
-		i++;
-	}
 	if (arg->width > 1) 
 	{
 		if (!(arg->res = ft_memalloc(arg->width)))
