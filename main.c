@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/27 00:32:23 by sabri            ###   ########.fr       */
+/*   Updated: 2018/06/27 15:50:41 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int		main()
 	int 	x;
 	char 	c;
 
-	x = -25;
+	x = 25;
 	c = '!';
 	str = "Sabri";
 	test1 = "j'ai %-14.2d ans et je m'appele %.8s%4c\n";
-	test2 = "j'ai %-14.5d ans et je m'appele %.8s%4c\n";
-	test3 = "j'ai %+-0134.5d ans et je m'appele %.8s%4c\n";
+	test2 = "j'ai %-14.5d ans et je m'appele %.8s%.4c\n";
+	test3 = "j'ai %07.4d ans et je m'appele %.8s%0c\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>ft_printf<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
