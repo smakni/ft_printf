@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:15:56 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/27 15:46:31 by smakni           ###   ########.fr       */
+/*   Updated: 2018/06/28 14:04:06 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	conversion_s(t_format *arg, va_list av)
 	i = 0;
 	while(tmp[i] && i < arg->precision)
 		i++;
-	arg->res = ft_strsub_free(tmp, 0, i);
+	tmp = ft_strsub_free(tmp, 0, i);
+	//if (ft_strchr(arg->option, '0'))
 	ft_putstr(arg->res);
 }
 
