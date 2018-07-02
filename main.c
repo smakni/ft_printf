@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/28 15:18:41 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/02 19:42:40 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ int		main()
 	char	*test5;
 	char	*test6;
 	char	*test7;
+	char	*test8;
 	int 	x;
 	char 	c;
 
-	x = +25;
+	x = -25;
 	c = '!';
-	str = "Sabri";
+	str = "S";
 	test1 = "(1)j'ai %14.2d ans et je m'appele %9.9s%4c\n";
 	test2 = "(2)j'ai %-14.5d ans et je m'appele %5.5s%.4c\n";
 	test3 = "(3)j'ai %-07.4d ans et je m'appele %-s%0c\n";
@@ -35,6 +36,7 @@ int		main()
 	test5 = "(5)j'ai %-5d ans et je m'appele %.2s%.4c\n";
 	test6 = "(6)j'ai %+7.4d ans et je m'appele %010.2s%0c\n";
 	test7 = "(7)j'ai %+7.4d ans et je m'appele %-010.2s%0c\n";
+	test8 = "(8)adresse de str = %p\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
@@ -43,6 +45,7 @@ int		main()
 	ft_printf(test5, x, str, c);
 	ft_printf(test6, x, str, c);
 	ft_printf(test7, x, str, c);
+	ft_printf(test8, str);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, str, c);
 	printf(test2, x, str, c);
@@ -51,6 +54,7 @@ int		main()
 	printf(test5, x, str, c);
 	printf(test6, x, str, c);
 	printf(test7, x, str, c);
+	printf(test8, str);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RESULT<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	return (0);
 }
