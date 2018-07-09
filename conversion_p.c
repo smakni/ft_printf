@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/07 07:19:31 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 00:41:00 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	conversion_p(t_format *arg, va_list av)
 		i++;
 		nb = nb / 16;
 	}
-	arg->res = ft_memalloc(i);
+	arg->res = ft_memalloc(i + 1);
 	nb = (long int)adr;
 	while (nb != 0)
 	{
