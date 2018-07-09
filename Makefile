@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/07/02 19:55:45 by sabri            ###   ########.fr        #
+#    Updated: 2018/07/10 00:54:50 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all :		$(NAME)
 
 $(NAME)	:	$(OBJS)
 			make -C libft
-			$(LM) $(NAME) $(OBJS) $(OBJF)
+			$(LM) $(NAME) $(OBJS) $(OBJF) libft/*.o
 			@clear
 			@echo "[BUILD SUCCESS]"
 
