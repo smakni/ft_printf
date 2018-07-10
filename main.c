@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/11 01:08:36 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 01:38:15 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int		main()
 	char	*test11;
 	char	*test12;
 	char	*test13;
+	char	*test14;
 	char 	*str;
-	unsigned int ux;
 	int 	x;
 	char 	c;
+	unsigned int ux;
 
 	ux = -42;
 	x = -42;
@@ -47,8 +48,9 @@ int		main()
 	test9 = "(9)%x\n";
 	test10 = "(10)%p\n";
 	test11 = "(11)salut%10.8d";
-	test12 = "(12)%010c";
-	test13 = "(13)%o";
+	test12 = "(12)%010c\n";
+	test13 = "(13)%o\n";
+	test14 = "(14)%%d\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
@@ -61,6 +63,7 @@ int		main()
 	ft_printf(test9, ux);
 	ft_printf(test10, str);
 	ft_printf(test13, ux);
+	ft_printf(test14, x);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, str, c);
 	printf(test2, x, str, c);
@@ -73,6 +76,7 @@ int		main()
 	printf(test9, ux);
 	printf(test10, str);
 	printf(test13, ux);
+	printf(test14, x);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
