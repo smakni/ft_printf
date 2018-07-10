@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/07/10 00:54:50 by sabri            ###   ########.fr        #
+#    Updated: 2018/07/10 01:24:50 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS	=	ft_printf.c		\
 			conversion_p.c
 
 
-LIBS	=	libft/*.c
+OBJF	=	libft/*.o
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -36,13 +36,15 @@ RM		=	rm -f
 all :		$(NAME)
 
 $(NAME)	:	$(OBJS)
-			make -C libft
-			$(LM) $(NAME) $(OBJS) $(OBJF) libft/*.o
+			@make -C libft
+			$(LM) $(NAME) $(OBJS) $(OBJF)
 			@clear
 			@echo "[BUILD SUCCESS]"
+			@sleep 1,5
+			@clear
 
 clean	:	
-			make clean -C libft 
+			@make clean -C libft 
 			$(RM) $(OBJS)
 
 fclean	:	clean
