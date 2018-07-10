@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 14:02:13 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 14:30:36 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ int		ft_printf(const char *format, ...)
 	free(arg);
 	ft_strdel(&tmp);
 	va_end(av);
-	return (ret + j - 1);
+	return (ret + j);
 }
