@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/27 00:25:27 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 13:17:35 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_struc(t_format *arg)
 	arg->size = NULL;
 	arg->type = 0;
 	arg->res = NULL;
+	arg->count = 0;
 }
 
 int		ft_printf(const char *format, ...)
