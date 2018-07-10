@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 13:18:40 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 01:14:16 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	*conversion_s2(t_format *arg, char *tmp, int len, int i);
 void	conversion_c(t_format *arg, va_list av);
 void	conversion_p(t_format *arg, va_list av);
 void	conversion_x(t_format *arg, va_list av);
+void	conversion_o(t_format *arg, va_list av);
+void	conversion_0(t_format *arg, va_list av);
 void	ft_aff_param(t_format *arg);
 
 #endif

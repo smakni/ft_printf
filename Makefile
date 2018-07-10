@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/07/10 13:19:44 by sabri            ###   ########.fr        #
+#    Updated: 2018/07/11 00:59:00 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS	=	ft_printf.c		\
 			conversion_d.c	\
 			conversion_s.c	\
 			conversion_p.c	\
-			conversion_x.c
+			conversion_x.c	\
+			conversion_o.c
 
 
 OBJF	=	libft/*.o
