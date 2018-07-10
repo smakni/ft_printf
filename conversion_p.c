@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/10 13:35:14 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 14:07:58 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	conversion_p(t_format *arg, va_list av)
 		nb = nb / 16;
 	}
 	arg->res = ft_memalloc(i + 1);
+	arg->count = i + 1 + 4;
 	nb = (int)adr;
 	while (nb != 0)
 	{
@@ -41,6 +42,5 @@ void	conversion_p(t_format *arg, va_list av)
 		nb = nb / 16;
 	}
 	ft_putstr("0x10");
-	arg->count = ft_strlen(arg->res + 4);
 	ft_putstr(arg->res);
 }
