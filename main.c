@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 00:37:26 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 01:08:26 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main()
 	test4 = "(4)j'ai %-014d ans et je m'appele %0.8s%4c\n";
 	test5 = "(5)j'ai %-5d ans et je m'appele %.2s%.4c\n";
 	test6 = "(6)j'ai %+7.4d ans et je m'appele %010.2s%0c\n";
-	test7 = "(7)j'ai %+7.4d ans et je m'appele %-010.2s%0c\n";
+	test7 = "(7)j'ai %+7.4d ans et je m'appele %-010s%0c\n";
 	test8 = "(8)adresse de str = %p\n";
 	test9 = "(9)%d%d%d%d%d%d%d%d%c%c%c%c%c%c%c%s%s%s%s%s%s%s%s%p%p\n";
 	test10 = "(10)%p%p\n";
