@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/02 18:12:53 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 01:13:29 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	conversion_s(t_format *arg, va_list av)
 	i = 0;
 	tmp = ft_strdup(va_arg(av, char *));
 	len = ft_strlen(tmp);
-	if (arg->precision < len)
+	if (arg->precision < len && arg->precision != 0)
 	{
 		tmp = conversion_s1(arg, tmp);
 		len = ft_strlen(tmp);
