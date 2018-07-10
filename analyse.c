@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 23:45:05 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/11 00:59:19 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 01:20:55 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void 	ft_conversion(t_format *arg, va_list av)
 		conversion_x(arg, av);
 	if (arg->type == 'o')
 		conversion_o(arg, av);
+	if (arg->type == '%')
+		conversion_0(arg, av);
 	return ;
 }
 
