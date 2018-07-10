@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 13:07:08 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/10 13:38:59 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 00:51:30 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	conversion_x(t_format *arg, va_list av)
 {
-	int nb;
+	unsigned int nb;
 	int tmp;
 	int i;
 
