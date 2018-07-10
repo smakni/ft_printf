@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 13:39:35 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 14:04:10 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		main()
 	char	*test8;
 	char	*test9;
 	char	*test10;
+	char	*test11;
 	char 	*str;
 	int 	x;
 	char 	c;
@@ -41,6 +42,7 @@ int		main()
 	test8 = "(8)adresse de str = %p\n";
 	test9 = "(9)%x\n";
 	test10 = "(10)%p\n";
+	test11 = "(11)salut%10.8d";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
@@ -52,6 +54,10 @@ int		main()
 	ft_printf(test8, str);
 	ft_printf(test9, x);
 	ft_printf(test10, str);
+	ft_printf("ret = ");
+	ft_printf("%d\n", ft_printf(test1, x, str, c));
+	ft_printf("ret = ");
+	ft_printf("%d\n", ft_printf(test8, str));
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, str, c);
 	printf(test2, x, str, c);
@@ -63,6 +69,10 @@ int		main()
 	printf(test8, str);
 	printf(test9, x);
 	printf(test10, str);
+	ft_printf("ret = ");
+	ft_printf("%d\n", printf(test1, x, str, c));
+	ft_printf("ret = ");
+	ft_printf("%d\n", printf(test8, str));
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RESULT<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	return (0);
 }
