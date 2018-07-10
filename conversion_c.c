@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/02 18:13:17 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 13:16:51 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	conversion_c(t_format *arg, va_list av)
 		ft_putstr(arg->res);
 		ft_strdel(&(arg)->res);
 	}
+	arg->count = arg->width + 1;
 	ft_putchar(va_arg(av, int));
 }

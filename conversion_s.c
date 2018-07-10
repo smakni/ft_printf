@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/10 01:13:29 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 13:13:54 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	conversion_s(t_format *arg, va_list av)
 	else
 		arg->res = ft_strdup(tmp);
 	ft_strdel(&tmp);
+	arg->count = ft_strlen(arg->res);
 	ft_putstr(arg->res);
 }
 

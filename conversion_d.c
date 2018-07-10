@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/28 12:23:33 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 13:14:16 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	conversion_d(t_format *arg, va_list av)
 	else if (arg->width < arg->precision)
 		conversion_d4(arg, nb, len_nb, i);
 	ft_strdel(&nb);
+	arg->count = ft_strlen(arg->res);
 	ft_putstr(arg->res);
 }
 
