@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 13:17:35 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/10 14:02:13 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		ft_printf(const char *format, ...)
 	va_list 	av;
 	char 		*tmp;
 	int 		i;
+	int			j;
+	int			ret;
 	t_format 	*arg;
 
 	arg = ft_memalloc(sizeof(t_format));
@@ -50,6 +52,8 @@ int		ft_printf(const char *format, ...)
 	tmp = ft_strdup(format);
 	va_start(av, format);
 	i = 0;
+	j = 0;
+	ret = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -61,14 +65,18 @@ int		ft_printf(const char *format, ...)
 			//ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
 			i += arg->len;
+			ret += arg->count;
 			free_arg(arg);
 		}
 		else
+		{
 			ft_putchar(format[i]);
+			j++;
+		}
 		i++;
 	}
 	free(arg);
 	ft_strdel(&tmp);
 	va_end(av);
-	return (i);
+	return (ret + j - 1);
 }
