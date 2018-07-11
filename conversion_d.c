@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/10 13:14:16 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 23:58:42 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,35 +99,39 @@ char 	*conversion_d2(t_format *arg, char *nb)
 
 void	conversion_d3(t_format *arg, char *nb, int i, int len_nb)
 {
-		arg->res = ft_memalloc(arg->width + 1);	
-		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0 && arg->precision == 0)
-			ft_memset(arg->res, '0', arg->width + 1);
-		else
-			ft_memset(arg->res, ' ', arg->width);
-		if (ft_strchr(arg->option, '-') != 0)
-			while (nb[i])
-			{
-				arg->res[i] = nb[i];
-				i++;
-			}
-		else if (arg->precision > len_nb && ft_isdigit(nb[0]))
-			while (nb[i])
-			{
-				arg->res[arg->width - arg->precision + i] = nb[i];
-				i++;
-			}
-		else if (arg->precision > len_nb)
-			while (nb[i])
-			{
-				arg->res[arg->width - arg->precision + i - 1] = nb[i];
-				i++;
-			}
-		else
-			while (nb[i])
-			{
-				arg->res[arg->width - len_nb + i] = nb[i];
-				i++;
-			}
+	arg->res = ft_memalloc(arg->width + 1);	
+	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0 && arg->precision == 0)
+		ft_memset(arg->res, '0', arg->width);
+	else
+		ft_memset(arg->res, ' ', arg->width);
+	if (ft_strchr(arg->option, '-') != 0)
+		while (nb[i])
+		{
+			arg->res[i] = nb[i];
+			i++;
+		}
+	else if (arg->precision > len_nb)
+		while (nb[i])
+		{
+			arg->res[arg->width - arg->precision + i - 1] = nb[i];
+			i++;
+		}
+	else if (ft_strchr(arg->option, '0') != 0)
+	{
+		arg->res[0] = nb[0];
+		i++;
+		while (nb[i])
+		{
+			arg->res[arg->width - len_nb + i] = nb[i];
+			i++;
+		}
+	}
+	else
+		while (nb[i])
+		{
+			arg->res[arg->width - len_nb + i] = nb[i];
+			i++;
+		}
 }
 
 void	conversion_d4(t_format *arg, char *nb, int len_nb, int i)
