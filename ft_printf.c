@@ -6,24 +6,11 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/10 14:30:36 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 15:52:18 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	free_arg(t_format *arg)
-{
-	ft_strdel(&arg->str);
-	arg->len = 0;
-	ft_strdel(&arg->option);
-	arg->width = 0;
-	arg->precision = 0;
-	if (arg->size != HH && arg->size != LL)
-		ft_strdel(&arg->size);
-	arg->type = 0;
-	ft_strdel(&arg->res);
-}
 
 void	init_struc(t_format *arg)
 {
@@ -36,6 +23,19 @@ void	init_struc(t_format *arg)
 	arg->type = 0;
 	arg->res = NULL;
 	arg->count = 0;
+}
+
+void	free_arg(t_format *arg)
+{
+	ft_strdel(&arg->str);
+	arg->len = 0;
+	ft_strdel(&arg->option);
+	arg->width = 0;
+	arg->precision = 0;
+	if (arg->size != HH && arg->size != LL)
+		ft_strdel(&arg->size);
+	arg->type = 0;
+	ft_strdel(&arg->res);
 }
 
 int		ft_printf(const char *format, ...)
@@ -59,11 +59,13 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			arg->type = check_conv(tmp);
-			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', arg->type));
+			if (arg->type == '%')
+				i++;
+			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, format[i], arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
 			//ft_aff_param(arg);
-			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, '%', '\0'));
+			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, format[i], '\0'));
 			i += arg->len;
 			ret += arg->count;
 			free_arg(arg);

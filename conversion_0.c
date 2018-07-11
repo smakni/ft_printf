@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 01:10:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/11 01:37:41 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 15:18:36 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,31 @@
 
 void	conversion_0(t_format *arg)
 {
-	arg->len = ft_strlen_c(arg->str, '%') + 1;
-	ft_putchar('%');
+	if (arg->width > 1)
+	{
+		if (ft_strchr(arg->option, '-') != 0)
+		{	
+			arg->res = ft_memalloc(arg->width + 1);
+			ft_memset(arg->res, ' ', arg->width);
+			arg->res[0] = '%';
+		}
+		else if (ft_strchr(arg->option, '0') != 0)
+		{		
+			arg->res = ft_memalloc(arg->width + 1);
+			ft_memset(arg->res, '0', arg->width);
+			arg->res[arg->width - 1] = '%';
+		}
+		else
+		{
+			arg->res = ft_memalloc(arg->width + 1);
+			ft_memset(arg->res, ' ', arg->width);
+			arg->res[arg->width - 1] = '%';
+		}
+	}
+	else
+	{
+		arg->res = ft_memalloc(2);
+		arg->res[0] = '%';
+	}
+	ft_putstr(arg->res);
 }
