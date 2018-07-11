@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/11 01:25:13 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 00:23:50 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define conv 	"sSpdDioOuUxXcC%%"
 #define HH		"hh"
 #define LL		"ll"
+#define	OPT		" 0+-#"
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
@@ -60,6 +61,7 @@ typedef struct s_format
 }				t_format;
 
 int		ft_printf(const char *format, ...);
+int		ft_printf_param(const char *format, ...);
 void	ft_analyse(t_format *arg);
 char	check_conv(char *str);
 char 	*check_option(char *str);
