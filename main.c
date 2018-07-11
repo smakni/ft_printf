@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/11 15:23:39 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 00:03:53 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int		main()
 	unsigned int ux;
 
 	ux = 42;
-	x = -42;
+	x = 42;
 	c = '!';
 	str = "Sabri";
 	test1 = "(1)j'ai %14.2d ans et je m'appele %9.9s%04c\n";
 	test2 = "(2)j'ai %-14.5d ans et je m'appele %5.5s%.4c\n";
-	test3 = "(3)j'ai %0+5d ans et je m'appele %-s%0c\n";
+	test3 = "(3)j'ai %+05d ans et je m'appele %-s%0c\n";
 	test4 = "(4)j'ai %-014d ans et je m'appele %0.8s%4c\n";
 	test5 = "(5)j'ai %-5d ans et je m'appele %.2s%.4c\n";
 	test6 = "(6)j'ai %+7.4d ans et je m'appele %010.2s%0c\n";
@@ -58,7 +58,7 @@ int		main()
 	test15 = "(15)%                   010%d\n";
 	test16 = "(16)%%d\n";
 	test17 = "(17)% 10.5%d\n";
-	test18 = "(18)%%%%%%%%%%%d\n";
+	test18 = "(18)%d\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
