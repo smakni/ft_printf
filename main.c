@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 00:03:53 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 00:15:33 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main()
 	char	*test16;
 	char	*test17;
 	char	*test18;
+	char	*test19;
 	char 	*str;
 	int 	x;
 	char 	c;
@@ -59,6 +60,7 @@ int		main()
 	test16 = "(16)%%d\n";
 	test17 = "(17)% 10.5%d\n";
 	test18 = "(18)%d\n";
+	test19 = "(19)%-5+d\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
 	ft_printf(test2, x, str, c);
@@ -76,6 +78,7 @@ int		main()
 	ft_printf(test16, x);	
 	ft_printf(test17, x);
 	ft_printf(test18, x);
+	ft_printf_param(test19, x);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, str, c);
 	printf(test2, x, str, c);
@@ -93,6 +96,7 @@ int		main()
 	printf(test16, x);
 	printf(test17, x);
 	printf(test18, x);
+	printf(test19, x);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
