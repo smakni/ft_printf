@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/27 20:38:59 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/11 14:23:52 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	check_conv(char *str)
 		}
 		i++;
 	}
-	return ('Z');
+	return ('0');
 }
 
 char 	*check_option(char *str)
