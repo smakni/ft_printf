@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/11 14:23:52 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 00:42:35 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,30 @@ char	check_conv(char *str)
 char 	*check_option(char *str)
 {
 	int 	i;
+	int 	j;
 	char 	*opt;
 
 	i = 0;
-	while (OPTION)
-		i++;
-	if (!(opt = ft_memalloc(i + 1)))
-		return (NULL);
-	i = 0;
-	while (OPTION)
+	j = 0;
+	opt = NULL;
+	while (OPT[i])
 	{
-		opt[i] = str[i];
+		if (ft_strchr(str, OPT[i]) != 0)
+			j++;
 		i++;
 	}
-	opt[i] = '\0';
+	opt = ft_memalloc(j);
+	i = 0;
+	j = 0;
+	while (OPT[i])
+	{
+		if (ft_strchr(str, OPT[i]) != 0)
+		{
+			opt[j] = OPT[i];
+			j++;
+		}
+		i++;
+	}
 	return (opt);
 }
 
