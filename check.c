@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 00:42:35 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 12:46:40 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,43 @@ char	check_conv(char *str)
 	while (str[i] && str[i] != '%')
 		i++;
 	i++;
-	if (str[i] == conv[j])
-		return (conv[j]);
+	if (str[i] == CONV[j])
+		return (CONV[j]);
 	while (str[i])
 	{
-		if (str[i] != conv[j])
+		if (str[i] != CONV[j])
 		{
 			j = 0;
-			while (conv[j] && str[i] != conv[j])
+			while (CONV[j] && str[i] != CONV[j])
 				j++;
-			if (str[i] == conv[j])
-				return (conv[j]);
+			if (str[i] == CONV[j])
+				return (CONV[j]);
 		}
 		i++;
 	}
 	return ('0');
 }
 
-char 	*check_option(char *str)
+char	*check_option(char *str)
 {
-	int 	i;
-	int 	j;
-	char 	*opt;
+	int i;
+	int j;
+	char *opt;
+	char *tmp;
 
 	i = 0;
 	j = 0;
 	opt = NULL;
-	while (OPT[i])
-	{
-		if (ft_strchr(str, OPT[i]) != 0)
-			j++;
+	tmp = NULL;
+	while (OPTION)
 		i++;
-	}
-	opt = ft_memalloc(j);
+	tmp = ft_strsub(str, 0, i);
+	opt = ft_memalloc(i);
 	i = 0;
 	j = 0;
 	while (OPT[i])
 	{
-		if (ft_strchr(str, OPT[i]) != 0)
+		if (ft_strchr(tmp, OPT[i]) != 0)
 		{
 			opt[j] = OPT[i];
 			j++;

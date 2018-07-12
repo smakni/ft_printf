@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 00:23:50 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 12:41:53 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#define conv 	"sSpdDioOuUxXcC%%"
+#define CONV 	"sSpdDioOuUxXcC%%"
 #define HH		"hh"
 #define LL		"ll"
 #define	OPT		" 0+-#"
