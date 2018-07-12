@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 00:19:13 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/12 13:10:48 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,9 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			arg->type = check_conv(tmp);
-			if (arg->type == '%')
-				i++;
 			arg->str = ft_strsub(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, format[i], arg->type));
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			//ft_aff_param(arg);
 			tmp = ft_strsub_free(tmp, ft_strlen_c(tmp, format[i]) + 1, ft_strlen_from(tmp, format[i], '\0'));
 			i += arg->len;
 			ret += arg->count;
