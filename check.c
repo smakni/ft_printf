@@ -6,35 +6,33 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 12:46:40 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/17 18:51:41 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	check_conv(char *str)
+char	check_conv(const char *str, int x)
 {
 	int i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (str[i] && str[i] != '%')
-		i++;
-	i++;
-	if (str[i] == CONV[j])
+	x++;
+	if (str[x] == CONV[j])
 		return (CONV[j]);
-	while (str[i])
+	while (str[x])
 	{
-		if (str[i] != CONV[j])
+		if (str[x] != CONV[j])
 		{
 			j = 0;
-			while (CONV[j] && str[i] != CONV[j])
+			while (CONV[j] && str[x] != CONV[j])
 				j++;
-			if (str[i] == CONV[j])
+			if (str[x] == CONV[j])
 				return (CONV[j]);
 		}
-		i++;
+		x++;
 	}
 	return ('0');
 }
@@ -65,6 +63,7 @@ char	*check_option(char *str)
 		}
 		i++;
 	}
+	ft_strdel(&tmp);
 	return (opt);
 }
 
