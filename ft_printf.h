@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/12 12:41:53 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/17 18:51:25 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,13 @@
 #include <string.h>
 #include <stdio.h>
 
-#define CONV 	"sSpdDioOuUxXcC%%"
 #define HH		"hh"
 #define LL		"ll"
 #define	OPT		" 0+-#"
+#define CONV 	"sSpdDioOuUxXcC%%"
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
-
-
-// une fonction d'analise de la conversion OK
-// stockage dans structure OK
-// fonction de conversion de la structure
-// fonction pour check error
-// \> sous fonction pour chaque flag > modif du res de la structure petit
-// a petit > 
-// affichage de res
-
-// pour conversion_d
-// faire fonction pour chaque cas, ex: 23.32d / -23.3d / -4.d
-// creer la chaine d'acceuil
-// et ensuite inserer le nb
-// combinaison
-// I la taille de la chaine
-// II la precision
-// III les option
-// iV le nb
-// if (strchr(arg->str, '0') != 0)
 
 typedef struct s_format
 {
@@ -61,9 +41,8 @@ typedef struct s_format
 }				t_format;
 
 int		ft_printf(const char *format, ...);
-int		ft_printf_param(const char *format, ...);
 void	ft_analyse(t_format *arg);
-char	check_conv(char *str);
+char	check_conv(const char *str, int x);
 char 	*check_option(char *str);
 int 	check_widht(char *str);
 int		check_precision(char *str);
@@ -81,6 +60,7 @@ char	*conversion_s2(t_format *arg, char *tmp, int len, int i);
 void	conversion_c(t_format *arg, va_list av);
 void	conversion_p(t_format *arg, va_list av);
 void	conversion_x(t_format *arg, va_list av);
+void	conversion_X(t_format *arg, va_list av);
 void	conversion_o(t_format *arg, va_list av);
 void	conversion_0(t_format *arg);
 void	ft_aff_param(t_format *arg);
