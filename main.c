@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/17 18:36:11 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/18 15:09:27 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		main()
 	test8 = "(8)adresse de str = %p\n";
 	test9 = "(9)%x\n";
 	test10 = "(10)%p\n";
-	test11 = "(11)salut%10.8d";
+	test11 = "(11)salut%10d\n";
 	test12 = "(12)%010c\n";
 	test13 = "(13)%o\n";
 	test14 = "(14)%                   0-10%d\n";
@@ -61,7 +61,7 @@ int		main()
 	test16 = "(16)%%\n";
 	test17 = "(17)% 10.5%d\n";
 	test18 = "salut%10.5dhello%10c%010%%%%%%dend\n";
-	test19 = "(19)%-5+d\n";
+	test19 = "(19)%ld\n";
 	test20 = "(20)%X\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x, str, c);
@@ -74,6 +74,8 @@ int		main()
 	ft_printf(test8, str);
 	ft_printf(test9, ux);
 	ft_printf(test10, str);
+	ft_printf(test11, x);
+	ft_printf(test12, c);
 	ft_printf(test13, ux);
 	ft_printf(test14, x);
 	ft_printf(test15, x);
@@ -93,6 +95,8 @@ int		main()
 	printf(test8, str);
 	printf(test9, ux);
 	printf(test10, str);
+	printf(test11, x);
+	printf(test12, c);
 	printf(test13, ux); 
 	printf(test14, x);
 	printf(test15, x);
