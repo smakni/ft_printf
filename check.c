@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/17 18:51:41 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/18 14:03:50 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*check_option(char *str)
 	while (OPTION)
 		i++;
 	tmp = ft_strsub(str, 0, i);
-	opt = ft_memalloc(i);
+	opt = ft_memalloc(i + 1);
 	i = 0;
 	j = 0;
 	while (OPT[i])
