@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_imax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/20 18:15:11 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/20 18:12:05 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_size(int n)
+static int		ft_size(intmax_t n)
 {
-	int size;
+	intmax_t size;
 
 	size = 0;
 	if (n == 0)
@@ -29,11 +29,11 @@ static int		ft_size(int n)
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa_imax(intmax_t n)
 {
-	char	*str;
-	int		i;
-	int		size;
+	char			*str;
+	intmax_t		i;
+	intmax_t		size;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_lli.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/20 18:15:11 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/20 18:11:25 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_size(int n)
+static long long int		ft_size(long long int n)
 {
-	int size;
+	long long int size;
 
 	size = 0;
 	if (n == 0)
@@ -29,14 +29,12 @@ static int		ft_size(int n)
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char						*ft_itoa_lli(long long int n)
 {
-	char	*str;
-	int		i;
-	int		size;
+	char				*str;
+	long long int		i;
+	long long int		size;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	i = 0;
 	size = ft_size(n);
 	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
