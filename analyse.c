@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 23:45:05 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/18 14:06:56 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:46:47 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	ft_analyse(t_format *arg)
 
 void 	ft_conversion(t_format *arg, va_list av)
 {
-	if (arg->type == 'd' || arg->type == 'i')
+	if (arg->type == 'd' || arg->type == 'D' || arg->type == 'i')
 		conversion_d(arg, av);
-	if (arg->type == 'c')
+	else if (arg->type == 'c' || arg->type == 'C')
 		conversion_c(arg, av);
-	if (arg->type == 's')
+	else if (arg->type == 's')
 		conversion_s(arg, av);
-	if (arg->type == 'p')
+	else if (arg->type == 'p')
 		conversion_p(arg, av);
-	if (arg->type == 'x')
+	else if (arg->type == 'x')
 		conversion_x(arg, av);
-	if (arg->type == 'X')
+	else if (arg->type == 'X')
 		conversion_X(arg, av);
-	if (arg->type == 'o')
+	else if (arg->type == 'o')
 		conversion_o(arg, av);
-	if (arg->type == '%')
+	else if (arg->type == '%')
 		conversion_0(arg);
 	return ;
 }
