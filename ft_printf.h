@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/17 18:51:25 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/23 10:20:22 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 typedef struct s_format
 {
-	char 	*str;
+	char 	*str;	
 	int		len;
 	char	*option;
 	int		width;
@@ -50,7 +50,8 @@ int 	check_str(char *str);
 char	*check_size(char *str);
 void 	ft_conversion(t_format *arg, va_list av);
 void	conversion_d(t_format *arg, va_list av);
-char	*conversion_d1(t_format *arg, va_list av);
+char	*conversion_d0(t_format *arg, char *nb, va_list av);
+char	*conversion_d1(t_format *arg, char *nb);
 char 	*conversion_d2(t_format *arg, char *nb);
 void	conversion_d3(t_format *arg, char *nb, int i, int len_nb);
 void	conversion_d4(t_format *arg, char *nb, int len_nb, int i);
