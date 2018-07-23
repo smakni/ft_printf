@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/23 15:01:22 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/23 15:10:29 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void	conversion_d(t_format *arg, va_list av)
 
 char	*conversion_d0(t_format *arg, char *nb, va_list av)
 {
-	if (arg->type == 'd' || arg->type == 'D')
-	{
 		if (arg->size[0] == '\0' && arg->type != 'D')
 			nb = ft_itoa(va_arg(av, int));
 		else if (arg->type == 'D'|| (arg->size[0] == 'l' && arg->size[1] == '\0'))
@@ -74,16 +72,13 @@ char	*conversion_d0(t_format *arg, char *nb, va_list av)
 		else if (arg->size[0] == 'l' && arg->size[1] == 'l')
 			nb = ft_itoa_lli(va_arg(av, long long int));
 		else if (arg->size[0] == 'h' && arg->size[1] == '\0')
-			nb = ft_itoa_hd(va_arg(av, int));
+			nb = ft_itoa(va_arg(av, int));
 		else if (arg->size[0] == 'h' && arg->size[1] == 'h')
 			nb = ft_itoa(va_arg(av, int));
 		else if (arg->size[0] == 'j' && arg->size[1] == '\0')
 			nb = ft_itoa_imax(va_arg(av, intmax_t));
 		else if (arg->size[0] == 'z' && arg->size[1] == '\0')
 			nb = ft_itoa_it(va_arg(av, size_t));
-	}
-	else if (arg->type == 'u')
-
 	return (nb);
 }
 
