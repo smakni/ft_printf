@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:28:24 by smakni            #+#    #+#             */
-/*   Updated: 2018/06/22 11:54:08 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/23 15:13:10 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				ft_strdel(char **as);
 void				ft_putchar(char c);
+void				ft_putchar_wint(wint_t c);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
 void				ft_strclr(char *s);
@@ -66,6 +67,10 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_free(char *s1, char *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
+char				*ft_itoa_li(long int n);
+char				*ft_itoa_lli(long long int n);
+char				*ft_itoa_imax(intmax_t n);
+char				*ft_itoa_it(size_t n);
 char				*ft_strtoupper(char *str);
 char				*ft_strtolower(char *str);
 char				**ft_strsplit(char const *s, char c);
