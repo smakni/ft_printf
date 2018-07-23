@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 01:10:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/11 15:18:36 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/19 15:50:21 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	conversion_0(t_format *arg)
 		arg->res = ft_memalloc(2);
 		arg->res[0] = '%';
 	}
+	arg->count = ft_strlen(arg->res);
 	ft_putstr(arg->res);
 }
