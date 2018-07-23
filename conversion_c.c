@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/10 14:34:21 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/19 22:55:17 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,23 @@ void	conversion_c(t_format *arg, va_list av)
 			ft_memset(arg->res, '0', arg->width - 1);
 		else
 			ft_memset(arg->res, ' ', arg->width - 1);
-		ft_putstr(arg->res);
 		arg->count = arg->width;
-		ft_strdel(&(arg)->res);
-		ft_putchar(va_arg(av, int));
+		if (ft_strchr(arg->option, '-') != 0)
+		{
+			if (arg->type == 'c')
+				ft_putchar(va_arg(av, int));
+			else
+				ft_putchar_wint(va_arg(av, wint_t));
+			ft_putstr(arg->res);
+		}
+		else
+		{
+			ft_putstr(arg->res);
+			if (arg->type == 'c')
+				ft_putchar(va_arg(av, int));
+			else
+				ft_putchar_wint(va_arg(av, wint_t));
+		}
 		return ;
 	}
 	arg->count = 1;
