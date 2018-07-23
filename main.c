@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/18 15:09:27 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/23 14:40:31 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,19 @@ int		main()
 	char	*test18;
 	char	*test19;
 	char	*test20;
+	char	*test21;
 	char 	*str;
 	int 	x;
 	char 	c;
 	unsigned int ux;
 
 	ux = 42;
-	x = -42;
-	c = '!';
+	x = 0;
+	c = 'a';
 	str = "Sabri";
-	test1 = "(1)%1.4dblabla%s%c\n";
+	test1 = "(1)toto%.0d et %+.i et  %   .0D !!!\n";
 	test2 = "(2)%-14.5d\n";
-	test3 = "(3)%+05d\n";
+	test3 = "(3)%+ 05d\n";
 	test4 = "(4)%-014d\n";
 	test5 = "(5)%-5d\n";
 	test6 = "(6)%+7.4d\n";
@@ -60,11 +61,12 @@ int		main()
 	test15 = "(15)%                   010%d\n";
 	test16 = "(16)%%\n";
 	test17 = "(17)% 10.5%d\n";
-	test18 = "salut%10.5dhello%10c%010%%%%%%dend\n";
-	test19 = "(19)%ld\n";
+	test18 = "(18)salut%10.5dhello%10c%010%%%%%%dend\n";
+	test19 = "(19)%D\n";
 	test20 = "(20)%X\n";
+	test21 = "(21)hello ca%----4c %1c va %10c%-c ??";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
-	ft_printf(test1, x, str, c);
+	ft_printf(test1, x, x, x);
 	ft_printf(test2, x);
 	ft_printf(test3, x);
 	ft_printf(test4, x);
@@ -82,10 +84,11 @@ int		main()
 	ft_printf(test16, x);	
 	ft_printf(test17, x);
 	ft_printf(test18, x, c, x);
-	ft_printf(test19, x);
+	ft_printf(test19, 280452758896520);
 	ft_printf(test20, ux);
+	ft_printf(test21, '\0', '\n', (char)564, 0);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
-	printf(test1, x, str, c);
+	printf(test1, x, x, x);
 	printf(test2, x);
 	printf(test3, x);
 	printf(test4, x);
@@ -103,8 +106,9 @@ int		main()
 	printf(test16, x);
 	printf(test17, x);
 	printf(test18, x, c, x);
-	printf(test19, x);
+	printf(test19, 0xff11ff11ff88);
 	printf(test20, ux);
+	printf(test21, '\0', '\n', (char)564, 0);
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
