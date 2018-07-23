@@ -6,7 +6,7 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 10:28:08 by smakni            #+#    #+#              #
-#    Updated: 2018/06/22 11:48:40 by sabri            ###   ########.fr        #
+#    Updated: 2018/07/23 15:13:28 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	libft.a
 
 CC		=	gcc
 
-CFLAGS	+=	-Wall -Wextra -Werror
+CFLAGS	+=	-Wall -Wextra -Werror -g
 
 SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_strcmp.c ft_strncmp.c ft_strcpy.c ft_strncpy.c ft_strcat.c    \
@@ -31,7 +31,8 @@ SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_llast.c ft_strtoupper.c ft_atoi.c ft_strlcat.c			 	 \
 			ft_strtolower.c ft_sqrt.c ft_factorial.c ft_print_bits.c		 \
 			ft_strsub_free.c ft_strjoin_free.c ft_strlen_c.c 				 \
-			ft_strlen_from.c ft_memset_from.c
+			ft_strlen_from.c ft_memset_from.c ft_itoa_li.c ft_itoa_lli.c	 \
+			ft_itoa_imax.c ft_itoa_it.c	ft_putchar_wint.c
 
 OBJS	=	$(SRCS:.c=.o)
 
