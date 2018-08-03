@@ -6,13 +6,13 @@
 #    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/07/17 00:54:23 by sabri            ###   ########.fr        #
+#    Updated: 2018/07/26 16:32:28 by sabri            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	libftprintf.a
 
-CC		=	gcc
+CC		=	@gcc
 
 CFLAGS	+= -Wall -Werror -Wextra -g
 
@@ -21,10 +21,10 @@ SRCS	=	ft_printf.c		\
 			analyse.c		\
 			conversion_c.c 	\
 			conversion_d.c	\
+			conversion_d0.c \
 			conversion_s.c	\
 			conversion_p.c	\
 			conversion_x.c	\
-			conversion_o.c	\
 			conversion_0.c
 
 
@@ -32,19 +32,16 @@ OBJF	=	libft/*.o
 
 OBJS	=	$(SRCS:.c=.o)
 
-LM		=	ar rc
+LM		=	@ar rc
 
-RM		=	rm -f
+RM		=	@rm -f
 
 all :		$(NAME)
 
 $(NAME)	:	$(OBJS)
 			@make -C libft
 			$(LM) $(NAME) $(OBJS) $(OBJF)
-			@clear
 			@echo "[BUILD SUCCESS]"
-			@sleep 1,5
-			@clear
 
 clean	:	
 			@make clean -C libft 
