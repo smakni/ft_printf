@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/17 20:27:15 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/03 12:28:49 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_arg(t_format *arg)
 		ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
+	arg->count = 0;
 }
 
 int		len_x(const char *str, int x, char c)
@@ -46,14 +47,12 @@ int		len_x(const char *str, int x, char c)
 	while (str[x + count] && str[x + count] != c)
 		count++;
 	return(count);
-
 }
 
 int		ft_printf(const char *format, ...)
 {
 	va_list 	av;
 	int 		i;
-	int			j;
 	int			ret;
 	int			len;
 	t_format 	*arg;
@@ -62,7 +61,6 @@ int		ft_printf(const char *format, ...)
 	init_struc(arg);	
 	va_start(av, format);
 	i = 0;
-	j = 0;
 	ret = 0;
 	len = 0;
 	while (format[i])
@@ -82,11 +80,11 @@ int		ft_printf(const char *format, ...)
 		else
 		{
 			ft_putchar(format[i]);
-			j++;
+			ret++;
 		}
 		i++;
 	}
 	free(arg);
 	va_end(av);
-	return (ret + j);
+	return (ret);
 }
