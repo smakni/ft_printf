@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/27 23:04:22 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/27 23:34:50 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_size(int n)
+static int		ft_size(int n, int base)
 {
 	int size;
 
@@ -23,23 +23,28 @@ static int		ft_size(int n)
 		size++;
 	while (n != 0)
 	{
-		n = n / 10;
+		n = n / base;
 		size++;
 	}
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa_base(int n, int len, int flag)
 {
 	char	*str;
 	int		i;
 	int		size;
+	char 	*base;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	i = 0;
-	size = ft_size(n);
-	if ((str = ft_memalloc(size + 1)) == NULL)
+	if (flag == 0)
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (len > 9)
+		base = ft_strsub(base, 0, len);
+	size = ft_size(n, len);
+	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
 		return (0);
 	str[size] = '\0';
 	size--;
@@ -51,8 +56,8 @@ char			*ft_itoa(int n)
 	}
 	while (size >= i)
 	{
-		str[size] = (n % 10) + '0';
-		n /= 10;
+		str[size] = base[n % len];
+		n /= len;
 		size--;
 	}
 	return (str);

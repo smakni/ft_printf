@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_llui.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/27 23:04:22 by sabri            ###   ########.fr       */
+/*   Updated: 2018/07/23 16:04:01 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_size(int n)
+static int		ft_size(unsigned long long int n)
 {
 	int size;
 
 	size = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
-		size++;
 	while (n != 0)
 	{
 		n = n / 10;
@@ -29,26 +27,18 @@ static int		ft_size(int n)
 	return (size);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa_llui(unsigned long long int n)
 {
 	char	*str;
 	int		i;
 	int		size;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	i = 0;
 	size = ft_size(n);
-	if ((str = ft_memalloc(size + 1)) == NULL)
+	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
 		return (0);
 	str[size] = '\0';
 	size--;
-	if (n < 0)
-	{
-		str[i] = '-';
-		i++;
-		n = -n;
-	}
 	while (size >= i)
 	{
 		str[size] = (n % 10) + '0';

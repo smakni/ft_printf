@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/23 10:20:22 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/03 13:13:59 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,17 @@ int 	check_str(char *str);
 char	*check_size(char *str);
 void 	ft_conversion(t_format *arg, va_list av);
 void	conversion_d(t_format *arg, va_list av);
+int		conversion_null(t_format *arg, char *nb);
 char	*conversion_d0(t_format *arg, char *nb, va_list av);
+char	*conversion_d0_d(t_format *arg, char *nb, va_list av);
+char	*conversion_d0_u(t_format *arg, char *nb, va_list av);
+char	*conversion_d0_o(t_format *arg, char *nb, va_list av);
+char	*conversion_d0_x(t_format *arg, char *nb, va_list av);
+void	conversion_x1(t_format *arg, char *nb);
 char	*conversion_d1(t_format *arg, char *nb);
 char 	*conversion_d2(t_format *arg, char *nb);
 void	conversion_d3(t_format *arg, char *nb, int i, int len_nb);
-void	conversion_d4(t_format *arg, char *nb, int len_nb, int i);
+void	conversion_d4(t_format *arg);
 void	conversion_s(t_format *arg, va_list av);
 char	*conversion_s1(t_format *arg, char *tmp);
 char	*conversion_s2(t_format *arg, char *tmp, int len, int i);
