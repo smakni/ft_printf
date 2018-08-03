@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/11 00:36:35 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/01 13:12:47 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	conversion_p(t_format *arg, va_list av)
 {
-	void		*adr;
-	int			tmp;
-	int			nb;
-	int			i;
+	void				*adr;
+	int					tmp;
+	long unsigned int	nb;
+	int					i;
 
 	i = 0;
 	adr = va_arg(av, void*);
-	nb = (int)adr;
+	nb = (long unsigned int)adr;
 	while (nb != 0)
 	{
 		i++;
 		nb = nb / 16;
 	}
 	arg->res = ft_memalloc(i + 1);
-	arg->count = i + 4;
-	nb = (int)adr;
+	arg->count = i + 2;
+	nb = (long unsigned int)adr;
 	while (nb != 0)
 	{
 		i--;
@@ -41,6 +41,6 @@ void	conversion_p(t_format *arg, va_list av)
 		arg->res[i] = tmp;
 		nb = nb / 16;
 	}
-	ft_putstr("0x10");
+	ft_putstr("0x");
 	ft_putstr(arg->res);
 }
