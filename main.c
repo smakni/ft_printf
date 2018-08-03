@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/23 14:40:31 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/03 12:54:52 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,26 @@ int		main()
 	char	*test19;
 	char	*test20;
 	char	*test21;
+	char	*test22;
 	char 	*str;
 	int 	x;
 	char 	c;
 	unsigned int ux;
 
-	ux = 42;
+	ux = 4347727;
 	x = 0;
 	c = 'a';
 	str = "Sabri";
-	test1 = "(1)toto%.0d et %+.i et  %   .0D !!!\n";
+	test1 = "(1)toto%   .0D !!!\n";
 	test2 = "(2)%-14.5d\n";
 	test3 = "(3)%+ 05d\n";
 	test4 = "(4)%-014d\n";
-	test5 = "(5)%-5d\n";
-	test6 = "(6)%+7.4d\n";
+	test5 = "(5)%-10.5d\n";
+	test6 = "(6)%+010.4d\n";
 	test7 = "(7)%s\n";
 	test8 = "(8)adresse de str = %p\n";
-	test9 = "(9)%x\n";
-	test10 = "(10)%p\n";
+	test9 = "(9)%10.8p\n";
+	test10 = "(10)%#o\n";
 	test11 = "(11)salut%10d\n";
 	test12 = "(12)%010c\n";
 	test13 = "(13)%o\n";
@@ -61,12 +62,13 @@ int		main()
 	test15 = "(15)%                   010%d\n";
 	test16 = "(16)%%\n";
 	test17 = "(17)% 10.5%d\n";
-	test18 = "(18)salut%10.5dhello%10c%010%%%%%%dend\n";
+	test18 = "(18)salut%+10.5dhello%10c%010%%%%%%dend\n";
 	test19 = "(19)%D\n";
-	test20 = "(20)%X\n";
-	test21 = "(21)hello ca%----4c %1c va %10c%-c ??";
+	test20 = "(20)%#x\n";
+	test21 = "(21)\n%024hho et%#1.2o %0012.O\n";
+	test22 = "%#.22zX et %020.14jx\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
-	ft_printf(test1, x, x, x);
+	ft_printf(test1, x);
 	ft_printf(test2, x);
 	ft_printf(test3, x);
 	ft_printf(test4, x);
@@ -74,11 +76,11 @@ int		main()
 	ft_printf(test6, x);
 	ft_printf(test7, str);
 	ft_printf(test8, str);
-	ft_printf(test9, ux);
+	ft_printf(test9, str);
 	ft_printf(test10, str);
 	ft_printf(test11, x);
 	ft_printf(test12, c);
-	ft_printf(test13, ux);
+	ft_printf(test13, x);
 	ft_printf(test14, x);
 	ft_printf(test15, x);
 	ft_printf(test16, x);	
@@ -86,7 +88,8 @@ int		main()
 	ft_printf(test18, x, c, x);
 	ft_printf(test19, 280452758896520);
 	ft_printf(test20, ux);
-	ft_printf(test21, '\0', '\n', (char)564, 0);
+	ft_printf(test21, (unsigned char)12, 0, 123654789);
+	ft_printf(test22, 0xff1144ff1144, 0xffaabbccee);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, x, x);
 	printf(test2, x);
@@ -96,11 +99,11 @@ int		main()
 	printf(test6, x);
 	printf(test7, str);
 	printf(test8, str);
-	printf(test9, ux);
+	printf(test9, str);
 	printf(test10, str);
 	printf(test11, x);
 	printf(test12, c);
-	printf(test13, ux); 
+	printf(test13, x); 
 	printf(test14, x);
 	printf(test15, x);
 	printf(test16, x);
@@ -108,7 +111,8 @@ int		main()
 	printf(test18, x, c, x);
 	printf(test19, 0xff11ff11ff88);
 	printf(test20, ux);
-	printf(test21, '\0', '\n', (char)564, 0);
+	printf(test21, (unsigned char)12, 0, 123654789);
+	printf(test22, 0xff1144ff1144, 0xffaabbccee);
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
