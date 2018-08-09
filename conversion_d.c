@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/08/03 18:19:25 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/09 12:35:31 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	conversion_d(t_format *arg, va_list av)
 		nb = conversion_d2(arg, nb);
 	if (arg->width > (len_nb = ft_strlen(nb)))
 		conversion_d3(arg, nb, i, len_nb);
-	else if (check == 0)
+	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
+							&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
 	if (ft_strchr(arg->option, ' ') != 0 
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
@@ -63,6 +64,14 @@ char	*conversion_d1(t_format *arg, char *nb)
 	{
 		tmp = ft_memalloc(2 + ft_strlen(nb));
 		tmp[0] = '+';
+		nb = ft_strcat(tmp, nb);
+	}
+	else if ((arg->type == 'o' || arg->type == 'O') 
+				&& ft_strchr(arg->option, '#') != 0
+				&& nb[0] != '0')
+	{
+		tmp = ft_memalloc(2 + ft_strlen(nb));
+		tmp[0] = '0';
 		nb = ft_strcat(tmp, nb);
 	}
 	return (nb);
@@ -135,7 +144,7 @@ void	conversion_d4(t_format *arg)
 {
 	arg->res = ft_memalloc(arg->width + 1);
 	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0 
-		&& arg->precision == 0)
+		&& arg->precision == 0 && ft_strchr(arg->str, '.') == 0)
 		ft_memset(arg->res, '0', arg->width);
 	else
 		ft_memset(arg->res, ' ', arg->width);
@@ -178,8 +187,5 @@ void	conversion_x1(t_format *arg, char *nb)
 	else if ((arg->type == 'o' || arg->type == 'O') 
 				&& ft_strchr(arg->option, '#') != 0
 				&& nb[0] != '0')
-	{
-		ft_putchar('0');
-		arg->count++;
-	}
+		arg->res[0] = '0';
 }
