@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/08/03 13:13:59 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/09 15:26:00 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ char	*conversion_d0_d(t_format *arg, char *nb, va_list av);
 char	*conversion_d0_u(t_format *arg, char *nb, va_list av);
 char	*conversion_d0_o(t_format *arg, char *nb, va_list av);
 char	*conversion_d0_x(t_format *arg, char *nb, va_list av);
-void	conversion_x1(t_format *arg, char *nb);
+char	*conversion_x1(t_format *arg, char *nb);
 char	*conversion_d1(t_format *arg, char *nb);
 char 	*conversion_d2(t_format *arg, char *nb);
+char 	*conversion_d2x(t_format *arg, char *nb);
 void	conversion_d3(t_format *arg, char *nb, int i, int len_nb);
 void	conversion_d4(t_format *arg);
 void	conversion_s(t_format *arg, va_list av);
@@ -71,5 +72,6 @@ void	conversion_X(t_format *arg, va_list av);
 void	conversion_o(t_format *arg, va_list av);
 void	conversion_0(t_format *arg);
 void	ft_aff_param(t_format *arg);
+char	*ft_strcpy_from(char *dst, const char *src, int start);
 
 #endif
