@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/08/03 12:54:52 by sabri            ###   ########.fr       */
+/*   Updated: 2018/08/09 12:37:50 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		main()
 	char	*test20;
 	char	*test21;
 	char	*test22;
+	char	*test23;
+	char	*test24;
 	char 	*str;
 	int 	x;
 	char 	c;
@@ -65,8 +67,10 @@ int		main()
 	test18 = "(18)salut%+10.5dhello%10c%010%%%%%%dend\n";
 	test19 = "(19)%D\n";
 	test20 = "(20)%#x\n";
-	test21 = "(21)\n%024hho et%#1.2o %0012.O\n";
-	test22 = "%#.22zX et %020.14jx\n";
+	test21 = "(21)\n%024hho et%#1.2o %012.26O\n";
+	test22 = "(22)%#.22zX et %020.14jx\n";
+	test23 = "(23)coco et %-#-#--24O titi%#012o\n";
+	test24 = "(24)toto %###.0o%#.O et %#.1o !\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x);
 	ft_printf(test2, x);
@@ -90,6 +94,8 @@ int		main()
 	ft_printf(test20, ux);
 	ft_printf(test21, (unsigned char)12, 0, 123654789);
 	ft_printf(test22, 0xff1144ff1144, 0xffaabbccee);
+	ft_printf(test23, 12, -874);
+	ft_printf(test24, 0, 0, 0);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, x, x);
 	printf(test2, x);
@@ -113,6 +119,8 @@ int		main()
 	printf(test20, ux);
 	printf(test21, (unsigned char)12, 0, 123654789);
 	printf(test22, 0xff1144ff1144, 0xffaabbccee);
+	printf(test23, 12, -874);
+	printf(test24, 0, 0, 0);
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
