@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/08/09 17:36:38 by smakni           ###   ########.fr       */
+/*   Updated: 2018/08/09 18:55:44 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		main()
 	char	*test30;
 	char	*test31;
 	char	*test32;
+	char	*test33;
 	char 	*str;
 	int 	x;
 	char 	c;
@@ -87,6 +88,7 @@ int		main()
 	test30 = "(30)%#025X\n";
 	test31 = "(31)cc%#.4X et %#0012x %#04hX !!\n";
 	test32 = "(32)%0#10.0x\n";
+	test33 = "(33)%----24p et hello %2p %12p\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(test1, x);
 	ft_printf(test2, x);
@@ -120,6 +122,7 @@ int		main()
 	ft_printf(test30, 0xff7744);
 	ft_printf(test31, 0xaef, 0xe, (unsigned short)0);
 	ft_printf(test32, 0);
+	ft_printf(test33, &test18, &x, NULL);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, x, x);
 	printf(test2, x);
@@ -153,6 +156,7 @@ int		main()
 	printf(test30, 0xff7744);
 	printf(test31, 0xaef, 0xe, (unsigned short)0);
 	printf(test32, 0);
+	printf(test33, &test18, &x, NULL);
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
