@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/09 10:59:10 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/10 16:45:05 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ int		main()
 	test32 = "(32)%0#10.0x\n";
 	test33 = "(33)%----24p et hello %2p %12p\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
+	ft_putchar(8364);
+	ft_putchar(54);
+	ft_putchar(237);
 	ft_printf(test1, x);
 	ft_printf(test2, x);
 	ft_printf(test3, x);
