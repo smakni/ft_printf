@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putchar3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/10 16:41:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/10 16:43:59 by smakni           ###   ########.fr       */
+/*   Created: 2018/09/10 16:39:15 by smakni            #+#    #+#             */
+/*   Updated: 2018/09/10 16:39:36 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putchar(wint_t c)
+void    ft_putchar3(wint_t c)
 {
-    if (c <= 127)
-        ft_putchar1(c);
-    else if (c <= 2047)
-        ft_putchar2(c);
-    else if (c <= 65535)
-        ft_putchar3(c);
+    ft_putchar1((c >> 12) + 0xE0);
+    ft_putchar1(((c >> 6) & 0x3F) + 0x80);
+    ft_putchar1((c & 0x3F) + 0x80);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
+#    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 10:28:08 by smakni            #+#    #+#              #
-#    Updated: 2018/07/26 15:40:44 by sabri            ###   ########.fr        #
+#    Updated: 2018/09/10 16:44:19 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_strtolower.c ft_sqrt.c ft_factorial.c ft_print_bits.c		 \
 			ft_strsub_free.c ft_strjoin_free.c ft_strlen_c.c 				 \
 			ft_strlen_from.c ft_memset_from.c ft_itoa_li.c ft_itoa_lli.c	 \
-			ft_itoa_imax.c ft_itoa_it.c	ft_putchar_wint.c ft_itoa_ui.c		 \
+			ft_itoa_imax.c ft_itoa_it.c ft_itoa_ui.c						 \
 			ft_itoa_lui.c ft_itoa_llui.c ft_itoa_uit.c ft_itoa_base.c		 \
 			ft_itoa_base_ui.c ft_itoa_base_llui.c ft_itoa_base_lui.c		 \
-			ft_itoa_base_it.c ft_itoa_base_uit.c
+			ft_itoa_base_it.c ft_itoa_base_uit.c ft_putchar2.c				 \
+			ft_putchar1.c ft_putchar3.c
 
 OBJS	=	$(SRCS:.c=.o)
 
