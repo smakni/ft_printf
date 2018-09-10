@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/07/19 22:55:17 by sabri            ###   ########.fr       */
+/*   Updated: 2018/09/10 16:53:36 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	conversion_c(t_format *arg, va_list av)
 			if (arg->type == 'c')
 				ft_putchar(va_arg(av, int));
 			else
-				ft_putchar_wint(va_arg(av, wint_t));
+				ft_putchar(va_arg(av, wint_t));
 			ft_putstr(arg->res);
 		}
 		else
@@ -40,10 +40,13 @@ void	conversion_c(t_format *arg, va_list av)
 			if (arg->type == 'c')
 				ft_putchar(va_arg(av, int));
 			else
-				ft_putchar_wint(va_arg(av, wint_t));
+				ft_putchar(va_arg(av, wint_t));
 		}
 		return ;
 	}
 	arg->count = 1;
-	ft_putchar(va_arg(av, int));
+	if (arg->type == 'c')
+		ft_putchar(va_arg(av, int));
+		else
+	ft_putchar(va_arg(av, wint_t));
 }
