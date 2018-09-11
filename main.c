@@ -90,9 +90,11 @@ int		main()
 	test32 = "(32)%0#10.0x\n";
 	test33 = "(33)%----24p et hello %2p %12p\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
-	ft_putchar(8364);
-	ft_putchar(54);
-	ft_putchar(237);
+	ft_printf("unicode\n");
+	ft_printf("%C\n", 2048);
+	ft_printf("%C\n", 234);
+	ft_printf("%C\n", 2018);
+	ft_putchar('\n');
 	ft_printf(test1, x);
 	ft_printf(test2, x);
 	ft_printf(test3, x);
