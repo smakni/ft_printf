@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vm <vm@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/10 16:45:05 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/11 18:54:15 by vm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		main()
 	test33 = "(33)%----24p et hello %2p %12p\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("unicode\n");
-	ft_printf("%C\n", 2048);
-	ft_printf("%C\n", 234);
+	ft_printf("%S\n", "fil 50€");
+	ft_printf("%C\n", 65008);
 	ft_printf("%C\n", 2018);
 	ft_putchar('\n');
 	ft_printf(test1, x);
