@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vm <vm@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/09/10 16:53:36 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/11 16:27:56 by vm               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	conversion_c(t_format *arg, va_list av)
 	arg->count = 1;
 	if (arg->type == 'c')
 		ft_putchar(va_arg(av, int));
-		else
-	ft_putchar(va_arg(av, wint_t));
+	else
+		ft_putchar(va_arg(av, wint_t));
 }
