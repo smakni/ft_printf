@@ -18,6 +18,6 @@ void    ft_putchar(wint_t c)
         ft_putchar1(c);
     else if (c <= 2047)
         ft_putchar2(c);
-    else if (c <= 65535)
+    else if (c <= 55295 && c >= 57344 && c <= 64975 && c >= 65007 && c <= 65533)
         ft_putchar3(c);
 }
