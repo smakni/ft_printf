@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vm <vm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/11 18:54:15 by vm               ###   ########.fr       */
+/*   Updated: 2018/09/13 14:03:58 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ int		main()
 	char	*test31;
 	char	*test32;
 	char	*test33;
+	char	*test34;
 	char 	*str;
 	int 	x;
 	char 	c;
 	unsigned int ux;
 
+	setlocale(LC_ALL, "");
 	ux = 4347727;
 	x = 0;
 	c = 'a';
@@ -89,11 +91,13 @@ int		main()
 	test31 = "(31)cc%#.4X et %#0012x %#04hX !!\n";
 	test32 = "(32)%0#10.0x\n";
 	test33 = "(33)%----24p et hello %2p %12p\n";
+	test34 = "(34)%-10lc\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("unicode\n");
-	ft_printf("%S\n", "fil 50€");
-	ft_printf("%C\n", 65008);
-	ft_printf("%C\n", 2018);
+	ft_printf("%s\n", "fil 50€");
+	ft_printf("%C\n", 256);
+	ft_printf("%lc\n", 2048);
+	ft_printf("%C\n", 65000);
 	ft_putchar('\n');
 	ft_printf(test1, x);
 	ft_printf(test2, x);
@@ -128,7 +132,14 @@ int		main()
 	ft_printf(test31, 0xaef, 0xe, (unsigned short)0);
 	ft_printf(test32, 0);
 	ft_printf(test33, &test18, &x, NULL);
+	ft_printf(test34, 2048);
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
+	printf("unicode\n");
+	printf("%s\n", "fil 50€");
+	printf("%C\n", 256);
+	printf("%lc\n", 2048);
+	printf("%lc\n", 65000);
+	putchar('\n');
 	printf(test1, x, x, x);
 	printf(test2, x);
 	printf(test3, x);
@@ -162,6 +173,7 @@ int		main()
 	printf(test31, 0xaef, 0xe, (unsigned short)0);
 	printf(test32, 0);
 	printf(test33, &test18, &x, NULL);
+	printf(test34, 2048);
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
