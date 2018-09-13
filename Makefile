@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sabri <sabri@student.42.fr>                +#+  +:+       +#+         #
+#    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/07/26 16:32:28 by sabri            ###   ########.fr        #
+#    Updated: 2018/09/13 13:58:22 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= 	libftprintf.a
 
 CC		=	@gcc
 
-CFLAGS	+= -Wall -Werror -Wextra -g
+CFLAGS	+=	-Wall -Werror -Wextra -g
 
 SRCS	=	ft_printf.c		\
 			check.c 		\
