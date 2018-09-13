@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/13 14:03:58 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/13 16:46:11 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		main()
 	c = 'a';
 	str = "Sabri";
 	test1 = "(1)toto%   .0D !!!\n";
-	test2 = "(2)%-14.5d\n";
+	test2 = "(2)%D\n";
 	test3 = "(3)%+ 05d\n";
 	test4 = "(4)%-014d\n";
 	test5 = "(5)%-10.5d\n";
@@ -91,7 +91,7 @@ int		main()
 	test31 = "(31)cc%#.4X et %#0012x %#04hX !!\n";
 	test32 = "(32)%0#10.0x\n";
 	test33 = "(33)%----24p et hello %2p %12p\n";
-	test34 = "(34)%-10lc\n";
+	test34 = "(34)%lc\n";
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("unicode\n");
 	ft_printf("%s\n", "fil 50€");
@@ -100,7 +100,7 @@ int		main()
 	ft_printf("%C\n", 65000);
 	ft_putchar('\n');
 	ft_printf(test1, x);
-	ft_printf(test2, x);
+	ft_printf(test2, 25605684142);
 	ft_printf(test3, x);
 	ft_printf(test4, x);
 	ft_printf(test5, x);
@@ -132,7 +132,7 @@ int		main()
 	ft_printf(test31, 0xaef, 0xe, (unsigned short)0);
 	ft_printf(test32, 0);
 	ft_printf(test33, &test18, &x, NULL);
-	ft_printf(test34, 2048);
+	ft_printf("%d", ft_printf(test34, 0x1e40));
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf("unicode\n");
 	printf("%s\n", "fil 50€");
@@ -141,7 +141,7 @@ int		main()
 	printf("%lc\n", 65000);
 	putchar('\n');
 	printf(test1, x, x, x);
-	printf(test2, x);
+	printf(test2, 25605684142);
 	printf(test3, x);
 	printf(test4, x);
 	printf(test5, x);
@@ -173,7 +173,7 @@ int		main()
 	printf(test31, 0xaef, 0xe, (unsigned short)0);
 	printf(test32, 0);
 	printf(test33, &test18, &x, NULL);
-	printf(test34, 2048);
+	printf("%d", printf(test34, 0x1e40));
 /*	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>RETURN<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf(">>>>>>>>>>>>>>>>>>>>>>>>FT_PRINTF<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	ft_printf("ret = ");
