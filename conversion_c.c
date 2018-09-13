@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vm <vm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/09/11 16:27:56 by vm               ###   ########.fr       */
+/*   Updated: 2018/09/13 16:52:35 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	conversion_c(t_format *arg, va_list av)
 {
-	int				i;
-
-	i = 0;
 	if (arg->width > 1) 
 	{
 		if (!(arg->res = ft_memalloc(arg->width)))
@@ -28,25 +25,25 @@ void	conversion_c(t_format *arg, va_list av)
 		arg->count = arg->width;
 		if (ft_strchr(arg->option, '-') != 0)
 		{
-			if (arg->type == 'c')
-				ft_putchar(va_arg(av, int));
+			if (arg->type == 'c' && (ft_strcmp(arg->size, "l") != 0))
+				ft_putchar_printf(va_arg(av, int), arg);
 			else
-				ft_putchar(va_arg(av, wint_t));
+				ft_putchar_printf(va_arg(av, wint_t), arg);
 			ft_putstr(arg->res);
 		}
 		else
 		{
 			ft_putstr(arg->res);
-			if (arg->type == 'c')
-				ft_putchar(va_arg(av, int));
+			if (arg->type == 'c' && (ft_strcmp(arg->size, "l") != 0))
+				ft_putchar_printf(va_arg(av, int), arg);
 			else
-				ft_putchar(va_arg(av, wint_t));
+				ft_putchar_printf(va_arg(av, wint_t), arg);
 		}
 		return ;
 	}
 	arg->count = 1;
-	if (arg->type == 'c')
-		ft_putchar(va_arg(av, int));
+	if (arg->type == 'c' && (ft_strcmp(arg->size, "l") != 0))
+		ft_putchar_printf(va_arg(av, int), arg);
 	else
-		ft_putchar(va_arg(av, wint_t));
+		ft_putchar_printf(va_arg(av, wint_t), arg);
 }
