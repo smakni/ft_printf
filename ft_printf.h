@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/08/09 15:26:00 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/13 13:03:12 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define FT_PRINTF_H
 
 #include "libft/libft.h"
+#include <wchar.h>
+#include <locale.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
