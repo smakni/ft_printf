@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:28:24 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/10 16:41:07 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/14 15:22:54 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void				ft_putchar(wint_t c);
 void				ft_putchar1(wint_t c);
 void    			ft_putchar2(wint_t c);
 void   				ft_putchar3(wint_t c);
+void    			ft_putchar4(wint_t c);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
 void				ft_strclr(char *s);
