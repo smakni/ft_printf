@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/08/09 17:06:09 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/14 15:57:14 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	conversion_p(t_format *arg, va_list av)
 	int					i;
 
 	i = 0;
+	tmp = 0;
+	str_tmp = NULL;
 	adr = va_arg(av, void*);
 	nb = (long unsigned int)adr;
 	while (nb > 0)
