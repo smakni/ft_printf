@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 16:48:11 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/14 16:19:17 by smakni           ###   ########.fr       */
+/*   Updated: 2018/09/14 16:50:24 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void    ft_putchar_printf(wint_t c, t_format *arg)
 {
-    if (c < 0)
-    {
-        arg->count = -1;
-        return ;
-    }
     if (c <= 127)
         ft_putchar1(c);
     else if (c <= 2047)
