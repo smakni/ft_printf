@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_s.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/08/01 13:26:44 by sabri            ###   ########.fr       */
+/*   Updated: 2018/09/14 13:53:07 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	conversion_s(t_format *arg, va_list av)
 	int		i;
 
 	i = 0;
+	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0)
+		return ;
 	tmp = ft_strdup(va_arg(av, char *));
 	len = ft_strlen(tmp);
 	if (arg->precision < len && arg->precision != 0)
@@ -32,7 +34,7 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->res = ft_strdup(tmp);
 	ft_strdel(&tmp);
 	arg->count = ft_strlen(arg->res);
-	ft_putstr(arg->res);
+	ft_putstr_printf(arg->res, arg);
 }
 
 char	*conversion_s1(t_format *arg, char *tmp)
