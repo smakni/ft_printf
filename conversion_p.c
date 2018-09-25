@@ -50,12 +50,12 @@ void	conversion_p(t_format *arg, va_list av)
 	}
 	if (arg->width > (int)ft_strlen(str_tmp))
 	{
-		arg->res = ft_memalloc(arg->width);
-		ft_memset(arg->res, ' ', arg->width);
-		if (ft_strchr(arg->option, '-') == 0)
-			ft_strcpy_from(arg->res, str_tmp, (arg->width - ft_strlen(str_tmp)));
+		arg->res = ft_memalloc(arg->width - (int)ft_strlen(str_tmp));
+		ft_memset(arg->res, ' ', arg->width - (int)ft_strlen(str_tmp));
+		if (ft_strchr(arg->option, '-') != 0)
+			arg->res = ft_strjoin(str_tmp, arg->res);
 		else
-			ft_strncpy(arg->res, str_tmp, ft_strlen(str_tmp));
+			arg->res = ft_strjoin(arg->res, str_tmp);
 	}
 	else
 		arg->res = ft_strdup(str_tmp);

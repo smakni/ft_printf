@@ -93,7 +93,7 @@ ft_putnbr(printf("TEST : %5lc", 350));
 ft_printf("(1)%5s", "hellocava?");
 printf("(2)%5s", "hellocava?");
 ft_printf("\n");
-ft_printf("\n");*/
+ft_printf("\n");
 ft_printf("(1)%6.s\n","salutcava?" );
 ft_printf("(2)%6.s\n", NULL );
 ft_printf("(3)%4s\n", NULL );
@@ -103,5 +103,15 @@ printf("(1)%6.s\n", "salutciava?");
 printf("(2)%6.s\n", NULL);
 printf("(3)%4s\n", NULL);
 printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
+*/
+ft_printf("(1)%p\n", &x);
+ft_printf("(2)%-25p\n", &x);
+ft_printf("(3)%25p\n", &x);
+ft_printf("---------------\n");
+printf("(1)%p\n", &x);
+printf("(2)%-25p\n", &x);
+printf("(3)%25p\n", &x);
+
+
 }
 
