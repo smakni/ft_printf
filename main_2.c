@@ -86,7 +86,22 @@ ft_printf("\n");
 //ft_putchar('\n');
 //ft_putnbr(printf("%c", -21));
 
-ft_putnbr(ft_printf("TEST : %lc", (wint_t)-21));
+/*
+ft_putnbr(ft_printf("TEST : %5lc", 350));
 ft_putchar('\n');
-ft_putnbr(printf("TEST : %lc", (wint_t)-21));
+ft_putnbr(printf("TEST : %5lc", 350));
+ft_printf("(1)%5s", "hellocava?");
+printf("(2)%5s", "hellocava?");
+ft_printf("\n");
+ft_printf("\n");*/
+ft_printf("(1)%6.s\n","salutcava?" );
+ft_printf("(2)%6.s\n", NULL );
+ft_printf("(3)%4s\n", NULL );
+ft_printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
+printf("__________________\n");
+printf("(1)%6.s\n", "salutciava?");
+printf("(2)%6.s\n", NULL);
+printf("(3)%4s\n", NULL);
+printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
 }
+

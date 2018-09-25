@@ -19,16 +19,26 @@ void	conversion_s(t_format *arg, va_list av)
 	int		i;
 
 	i = 0;
-	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0)
+	tmp = va_arg(av, char *);
+	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
+			&& arg->width == 0)
 		return ;
-	tmp = ft_strdup(va_arg(av, char *));
+	if (tmp == NULL || (arg->precision == 0
+			&& ft_strchr(arg->str, '.') != 0))
+		tmp = ft_strdup("(null)");
+	else
+		tmp = ft_strdup(tmp);
 	len = ft_strlen(tmp);
 	if (arg->precision < len && arg->precision != 0)
 	{
 		tmp = conversion_s1(arg, tmp);
 		len = ft_strlen(tmp);
 	}
-	if (arg->width > len)
+	if ((ft_strcmp(tmp,"(null)")) == 0 && arg->width > 0
+			&& ft_strchr(arg->str, '.') != 0)
+		tmp = ft_strdup("");
+	if (arg->width > len 
+			|| ((ft_strcmp(tmp,"")) == 0 && arg->width > 0))
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);

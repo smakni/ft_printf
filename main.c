@@ -133,6 +133,7 @@ int		main()
 	ft_printf("%C\n", 65000);
 	ft_printf("%d\n", ft_printf("%C\n", (wint_t)-2));
 	ft_printf("%d", ft_printf(test34, 0x1e40));
+	ft_printf("ʣʣʣʣ");
 	printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>PRINTF<<<<<<<<<<<<<<<<<<<<<<<<\n\n");
 	printf(test1, x, x, x);
 	printf(test2, 25605684142);
