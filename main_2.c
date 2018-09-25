@@ -103,14 +103,35 @@ printf("(1)%6.s\n", "salutciava?");
 printf("(2)%6.s\n", NULL);
 printf("(3)%4s\n", NULL);
 printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
-*/
+
 ft_printf("(1)%p\n", &x);
 ft_printf("(2)%-25p\n", &x);
 ft_printf("(3)%25p\n", &x);
 ft_printf("---------------\n");
 printf("(1)%p\n", &x);
 printf("(2)%-25p\n", &x);
-printf("(3)%25p\n", &x);
+printf("(3)%25p\n", &x);*/
+
+/*ATTENTION CHECK POUR %-30P*/
+
+wint_t c = 0xbffe;
+
+ft_printf("%d", ft_printf("%C%C%C%C>", c, c, c, c));
+ft_printf("\n");
+ft_printf("%d", ft_printf("%10C>", c));
+ft_printf("\n");
+ft_printf("%d", ft_printf("%lc>", c));
+ft_printf("\n");
+ft_printf("%d", ft_printf("%C>", c));
+ft_printf("\n");
+printf("------------------\n");
+printf("%d", printf("%C%C%C%C>", c, c, c, c));
+printf("\n");
+printf("%d", printf("%10C>", c));
+printf("\n");
+printf("%d", printf("%lc>", c));
+printf("\n");
+printf("%d", printf("%C>", c));
 
 
 }
