@@ -17,122 +17,44 @@ int     main()
     int x;
     char y;
     setlocale(LC_ALL, "");
-//  ft_printf("%X", -42);
-//  ft_printf("\n");
-//    printf("%X", -42);
-//ft_printf("\n");
-//  ft_printf("%lX", 4294967296);
-//  ft_printf("\n");
-//  printf("%lX", 4294967296);
-//ft_printf("\n");
-//  ft_printf("@moulitest: %s", NULL);
-//  ft_printf("\n");
-//    printf("@moulitest: %s", NULL);
-/*ft_printf("\n");
-  ft_printf("%s %s", NULL, "string");
-  ft_printf("\n");
-    printf("%s %s", NULL, "string");
-ft_printf("\n");
-  ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-  ft_printf("\n");
-    printf("@moulitest: %5.o %5.0o", 0, 0);
-ft_printf("\n");
-  ft_printf("%hd", 32768);
-  ft_printf("\n");
-    printf("%hd", 32768);
-ft_printf("\n");
-  ft_printf("%hhd", 128);
-  ft_printf("\n");
-    printf("%hhd", 128);
-ft_printf("\n");
-  ft_printf("%hhd", -129);
-  ft_printf("\n");
-    printf("%hhd", -129);
-ft_printf("\n");
-  ft_printf("%lld", -9223372036854775808);
-  ft_printf("\n");
-    printf("%lld", -9223372036854775808);
-ft_printf("\n");
-  ft_printf("%jd", -9223372036854775808);
-  ft_printf("\n");
-    printf("%jd", -9223372036854775808);
-ft_printf("\n");
-  ft_printf("%zd", -1);
-  ft_printf("\n");
-    printf("%zd", -1);
-ft_printf("\n");
-  ft_printf("%+10.5d", 4242);
-  ft_printf("\n");
-    printf("%+10.5d", 4242);
-ft_printf("\n");
-  ft_printf("%-+10.5d", 4242);
-    printf("%-+10.5d", 4242);
-ft_printf("\n");
-  ft_printf("%03.2d", -1);
-    printf("%03.2d", -1);
-ft_printf("\n");
-  ft_printf("% u", 4294967295);
-    printf("% u", 4294967295);
-ft_printf("\n");
-  ft_printf("%+u", 4294967295);
-    printf("%+u", 4294967295);
-ft_printf("\n");
-  ft_printf("%hU", 4294967296);
-    printf("%hU", 4294967296);
 
-*/
-
-//ft_putnbr(ft_printf("%c", -21));
-//ft_putchar('\n');
-//ft_putnbr(printf("%c", -21));
-
-/*
-ft_putnbr(ft_printf("TEST : %5lc", 350));
-ft_putchar('\n');
-ft_putnbr(printf("TEST : %5lc", 350));
-ft_printf("(1)%5s", "hellocava?");
-printf("(2)%5s", "hellocava?");
+ft_printf(">>>[%d]", ft_printf("TEST(1) : %lc", 0x40501));
 ft_printf("\n");
+ft_printf(">>>[%d]", ft_printf("TEST(2) : %C", 0xbffe));
 ft_printf("\n");
-ft_printf("(1)%6.s\n","salutcava?" );
-ft_printf("(2)%6.s\n", NULL );
-ft_printf("(3)%4s\n", NULL );
-ft_printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
-printf("__________________\n");
-printf("(1)%6.s\n", "salutciava?");
-printf("(2)%6.s\n", NULL);
-printf("(3)%4s\n", NULL);
-printf("(4)TEST :%.0s%s%---12s\n", "hi", "coco", NULL);
-
-ft_printf("(1)%p\n", &x);
-ft_printf("(2)%-25p\n", &x);
-ft_printf("(3)%25p\n", &x);
-ft_printf("---------------\n");
-printf("(1)%p\n", &x);
-printf("(2)%-25p\n", &x);
-printf("(3)%25p\n", &x);*/
-
-/*ATTENTION CHECK POUR %-30P*/
-
-wint_t c = 0xbffe;
-
-ft_printf("%d", ft_printf("%C%C%C%C>", c, c, c, c));
+ft_printf(">>>[%d]", ft_printf("TEST(3) : %C", (wint_t)-2));
 ft_printf("\n");
-ft_printf("%d", ft_printf("%10C>", c));
+ft_printf(">>>[%d]", ft_printf("TEST(4) : %lc", 254));
 ft_printf("\n");
-ft_printf("%d", ft_printf("%lc>", c));
+ft_printf(">>>[%d]", ft_printf("TEST(5) : %C", 256));
 ft_printf("\n");
-ft_printf("%d", ft_printf("%C>", c));
+ft_printf(">>>[%d]", ft_printf("TEST(6) : %8C et coco %C titi %lc", 3250, 0x11ffff, 'a'));
 ft_printf("\n");
-printf("------------------\n");
-printf("%d", printf("%C%C%C%C>", c, c, c, c));
+ft_printf(">>>[%d]", ft_printf("TEST(7) : %---8C et coco %1C titi", 3250, 0xffff));
+ft_printf("\n");
+ft_printf(">>>[%d]", ft_printf("TEST(8) : %6C et coco %C titi %C tyty", 3250, 0xd800, 'u'));
+ft_printf("\n");
+ft_printf(">>>[%d]", ft_printf("TEST(9) : yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a'));
+ft_printf("\n");
+ft_printf("-------------------------------------------------------------");
 printf("\n");
-printf("%d", printf("%10C>", c));
+printf(">>>[%d]", printf("TEST(1) : %lc", 0x40501));
 printf("\n");
-printf("%d", printf("%lc>", c));
+printf(">>>[%d]", printf("TEST(2) : %C", 0xbffe));
 printf("\n");
-printf("%d", printf("%C>", c));
-
+printf(">>>[%d]", printf("TEST(3) : %C", (wint_t)-2));
+printf("\n");
+printf(">>>[%d]", printf("TEST(4) : %lc", 254));
+printf("\n");
+printf(">>>[%d]", printf("TEST(5) : %C", 256));
+printf("\n");
+printf(">>>[%d]", printf("TEST(6) : %8C et coco %C titi %lc", 3250, 0x11ffff, 'a'));
+printf("\n");
+printf(">>>[%d]", printf("TEST(7) : %---8C et coco %1C titi", 3250, 0xffff));
+printf("\n");
+printf(">>>[%d]", printf("TEST(8) : %6C et coco %C titi %C tyty", 3250, 0xd800, 'u'));
+printf("\n");
+printf(">>>[%d]", printf("TEST(9) : yo%2C%-12lc et %C titi %C tyty", 'u', 254, 256, 'a'));
 
 }
 
