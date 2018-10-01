@@ -34,7 +34,7 @@ void	conversion_d(t_format *arg, va_list av)
 	if (arg->width > (len_nb = ft_strlen(nb)))
 		conversion_d3(arg, nb, i, len_nb);
 	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
-							&& ft_strchr(arg->option, '#') != 0))
+			&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
 	if (ft_strchr(arg->option, ' ') != 0 
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
@@ -48,7 +48,7 @@ void	conversion_d(t_format *arg, va_list av)
 		ft_strdel(&tmp);
 	}
 	else if (ft_strchr(arg->option, ' ') != 0 
-				&& ft_strchr(arg->option, '+') == 0 && arg->width > len_nb)
+		&& ft_strchr(arg->option, '+') == 0 && arg->width > len_nb)
 		arg->res[0] = ' ';
 	arg->count = ft_strlen(arg->res);
 	ft_strdel(&nb);
@@ -140,7 +140,7 @@ void	conversion_d3(t_format *arg, char *nb, int i, int len_nb)
 {
 	conversion_d4(arg);
 	if (len_nb == 1 && nb[0] == '0' && arg->type != 'o' && arg->type != 'O')
-		return ;
+		return ;	//bug avec nb = 0
 	if (ft_strchr(arg->option, '-') != 0)
 		while (nb[i])
 		{
@@ -148,7 +148,7 @@ void	conversion_d3(t_format *arg, char *nb, int i, int len_nb)
 			i++;
 		}
 	else if (ft_isalnum(nb[0]) == 0 && ft_strchr(arg->option, '0') != 0
-			&& ft_strchr(arg->option, '-') == 0 && arg->precision == 0) 
+		&& ft_strchr(arg->option, '-') == 0 && arg->precision == 0) 
 	{
 		arg->res[0] = nb[0];
 		i++;
@@ -201,8 +201,8 @@ int		conversion_null(t_format *arg, char *nb)
 		check = 1;
 	}
 	else if (ft_isdigit(nb[0]) == 0 && nb[1] == '0' 
-				&& ft_strchr(arg->str, '.') != 0 && arg->precision == 0 
-				&& arg->width == 0)
+		&& ft_strchr(arg->str, '.') != 0 && arg->precision == 0 
+		&& arg->width == 0)
 	{
 		arg->res = ft_memalloc(2);
 		arg->res[0] = nb [0];
