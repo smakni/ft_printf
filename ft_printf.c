@@ -22,6 +22,7 @@ void	init_struc(t_format *arg)
 	arg->size = NULL;
 	arg->type = 0;
 	arg->res = NULL;
+	arg->check = 0;
 	arg->count = 0;
 }
 
@@ -36,6 +37,7 @@ void	free_arg(t_format *arg)
 		ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
+	arg->check = 0;
 	arg->count = 0;
 }
 
@@ -57,7 +59,8 @@ int		ft_printf(const char *format, ...)
 	int			len;
 	t_format 	*arg;
 
-	arg = ft_memalloc(sizeof(t_format));
+	if(!(arg = ft_memalloc(sizeof(t_format))))
+		return (0);
 	init_struc(arg);	
 	va_start(av, format);
 	i = 0;
@@ -71,7 +74,9 @@ int		ft_printf(const char *format, ...)
 			len = len_x(format, i, arg->type);
 			arg->str = ft_strsub(format, i + 1, len);
 			ft_analyse(arg);
-			ft_conversion(arg, av);
+			ft_conversion(arg, av); //creer ft_ de stockage pour
+			if (arg->check == -1)   //chaque arg->res
+				return (-1);
 			i += arg->len;
 			ret += arg->count;
 			//ft_aff_param(arg);
@@ -79,12 +84,12 @@ int		ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar(format[i]);
-			ret++;
+			ft_putchar(format[i]);	//creer ft_ de stockage pour le
+			ret++;					//texte normal
 		}
 		i++;
 	}
-	free(arg);
+	free(arg);	// Afficher toutes les chaines stocker dans le bon ordre
 	va_end(av);
 	return (ret);
 }
