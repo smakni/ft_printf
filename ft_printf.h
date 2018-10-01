@@ -28,7 +28,6 @@
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
-
 typedef struct s_format
 {
 	char 	*str;	
@@ -39,6 +38,7 @@ typedef struct s_format
 	char	*size;
 	char	type;
 	char	*res;
+	int		check;
 	int		count;
 }				t_format;
 
