@@ -52,7 +52,6 @@ void	conversion_d(t_format *arg, va_list av)
 		arg->res[0] = ' ';
 	arg->count = ft_strlen(arg->res);
 	ft_strdel(&nb);
-	ft_putstr(arg->res);
 }
 
 char	*conversion_d1(t_format *arg, char *nb)
