@@ -58,8 +58,14 @@ int		ft_printf(const char *format, ...)
 	int			ret;
 	int			len;
 	t_format 	*arg;
+	t_list		*head;
+	t_list		*new;
 
-	if(!(arg = ft_memalloc(sizeof(t_format))))
+	if (!(arg = ft_memalloc(sizeof(t_format))))
+		return (0);
+	if (!(head = ft_memalloc(sizeof(t_list))))
+		return (0);
+	if (!(new = ft_memalloc(sizeof(t_list))))
 		return (0);
 	init_struc(arg);	
 	va_start(av, format);
@@ -74,8 +80,19 @@ int		ft_printf(const char *format, ...)
 			len = len_x(format, i, arg->type);
 			arg->str = ft_strsub(format, i + 1, len);
 			ft_analyse(arg);
-			ft_conversion(arg, av); //creer ft_ de stockage pour
-			if (arg->check == -1)   //chaque arg->res
+			ft_conversion(arg, av);
+			if (head->content == NULL)
+				head = ft_lstnew(arg->res, arg->count);
+			else
+			{
+				ft_putstr("ELSE");
+				new = ft_lstnew(arg->res, arg->count);
+				ft_lstadd(&head, new);
+			}
+			//ft_putstr(head->content);
+			if (new->content != NULL)
+			//	ft_putstr(new->content);
+			if (arg->check == -1)
 				return (-1);
 			i += arg->len;
 			ret += arg->count;
@@ -84,12 +101,20 @@ int		ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar(format[i]);	//creer ft_ de stockage pour le
-			ret++;					//texte normal
+			len = len_x(format, i, '%');
+			new = ft_lstnew(ft_strsub(format, i, len), len);
+			ft_lstadd(&head, new);
+			//ft_putchar(format[i]);
+			ret++;
 		}
-		i++;
+		i += len;
 	}
-	free(arg);	// Afficher toutes les chaines stocker dans le bon ordre
+	while (head)
+	{
+		ft_putstr(head->content);
+		head = head->next;
+	}
+	free(arg);
 	va_end(av);
 	return (ret);
 }
