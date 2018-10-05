@@ -2,7 +2,6 @@
 
 int main()
 {
-	printf("%s\n",setlocale(LC_ALL, ""));
-	printf("(1)%C\n%d\n", 65, MB_CUR_MAX);
+	ft_printf("test(1)%d%d%d%dfin\n", 1, 2, 3, 4);
 	return (0);
 }
