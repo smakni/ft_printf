@@ -33,8 +33,8 @@ void	free_arg(t_format *arg)
 	ft_strdel(&arg->option);
 	arg->width = 0;
 	arg->precision = 0;
-	//if (ft_strcmp(arg->size, HH) && ft_strcmp(arg->size, LL))
-	//	ft_strdel(&arg->size);
+	if (!ft_strcmp(arg->size, HH) && !ft_strcmp(arg->size, LL))
+		ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
 	arg->check = 0;
@@ -77,26 +77,18 @@ int		ft_printf(const char *format, ...)
 			arg->str = ft_strsub(format, i + 1, len);
 			ft_analyse(arg);
 			ft_conversion(arg, av);
-			result = ft_strjoin(result, arg->res);
-			/*ft_putstr("%%\n");
-			ft_putstr(result);
-			ft_putstr("\n%%\n");*/
+			if (arg->type != 'c' && arg->type != 'C')
+				result = ft_strjoin(result, arg->res);
 			if (arg->check == -1)
 				return (-1);
-			i += arg->len;
 			//ft_aff_param(arg);
 			free_arg(arg);
+			i++;
 		}
 		else
 		{
 			len = len_x(format, i, '%');
 			result = ft_strjoin(result, ft_strsub(format, i, len));
-			/*ft_putstr("##\n");
-			ft_putstr(result);
-			ft_putstr("\n##\n");*/
-			//free_arg(arg);
-			//ft_putchar(format[i]);
-			ret++;
 		}
 		i += len;
 	}
@@ -104,6 +96,7 @@ int		ft_printf(const char *format, ...)
 	//ft_strdel(&result);
 	free(arg);
 	va_end(av);
+	ret = ft_strlen(result);
 	return (ret);
 }
 
