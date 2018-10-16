@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void    ft_putchar(wint_t c)
+void    ft_putchar(wchar_t c)
 {
     if (c <= 127)
         ft_putchar1(c);

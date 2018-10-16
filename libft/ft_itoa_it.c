@@ -30,10 +30,8 @@ static size_t		ft_size(size_t n)
 char			*ft_itoa_it(size_t n)
 {
 	char	*str;
-	size_t		i;
 	size_t		size;
 
-	i = 0;
 	size = ft_size(n);
 	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
 		return (0);

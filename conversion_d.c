@@ -17,10 +17,8 @@ void	conversion_d(t_format *arg, va_list av)
 	int		len_nb;
 	char	*nb;
 	char	*tmp;
-	int		i;
 	int		check;
 
-	i = 0;
 	check = 0;
 	tmp = NULL;
 	nb = NULL;
@@ -32,7 +30,7 @@ void	conversion_d(t_format *arg, va_list av)
 	if (ft_strchr(arg->option, '#') != 0)
 		nb = conversion_x1(arg, nb);
 	if (arg->width > (len_nb = ft_strlen(nb)))
-		conversion_d3(arg, nb, i, len_nb);
+		conversion_d3(arg, nb, len_nb);
 	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
 			&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
@@ -56,10 +54,8 @@ void	conversion_d(t_format *arg, va_list av)
 
 char	*conversion_d1(t_format *arg, char *nb)
 {
-	int i;
 	char *tmp;
 
-	i = 0;
 	if (ft_strchr(arg->option, '+') != 0 && nb[0] != '-') 
 	{
 		tmp = ft_memalloc(2 + ft_strlen(nb));
@@ -135,8 +131,11 @@ char 	*conversion_d2x(t_format *arg, char *nb)
 	return (nb);
 }
 
-void	conversion_d3(t_format *arg, char *nb, int i, int len_nb)
+void	conversion_d3(t_format *arg, char *nb, int len_nb)
 {
+	int i;
+
+	i = 0;
 	conversion_d4(arg);
 	if (len_nb == 1 && nb[0] == '0' && arg->type != 'o' && arg->type != 'O')
 		return ;	//bug avec nb = 0

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void    ft_putchar4(wint_t c)
+void    ft_putchar4(wchar_t c)
 {
     ft_putchar1((c >> 18) + 0xF0);
     ft_putchar1(((c >> 12) & 0x3F) + 0x80);

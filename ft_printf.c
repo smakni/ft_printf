@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/16 14:45:53 by smakni           ###   ########.fr       */
+/*   Updated: 2018/08/03 12:28:49 by sabri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	free_arg(t_format *arg)
 	ft_strdel(&arg->option);
 	arg->width = 0;
 	arg->precision = 0;
-	if (arg->size != HH && arg->size != LL)
-		ft_strdel(&arg->size);
+	//if (ft_strcmp(arg->size, HH) && ft_strcmp(arg->size, LL))
+	//	ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
 	arg->check = 0;
@@ -78,6 +78,9 @@ int		ft_printf(const char *format, ...)
 			ft_analyse(arg);
 			ft_conversion(arg, av);
 			result = ft_strjoin(result, arg->res);
+			/*ft_putstr("%%\n");
+			ft_putstr(result);
+			ft_putstr("\n%%\n");*/
 			if (arg->check == -1)
 				return (-1);
 			i += arg->len;
@@ -88,14 +91,17 @@ int		ft_printf(const char *format, ...)
 		{
 			len = len_x(format, i, '%');
 			result = ft_strjoin(result, ft_strsub(format, i, len));
-			free_arg(arg);
+			/*ft_putstr("##\n");
+			ft_putstr(result);
+			ft_putstr("\n##\n");*/
+			//free_arg(arg);
 			//ft_putchar(format[i]);
 			ret++;
 		}
 		i += len;
 	}
 	ft_putstr(result);
-	ft_strdel(&result);
+	//ft_strdel(&result);
 	free(arg);
 	va_end(av);
 	return (ret);
@@ -111,7 +117,6 @@ int		ft_printf(const char *format, ...)
 	t_format 	*arg;
 	t_list		*head;
 	t_list		*new;
-
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		return (0);
 	if (!(head = ft_memalloc(sizeof(t_list))))

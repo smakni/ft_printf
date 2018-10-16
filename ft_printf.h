@@ -20,6 +20,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 #define HH		"hh"
 #define LL		"ll"
@@ -62,7 +63,7 @@ char	*conversion_x1(t_format *arg, char *nb);
 char	*conversion_d1(t_format *arg, char *nb);
 char 	*conversion_d2(t_format *arg, char *nb);
 char 	*conversion_d2x(t_format *arg, char *nb);
-void	conversion_d3(t_format *arg, char *nb, int i, int len_nb);
+void	conversion_d3(t_format *arg, char *nb, int len_nb);
 void	conversion_d4(t_format *arg);
 void	conversion_s(t_format *arg, va_list av);
 char	*conversion_s1(t_format *arg, char *tmp);

@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <ctype.h>
 # include <limits.h>
+# include <inttypes.h>
 
 typedef struct		s_list
 {
@@ -36,11 +37,11 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				ft_strdel(char **as);
-void				ft_putchar(wint_t c);
-void				ft_putchar1(wint_t c);
-void    			ft_putchar2(wint_t c);
-void   				ft_putchar3(wint_t c);
-void    			ft_putchar4(wint_t c);
+void				ft_putchar(wchar_t c);
+void				ft_putchar1(wchar_t c);
+void    			ft_putchar2(wchar_t c);
+void   				ft_putchar3(wchar_t c);
+void    			ft_putchar4(wchar_t c);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
 void				ft_strclr(char *s);
@@ -113,7 +114,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list				*ft_lstmove_last(t_list *alst, t_list *elem);
+void				ft_lstmove_last(t_list **alst, t_list *elem);
 t_list				*ft_llast(t_list *lst, void *content, size_t content_size);
 
 #endif

@@ -44,7 +44,6 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->res = ft_strdup(tmp);
 	ft_strdel(&tmp);
 	arg->count = ft_strlen(arg->res);
-	ft_putstr_printf(arg->res, arg);
 }
 
 char	*conversion_s1(t_format *arg, char *tmp)

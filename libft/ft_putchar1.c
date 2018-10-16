@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_putchar1(wint_t c)
+void	ft_putchar1(wchar_t c)
 {
 	write(1, &c, 1);
 }

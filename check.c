@@ -14,10 +14,8 @@
 
 char	check_conv(const char *str, int x)
 {
-	int i;
 	int	j;
 
-	i = 0;
 	j = 0;
 	x++;
 	if (str[x] == CONV[j])

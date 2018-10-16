@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int check_c(wint_t c)
+static int check_c(wchar_t c)
 {
 	if (c <= 127)
         return (1);
@@ -30,7 +30,7 @@ static int check_c(wint_t c)
 		return (-1);
 }
 
-static void	conversion_c1(t_format *arg, wint_t c)
+static void	conversion_c1(t_format *arg, wchar_t c)
 {
 	ft_putchar_printf(c, arg);
 	if ((arg->res = ft_memalloc(arg->width - arg->count - 1)) == NULL)
@@ -44,7 +44,7 @@ static void	conversion_c1(t_format *arg, wint_t c)
 
 }
 
-static void	conversion_c2(t_format *arg, wint_t c, int check)
+static void	conversion_c2(t_format *arg, wchar_t c, int check)
 {
 	if ((arg->res = ft_memalloc(arg->width - check + 1)) == NULL)
 			return ;
@@ -56,10 +56,10 @@ static void	conversion_c2(t_format *arg, wint_t c, int check)
 
 void	conversion_c(t_format *arg, va_list av)
 {
-	wint_t 	c;
-	int		check;
+	wchar_t 	c;
+	int			check;
 
-	c = va_arg(av, wint_t);
+	c = va_arg(av, wchar_t);
 	if ((check = check_c(c)) == -1)
 	{
 		arg->check = -1;
