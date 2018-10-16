@@ -41,5 +41,4 @@ void	conversion_0(t_format *arg)
 		arg->res[0] = '%';
 	}
 	arg->count = ft_strlen(arg->res);
-	ft_putstr(arg->res);
 }

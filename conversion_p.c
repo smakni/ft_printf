@@ -61,7 +61,6 @@ void	conversion_p(t_format *arg, va_list av)
 		arg->res = ft_strdup(str_tmp);
 	ft_strdel(&str_tmp);
 	arg->count = ft_strlen(arg->res);
-	ft_putstr(arg->res);
 }
 
 char	*ft_strcpy_from(char *dst, const char *src, int start)
