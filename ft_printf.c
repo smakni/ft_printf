@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/08/03 12:28:49 by sabri            ###   ########.fr       */
+/*   Updated: 2018/10/16 14:45:53 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,57 @@ int		ft_printf(const char *format, ...)
 	int 		i;
 	int			ret;
 	int			len;
+	char		*result;
+	t_format 	*arg;
+
+	if (!(arg = ft_memalloc(sizeof(t_format))))
+		return (0);
+	init_struc(arg);	
+	va_start(av, format);
+	result = ft_memalloc(1);
+	i = 0;
+	ret = 0;
+	len = 0;
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			arg->type = check_conv(format, i);
+			len = len_x(format, i, arg->type);
+			arg->str = ft_strsub(format, i + 1, len);
+			ft_analyse(arg);
+			ft_conversion(arg, av);
+			result = ft_strjoin(result, arg->res);
+			if (arg->check == -1)
+				return (-1);
+			i += arg->len;
+			//ft_aff_param(arg);
+			free_arg(arg);
+		}
+		else
+		{
+			len = len_x(format, i, '%');
+			result = ft_strjoin(result, ft_strsub(format, i, len));
+			free_arg(arg);
+			//ft_putchar(format[i]);
+			ret++;
+		}
+		i += len;
+	}
+	ft_putstr(result);
+	ft_strdel(&result);
+	free(arg);
+	va_end(av);
+	return (ret);
+}
+
+/*
+int		ft_printf(const char *format, ...)
+{
+	va_list 	av;
+	int 		i;
+	int			ret;
+	int			len;
 	t_format 	*arg;
 	t_list		*head;
 	t_list		*new;
@@ -85,7 +136,7 @@ int		ft_printf(const char *format, ...)
 				head = ft_lstnew(arg->res, arg->count);
 			else
 			{
-				ft_putstr("ELSE");
+				//ft_putstr("ELSE");
 				new = ft_lstnew(arg->res, arg->count);
 				ft_lstadd(&head, new);
 			}
@@ -118,3 +169,4 @@ int		ft_printf(const char *format, ...)
 	va_end(av);
 	return (ret);
 }
+*/
