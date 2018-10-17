@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/09/14 13:53:07 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 18:10:41 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void	conversion_s(t_format *arg, va_list av)
 	tmp = va_arg(av, char *);
 	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
 			&& arg->width == 0)
+	{
+		arg->res = ft_strdup("");
 		return ;
-	if (tmp == NULL || (arg->precision == 0
-			&& ft_strchr(arg->str, '.') != 0))
+	}
+	if (tmp == NULL || (arg->precision == 0 && ft_strchr(arg->str, '.') != 0))
 		tmp = ft_strdup("(null)");
 	else
 		tmp = ft_strdup(tmp);
@@ -37,13 +39,12 @@ void	conversion_s(t_format *arg, va_list av)
 	if ((ft_strcmp(tmp,"(null)")) == 0 && arg->width > 0
 			&& ft_strchr(arg->str, '.') != 0)
 		tmp = ft_strdup("");
-	if (arg->width > len 
-			|| ((ft_strcmp(tmp,"")) == 0 && arg->width > 0))
+	if (arg->width > len || ((ft_strcmp(tmp,"")) == 0 && arg->width > 0))
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);
 	ft_strdel(&tmp);
-	arg->count = ft_strlen(arg->res);
+	arg->count += ft_strlen(arg->res);
 }
 
 char	*conversion_s1(t_format *arg, char *tmp)

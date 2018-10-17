@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/09/14 15:57:14 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 17:27:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	conversion_p(t_format *arg, va_list av)
 	else
 		arg->res = ft_strdup(str_tmp);
 	ft_strdel(&str_tmp);
-	arg->count = ft_strlen(arg->res);
+	arg->count += ft_strlen(arg->res);
 }
 
 char	*ft_strcpy_from(char *dst, const char *src, int start)

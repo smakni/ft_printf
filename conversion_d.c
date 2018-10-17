@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/08/09 17:46:31 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 17:27:33 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	conversion_d(t_format *arg, va_list av)
 	else if (ft_strchr(arg->option, ' ') != 0 
 		&& ft_strchr(arg->option, '+') == 0 && arg->width > len_nb)
 		arg->res[0] = ' ';
-	arg->count = ft_strlen(arg->res);
+	arg->count += ft_strlen(arg->res);
 	ft_strdel(&nb);
 }
 
