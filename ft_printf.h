@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/13 16:59:46 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 15:29:58 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	conversion_o(t_format *arg, va_list av);
 void	conversion_0(t_format *arg);
 void	ft_aff_param(t_format *arg);
 char	*ft_strcpy_from(char *dst, const char *src, int start);
-void    ft_putchar_printf(wint_t c, t_format *arg);
-void	ft_putstr_printf(char const *s, t_format *arg);
+char	*ft_putchar_printf(wint_t c, t_format *arg, char *str);
 
 #endif

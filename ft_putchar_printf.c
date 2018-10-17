@@ -6,35 +6,46 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 16:48:11 by smakni            #+#    #+#             */
-/*   Updated: 2018/09/14 16:50:24 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 15:14:31 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_putchar_printf(wint_t c, t_format *arg)
+char	*ft_putchar_printf(wint_t c, t_format *arg, char *str)
 {	 
     if (c <= 127)
-        ft_putchar1(c);
-    else if (c <= 2047)
+	{
+		str[0] = c;
+		str[1] = '\0';
+	}
+    else if (c <= 2047 && MB_CUR_MAX >= 2)
     {
-        arg->count++;
-        ft_putchar2(c);
+		str[0] = (c >> 6) + 0xC0;
+		str[1] = (c & 0x3F) + 0x80;
+		str[2] = '\0';
     }
-	else if (c <= 55295 || (c >= 57344 && c <= 64975) 
-			|| (c >= 65008 && c <= 65533))
-    {   
-        arg->count += 2;
-        ft_putchar3(c);
+	else if ((c <= 55295 || (c >= 57344 && c <= 64975) 
+			|| (c >= 65008 && c <= 65533)) && MB_CUR_MAX >= 3)
+    {
+		str[0] = (c >> 12) + 0xE0;
+		str[1] = ((c >> 6) & 0x3F) + 0x80;
+		str[2] = (c & 0x3F) + 0x80;
+		str[3] = '\0';
+
     }
-    else if ((c >= 65536 && c <= 131069) || (c >= 131072 && c <= 196605)
+    else if (((c >= 65536 && c <= 131069) || (c >= 131072 && c <= 196605)
 	    	|| (c >= 917504 && c <= 983037)
 			|| (c >= 983040 && c <= 1048573)
-			|| (c >= 1048576 && c <= 1114109))
+			|| (c >= 1048576 && c <= 1114109)) && MB_CUR_MAX >= 4)
     {
-        arg->count += 3;
-        ft_putchar4(c);
+		str[0] = (c >> 18) + 0xF0;
+		str[1] = ((c >> 12) & 0x3F) + 0x80;
+		str[2] = ((c >> 6) & 0x3F) + 0x80;
+		str[3] = (c & 0x3F) + 0x80;
+		str[4] = '\0';
     }
     else
         arg->count = -1;
+	return (str);
 }
