@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/17 15:29:58 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/17 17:02:58 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 #define OPTION	(str[i] == ' ' || str[i] == '#' || str[i] == '+' \
 				|| str[i] == '-'|| str[i] == '0')
+
 typedef struct s_format
 {
 	char 	*str;	
@@ -76,6 +77,6 @@ void	conversion_o(t_format *arg, va_list av);
 void	conversion_0(t_format *arg);
 void	ft_aff_param(t_format *arg);
 char	*ft_strcpy_from(char *dst, const char *src, int start);
-char	*ft_putchar_printf(wint_t c, t_format *arg, char *str);
+char	*ft_putchar_printf(wint_t c, char *str, int check);
 
 #endif
