@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/09/13 17:00:07 by smakni           ###   ########.fr        #
+#    Updated: 2018/10/17 15:21:07 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ SRCS	=	ft_printf.c		\
 			conversion_p.c	\
 			conversion_x.c	\
 			conversion_0.c	\
-			ft_putchar_printf.c \
-			ft_putstr_printf.c
+			ft_putchar_printf.c 
 
 OBJF	=	libft/*.o
 
