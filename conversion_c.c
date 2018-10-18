@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/17 18:10:45 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:20:31 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ static int check_c(t_format *arg, wchar_t c)
 	return (1);
 }
 
+static int	check_error(wchar_t c)
+{
+		if ((c > 55295 && c < 57344) ||  c > 1114111)
+					return (-1);
+			return (0);
+}
+
 static void	conversion_c1(t_format *arg, int check)
 {
 	char *tmp;
@@ -40,7 +47,7 @@ static void	conversion_c1(t_format *arg, int check)
 	if ((tmp = ft_memalloc(arg->width - check)) == NULL)
 			return ;
 	ft_memset(tmp, ' ', arg->width - check);
-	arg->res = ft_strjoin(arg->res, tmp); 
+	arg->res = ft_memjoin(arg->res, tmp, check, (arg->width - check)); 
 }
 static void	conversion_c2(t_format *arg, int check)
 {
@@ -49,30 +56,30 @@ static void	conversion_c2(t_format *arg, int check)
 	if ((tmp = ft_memalloc(arg->width - check + 1)) == NULL)
 			return ;
 	ft_memset(tmp, ' ', arg->width - check);
-	arg->res= ft_strjoin(tmp, arg->res);
+	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
 	
 }
 
 void	conversion_c(t_format *arg, va_list av)
 {
 	wchar_t 	c;
-	char		*str;
 	int			check;
 
 	c = va_arg(av, wchar_t);
-	if (c == '\0')
-		arg->count += 1;
-	if ((check = check_c(arg, c)) != -1)
-		str = ft_memalloc(check);
-	else
+	if ((arg->check = check_error(c)) == -1)
 		return ;
-	arg->res = ft_strdup(ft_putchar_printf(c, str, check));
+	arg->res = ft_memalloc(check = check_c(arg, c));
+	ft_putstr("check = ");
+	ft_putnbr(check);
+	arg->res = ft_strdup(ft_putchar_printf(c, arg->res, check));
 	if (arg->width > 1) 
 	{
 		if (ft_strchr(arg->option, '-') != 0)
 			conversion_c1(arg, check);
 		else
 			conversion_c2(arg, check);
+		arg->count = arg->width;
 	}
-	arg->count += ft_strlen(arg->res);
+	else
+		arg->count = check;
 }
