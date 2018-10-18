@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 13:07:08 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/17 17:28:18 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/18 14:43:30 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	conversion_x(t_format *arg, va_list av)
 		nb = nb / 16;
 	}
 	arg->count = ft_strlen(arg->res);
-	ft_putstr(arg->res);
 }
 
 void	conversion_X(t_format *arg, va_list av)
@@ -70,5 +69,5 @@ void	conversion_X(t_format *arg, va_list av)
 		arg->res[i] = tmp;
 		nb = nb / 16;
 	}
-	arg->count += ft_strlen(arg->res);
+	arg->count = ft_strlen(arg->res);
 }
