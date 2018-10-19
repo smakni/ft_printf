@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/18 15:20:31 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/19 15:05:56 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,52 @@ static int check_c(t_format *arg, wchar_t c)
 	else if ((arg->type == 'c' && ft_strcmp(arg->size, "l") == 0)
 				|| arg->type == 'C')
 	{
-    	 if (c <= 2047 && MB_CUR_MAX >=2)
+		if (c < 256 && MB_CUR_MAX == 1)
+			return (1);
+		else if (c <= 2047 && MB_CUR_MAX >=2)
 			return (2);
-		else if ((c <= 55295 || (c >= 57344 && c <= 64975) 
-				|| (c >= 65008 && c <= 65533)) && MB_CUR_MAX >= 3)
+		else if (c <= 65536 && MB_CUR_MAX >= 3)
 			return (3);
-   		 else if (((c >= 65536 && c <= 131069) || (c >= 131072 && c <= 196605)
-		    	|| (c >= 917504 && c <= 983037)
-				|| (c >= 983040 && c <= 1048573)
-				|| (c >= 1048576 && c <= 1114109)) && MB_CUR_MAX >= 4)
+	   	else if (c < 1114111 && MB_CUR_MAX >= 4)
 			return (4);
+		 return (3);
 	}
 	return (1);
 }
 
-static int	check_error(wchar_t c)
+static int check_error(int c)
 {
-		if ((c > 55295 && c < 57344) ||  c > 1114111)
-					return (-1);
-			return (0);
+	if ((c >= 55296 && c <= 57343) ||  c > 1114111)
+		return (-1);
+	if (c <= 127)
+		return (1);
+	else if (c < 256 && MB_CUR_MAX == 1)
+		return (1);
+	else if (c <= 2047 && MB_CUR_MAX >=2)
+		return (2);
+	else if (c <= 65536 && MB_CUR_MAX >= 3)
+		return (3);
+   	 else if (c < 1114111 && MB_CUR_MAX >= 4)
+		return (4);
+	return (-1);
 }
 
+static int check_error_C(unsigned int c)
+{
+	if ((c >= 55296 && c <= 57343) ||  c > 1114111)
+		return (-1);
+	if (c <= 127)
+		return (1);
+	else if (c < 256 && MB_CUR_MAX == 1)
+		return (1);
+	else if (c <= 2047 && MB_CUR_MAX >=2)
+		return (2);
+	else if (c <= 65536 && MB_CUR_MAX >= 3)
+		return (3);
+   	 else if (c < 1114111 && MB_CUR_MAX >= 4)
+		return (4);
+	return (-1);
+}
 static void	conversion_c1(t_format *arg, int check)
 {
 	char *tmp;
@@ -62,17 +87,19 @@ static void	conversion_c2(t_format *arg, int check)
 
 void	conversion_c(t_format *arg, va_list av)
 {
-	wchar_t 	c;
+	wchar_t		 	c;
 	int			check;
 
 	c = va_arg(av, wchar_t);
-	if ((arg->check = check_error(c)) == -1)
+	if (((arg->type == 'c' && ft_strcmp(arg->size, "l") == 0)
+			|| arg->type == 'C') && (arg->check = check_error_C(c)) == -1)
+			return ;
+	else if ((arg->check = check_error(c)) == -1)
 		return ;
 	arg->res = ft_memalloc(check = check_c(arg, c));
-	ft_putstr("check = ");
-	ft_putnbr(check);
+	//ft_putnbr(check);
 	arg->res = ft_strdup(ft_putchar_printf(c, arg->res, check));
-	if (arg->width > 1) 
+	if (arg->width > check) 
 	{
 		if (ft_strchr(arg->option, '-') != 0)
 			conversion_c1(arg, check);
