@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/19 15:05:56 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/20 15:12:24 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	conversion_c(t_format *arg, va_list av)
 	else if ((arg->check = check_error(c)) == -1)
 		return ;
 	arg->res = ft_memalloc(check = check_c(arg, c));
-	//ft_putnbr(check);
 	arg->res = ft_strdup(ft_putchar_printf(c, arg->res, check));
 	if (arg->width > check) 
 	{
