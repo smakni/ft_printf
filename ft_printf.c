@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/19 14:02:48 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/20 18:29:23 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_printf(const char *format, ...)
 			ft_conversion(arg, av);
 			if (arg->check == -1)
 			{
-				ft_putstr_printf(result, save);
+				write(1, result, save);
 				return (-1);
 			}
 			result = ft_memjoin(result, arg->res, ret, arg->count);
@@ -97,12 +97,10 @@ int		ft_printf(const char *format, ...)
 		}
 		i += len;
 	}
-	ft_putstr_printf(result, ret);
+	write(1, result, ret);
 	//ft_strdel(&result);
 	free(arg);
 	va_end(av);
-	if (arg->check == -1)
-		return (-1);
 	return (ret);
 }
 
