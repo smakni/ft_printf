@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/10/17 15:21:07 by smakni           ###   ########.fr        #
+#    Updated: 2018/10/20 15:18:08 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=	ft_printf.c		\
 			conversion_d.c	\
 			conversion_d0.c \
 			conversion_s.c	\
+			conversion_bs.c	\
 			conversion_p.c	\
 			conversion_x.c	\
 			conversion_0.c	\
