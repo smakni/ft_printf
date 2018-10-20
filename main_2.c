@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 11:55:45 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/19 17:43:26 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/20 17:56:19 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int     main()
 	s[2] = 0x81000;
 	s[3] = '\0';
 	//x = ft_printf("%-12i", 0); error
-	x  = ft_printf("MOI%S", s);
+	x  = ft_printf("MOI=%S", s);
 	ft_printf("\n");
-	y = printf("CP%S", s);
+	y = printf("\nCP=%S", s);
+	//ft_putnbr(ft_printf("%C", 0x81000));
 	ft_putnbr(x);
 	ft_putchar('/');
 	ft_putnbr(y);
