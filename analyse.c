@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 23:45:05 by sabri             #+#    #+#             */
-/*   Updated: 2018/08/03 18:17:39 by sabri            ###   ########.fr       */
+/*   Updated: 2018/10/20 16:19:16 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void 	ft_conversion(t_format *arg, va_list av)
 		conversion_0(arg);
 	return ;
 }
-
+/*
 void	ft_aff_param(t_format *arg)
 {
 	ft_putstr("\n--------\n");
@@ -67,3 +67,4 @@ void	ft_aff_param(t_format *arg)
 	ft_putstr(arg->size);
 	ft_putstr("\n--------\n");
 }
+*/
