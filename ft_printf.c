@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/20 18:29:23 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/23 17:09:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		ft_printf(const char *format, ...)
 	init_struc(arg);	
 	va_start(av, format);
 	result = ft_memalloc(1);
+	save = 0;
 	i = 0;
 	ret = 0;
 	len = 0;
@@ -98,7 +99,7 @@ int		ft_printf(const char *format, ...)
 		i += len;
 	}
 	write(1, result, ret);
-	//ft_strdel(&result);
+	ft_strdel(&result);
 	free(arg);
 	va_end(av);
 	return (ret);
