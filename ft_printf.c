@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/23 17:09:45 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:42:59 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@ int		len_x(const char *str, int x, char c)
 	count = 1;
 	while (str[x + count] && str[x + count] != c)
 		count++;
-	return(count);
+	return (count);
 }
 
 int		ft_printf(const char *format, ...)
 {
-	va_list 	av;
-	int 		i;
+	va_list		av;
+	int			i;
 	int			ret;
 	int			len;
 	int			save;
 	char		*result;
-	t_format 	*arg;
+	t_format	*arg;
 
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		return (0);
-	init_struc(arg);	
+	init_struc(arg);
 	va_start(av, format);
 	result = ft_memalloc(1);
 	save = 0;
@@ -84,14 +84,13 @@ int		ft_printf(const char *format, ...)
 				return (-1);
 			}
 			result = ft_memjoin(result, arg->res, ret, arg->count);
-			//ft_aff_param(arg);
 			ret += arg->count;
 			save = ret;
 			free_arg(arg);
 			i++;
 		}
 		else
-		{	
+		{
 			len = len_x(format, i, '%');
 			result = ft_memjoin(result, ft_strsub(format, i, len), ret, len);
 			ret += len;
@@ -104,4 +103,3 @@ int		ft_printf(const char *format, ...)
 	va_end(av);
 	return (ret);
 }
-

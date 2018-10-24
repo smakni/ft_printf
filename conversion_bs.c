@@ -6,30 +6,30 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/23 17:09:53 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:04:15 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int check_error_C(unsigned int c)
+static int	check_error_C(unsigned int c)
 {
-	if ((c >= 55296 && c <= 57343) ||  c > 1114111)
+	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
 	else if (c <= 127)
 		return (1);
 	else if (c < 256 && MB_CUR_MAX == 1)
 		return (1);
-	else if (c <= 2047 && MB_CUR_MAX >=2)
+	else if (c <= 2047 && MB_CUR_MAX >= 2)
 		return (2);
 	else if (c <= 65536 && MB_CUR_MAX >= 3)
 		return (3);
-   	 else if (c < 1114111 && MB_CUR_MAX >= 4)
+	else if (c < 1114111 && MB_CUR_MAX >= 4)
 		return (4);
 	return (-1);
 }
 
-static int check_x(unsigned int c)
+static int	check_x(unsigned int c)
 {
 	if (c <= 127)
 		return (1);
@@ -39,15 +39,15 @@ static int check_x(unsigned int c)
 		return (2);
 	else if (c <= 65536)
 		return (3);
-   	else if (c < 1114111)
+	else if (c < 1114111)
 		return (4);
 	else
 		return (0);
 }
 
-static int ft_strwlen2(const wchar_t *src)
+static int	ft_strwlen2(const wchar_t *src)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (src[i])
@@ -55,13 +55,13 @@ static int ft_strwlen2(const wchar_t *src)
 	return (i);
 }
 
-char	*conversion_bs(t_format *arg, va_list av)
+char		*conversion_bs(t_format *arg, va_list av)
 {
-	wchar_t *tmp;
-	char 	*tmp_c;
-	int 	x;
+	wchar_t	*tmp;
+	char	*tmp_c;
+	int		x;
 	int		len;
-	int 	i;
+	int		i;
 	char	*ret;
 
 	i = 0;
@@ -76,14 +76,14 @@ char	*conversion_bs(t_format *arg, va_list av)
 			break ;
 		if ((x = check_error_C(tmp[i])) == -1)
 		{
-			arg->check = -1;	
+			arg->check = -1;
 			break ;
 		}
 		tmp_c = ft_memalloc(x);
 		tmp_c = ft_strdup(ft_putchar_printf(tmp[i], tmp_c, x));
 		ret = ft_strjoin(ret, tmp_c);
-	   	i++;
-  	}
+		i++;
+	}
 	arg->count = ft_strlen(ret);
 	return (ret);
 }

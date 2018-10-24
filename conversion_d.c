@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/18 14:42:47 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:35:14 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	conversion_d(t_format *arg, va_list av)
 	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
 			&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
-	if (ft_strchr(arg->option, ' ') != 0 
+	if (ft_strchr(arg->option, ' ') != 0
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
 	{
 		tmp = ft_memalloc(2 + ft_strlen(arg->res));
@@ -45,7 +45,7 @@ void	conversion_d(t_format *arg, va_list av)
 		arg->res = ft_strdup(tmp);
 		ft_strdel(&tmp);
 	}
-	else if (ft_strchr(arg->option, ' ') != 0 
+	else if (ft_strchr(arg->option, ' ') != 0
 		&& ft_strchr(arg->option, '+') == 0 && arg->width > len_nb)
 		arg->res[0] = ' ';
 	arg->count = ft_strlen(arg->res);
@@ -56,13 +56,13 @@ char	*conversion_d1(t_format *arg, char *nb)
 {
 	char *tmp;
 
-	if (ft_strchr(arg->option, '+') != 0 && nb[0] != '-') 
+	if (ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
 	{
 		tmp = ft_memalloc(2 + ft_strlen(nb));
 		tmp[0] = '+';
 		nb = ft_strcat(tmp, nb);
 	}
-	else if ((arg->type == 'o' || arg->type == 'O') 
+	else if ((arg->type == 'o' || arg->type == 'O')
 				&& ft_strchr(arg->option, '#') != 0
 				&& nb[0] != '0')
 	{
@@ -73,10 +73,10 @@ char	*conversion_d1(t_format *arg, char *nb)
 	return (nb);
 }
 
-char 	*conversion_d2(t_format *arg, char *nb)
+char	*conversion_d2(t_format *arg, char *nb)
 {
-	int i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	if (nb[0] == '-' || nb[0] == '+')
@@ -108,10 +108,10 @@ char 	*conversion_d2(t_format *arg, char *nb)
 	return (nb);
 }
 
-char 	*conversion_d2x(t_format *arg, char *nb)
+char	*conversion_d2x(t_format *arg, char *nb)
 {
-	int i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	tmp = ft_memalloc(arg->precision + 3);
@@ -137,7 +137,7 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 
 	i = 0;
 	conversion_d4(arg);
-	if (len_nb == 1 && nb[0] == '0' && arg->type != 'o' && arg->type != 'O')
+	if (ft_strcmp(nb, "0") == 0 && arg->type != 'o' && arg->type != 'O' && arg->type != 'i')
 		return ;	//bug avec nb = 0
 	if (ft_strchr(arg->option, '-') != 0)
 		while (nb[i])
@@ -146,7 +146,7 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 			i++;
 		}
 	else if (ft_isalnum(nb[0]) == 0 && ft_strchr(arg->option, '0') != 0
-		&& ft_strchr(arg->option, '-') == 0 && arg->precision == 0) 
+		&& ft_strchr(arg->option, '-') == 0 && arg->precision == 0)
 	{
 		arg->res[0] = nb[0];
 		i++;
@@ -158,7 +158,7 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 	}
 	else if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '#')
 			&& ft_strchr(arg->str, '.') == 0
-			&& (arg->type == 'x' || arg->type == 'X')) 
+			&& (arg->type == 'x' || arg->type == 'X'))
 	{
 		arg->res[0] = nb[0];
 		arg->res[1] = nb[1];
@@ -168,7 +168,7 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 			arg->res[arg->width - len_nb + i] = nb[i];
 			i++;
 		}
-	}	
+	}
 	else
 		while (nb[i])
 		{
@@ -180,7 +180,7 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 void	conversion_d4(t_format *arg)
 {
 	arg->res = ft_memalloc(arg->width + 1);
-	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0 
+	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0
 		&& arg->precision == 0 && ft_strchr(arg->str, '.') == 0)
 		ft_memset(arg->res, '0', arg->width);
 	else
@@ -192,18 +192,18 @@ int		conversion_null(t_format *arg, char *nb)
 	int check;
 
 	check = 0;
-	if (nb[0] == '0' && ft_strchr(arg->str, '.') != 0 
+	if (nb[0] == '0' && ft_strchr(arg->str, '.') != 0
 			&& arg->precision == 0 && arg->width == 0)
 	{
 		arg->res = ft_memalloc(1);
 		check = 1;
 	}
-	else if (ft_isdigit(nb[0]) == 0 && nb[1] == '0' 
-		&& ft_strchr(arg->str, '.') != 0 && arg->precision == 0 
+	else if (ft_isdigit(nb[0]) == 0 && nb[1] == '0'
+		&& ft_strchr(arg->str, '.') != 0 && arg->precision == 0
 		&& arg->width == 0)
 	{
 		arg->res = ft_memalloc(2);
-		arg->res[0] = nb [0];
+		arg->res[0] = nb[0];
 		check = 2;
 	}
 	return (check);

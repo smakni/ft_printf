@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/23 15:07:04 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:39:18 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	conversion_s(t_format *arg, va_list av)
 {
-	char 	*tmp;
+	char	*tmp;
 	int		len;
 	int		i;
 
@@ -35,16 +35,16 @@ void	conversion_s(t_format *arg, va_list av)
 	else
 		tmp = ft_strdup(tmp);
 	len = ft_strlen(tmp);
-	if (arg->type == 's' && ft_strcmp(arg->size, "") == 0 
+	if (arg->type == 's' && ft_strcmp(arg->size, "") == 0
 			&& arg->precision < len && arg->precision != 0)
 	{
 		tmp = conversion_s1(arg, tmp);
 		len = ft_strlen(tmp);
 	}
-	if ((ft_strcmp(tmp,"(null)")) == 0 && arg->width > 0
+	if ((ft_strcmp(tmp, "(null)")) == 0 && arg->width > 0
 			&& ft_strchr(arg->str, '.') != 0)
 		tmp = ft_strdup("");
-	if (arg->width > len || ((ft_strcmp(tmp,"")) == 0 && arg->width > 0))
+	if (arg->width > len || ((ft_strcmp(tmp, "")) == 0 && arg->width > 0))
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);
@@ -57,7 +57,7 @@ char	*conversion_s1(t_format *arg, char *tmp)
 	int i;
 
 	i = 0;
-	while(tmp[i] && i < arg->precision)
+	while (tmp[i] && i < arg->precision)
 		i++;
 	tmp = ft_strsub_free(tmp, 0, i);
 	return (tmp);

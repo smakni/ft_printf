@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 11:55:45 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/23 17:09:48 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 14:24:26 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int     main()
 	s[1] = 256;
 	s[2] = 'u';
 	s[3] = '\0';
-	//x = ft_printf("%-12i", 0); error
-	x  = ft_printf("MOI = %.1ls", s);
-	y = printf("CP = %.1ls", s);
-	printf("\nMOI = %d / CP = %d", x, y);
+	ft_printf("MOI(1) : %0#10.0x\n", 0);
+	ft_printf("CP(2) : %#04hX\n", (unsigned short)0);
+	printf("MOI(1) : %0#10.0x\n", 0);
+	printf("CP(2) : %#04hX\n", (unsigned short)0);
 }

@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/18 14:03:50 by sabri            ###   ########.fr       */
+/*   Updated: 2018/10/24 15:55:28 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char	check_conv(const char *str, int x)
 
 char	*check_option(char *str)
 {
-	int i;
-	int j;
-	char *opt;
-	char *tmp;
+	int		i;
+	int		j;
+	char	*opt;
+	char	*tmp;
 
 	i = 0;
 	j = 0;
@@ -65,11 +65,11 @@ char	*check_option(char *str)
 	return (opt);
 }
 
-int 	check_widht(char *str)
+int		check_widht(char *str)
 {
-	int i;
-	int width;
-	char *tmp;
+	int		i;
+	int		width;
+	char	*tmp;
 
 	i = 0;
 	while (OPTION)
@@ -85,16 +85,16 @@ int 	check_widht(char *str)
 
 int		check_precision(char *str)
 {
-	int i;
-	char *tmp;
-	int start;
-	int precision;
+	int		i;
+	char	*tmp;
+	int		start;
+	int		precision;
 
 	i = 0;
 	start = 0;
 	if (ft_strchr(str, '.') == 0)
 		return (0);
-	while(str[start] != '.')
+	while (str[start] != '.')
 		start++;
 	start++;
 	if (str[start + 1] < '0' && str[start + 1] > '9')
@@ -107,7 +107,7 @@ int		check_precision(char *str)
 	return (precision);
 }
 
-int 	check_str(char *str)
+int		check_str(char *str)
 {
 	int i;
 
@@ -115,7 +115,7 @@ int 	check_str(char *str)
 	while (OPTION)
 		i++;
 	while (str[i] && str[i] != '.')
-	{	
+	{
 		if (str[i] < '0' || str[i] > '9')
 			return (-1);
 		i++;

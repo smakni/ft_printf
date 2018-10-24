@@ -6,13 +6,13 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/20 15:12:24 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:13:11 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int check_c(t_format *arg, wchar_t c)
+static int	check_c(t_format *arg, wchar_t c)
 {
 	if (c <= 127)
 		return (1);
@@ -21,84 +21,86 @@ static int check_c(t_format *arg, wchar_t c)
 	{
 		if (c < 256 && MB_CUR_MAX == 1)
 			return (1);
-		else if (c <= 2047 && MB_CUR_MAX >=2)
+		else if (c <= 2047 && MB_CUR_MAX >= 2)
 			return (2);
 		else if (c <= 65536 && MB_CUR_MAX >= 3)
 			return (3);
-	   	else if (c < 1114111 && MB_CUR_MAX >= 4)
+		else if (c < 1114111 && MB_CUR_MAX >= 4)
 			return (4);
-		 return (3);
+		return (3);
 	}
 	return (1);
 }
 
-static int check_error(int c)
+static int	check_error(int c)
 {
-	if ((c >= 55296 && c <= 57343) ||  c > 1114111)
+	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
 	if (c <= 127)
 		return (1);
 	else if (c < 256 && MB_CUR_MAX == 1)
 		return (1);
-	else if (c <= 2047 && MB_CUR_MAX >=2)
+	else if (c <= 2047 && MB_CUR_MAX >= 2)
 		return (2);
 	else if (c <= 65536 && MB_CUR_MAX >= 3)
 		return (3);
-   	 else if (c < 1114111 && MB_CUR_MAX >= 4)
+	else if (c < 1114111 && MB_CUR_MAX >= 4)
 		return (4);
 	return (-1);
 }
 
-static int check_error_C(unsigned int c)
+static int	check_error_C(unsigned int c)
 {
-	if ((c >= 55296 && c <= 57343) ||  c > 1114111)
+	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
 	if (c <= 127)
 		return (1);
 	else if (c < 256 && MB_CUR_MAX == 1)
 		return (1);
-	else if (c <= 2047 && MB_CUR_MAX >=2)
+	else if (c <= 2047 && MB_CUR_MAX >= 2)
 		return (2);
 	else if (c <= 65536 && MB_CUR_MAX >= 3)
 		return (3);
-   	 else if (c < 1114111 && MB_CUR_MAX >= 4)
+	else if (c < 1114111 && MB_CUR_MAX >= 4)
 		return (4);
 	return (-1);
 }
+
 static void	conversion_c1(t_format *arg, int check)
 {
 	char *tmp;
 
 	if ((tmp = ft_memalloc(arg->width - check)) == NULL)
-			return ;
+		return ;
 	ft_memset(tmp, ' ', arg->width - check);
-	arg->res = ft_memjoin(arg->res, tmp, check, (arg->width - check)); 
+	arg->res = ft_memjoin(arg->res, tmp, check, (arg->width - check));
 }
+
 static void	conversion_c2(t_format *arg, int check)
 {
 	char *tmp;
 
 	if ((tmp = ft_memalloc(arg->width - check + 1)) == NULL)
-			return ;
+		return ;
 	ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
-	
 }
 
-void	conversion_c(t_format *arg, va_list av)
+void		conversion_c(t_format *arg, va_list av)
 {
-	wchar_t		 	c;
-	int			check;
+	wchar_t	c;
+	int		check;
 
 	c = va_arg(av, wchar_t);
 	if (((arg->type == 'c' && ft_strcmp(arg->size, "l") == 0)
 			|| arg->type == 'C') && (arg->check = check_error_C(c)) == -1)
-			return ;
+		return ;
 	else if ((arg->check = check_error(c)) == -1)
 		return ;
-	arg->res = ft_memalloc(check = check_c(arg, c));
+	check = check_c(arg, c);
+	arg->res = ft_memalloc(check);
 	arg->res = ft_strdup(ft_putchar_printf(c, arg->res, check));
-	if (arg->width > check) 
+	if (arg->width > check)
 	{
 		if (ft_strchr(arg->option, '-') != 0)
 			conversion_c1(arg, check);

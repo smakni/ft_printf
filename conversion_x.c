@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 13:07:08 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/18 14:43:30 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/24 16:40:23 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	conversion_x(t_format *arg, va_list av)
 {
-	unsigned int nb;
-	int tmp;
-	int i;
+	unsigned int	nb;
+	int				tmp;
+	int				i;
 
 	i = 0;
 	nb = va_arg(av, int);
@@ -44,9 +44,9 @@ void	conversion_x(t_format *arg, va_list av)
 
 void	conversion_X(t_format *arg, va_list av)
 {
-	unsigned int nb;
-	int tmp;
-	int i;
+	unsigned int	nb;
+	int				tmp;
+	int				i;
 
 	i = 0;
 	nb = va_arg(av, int);
