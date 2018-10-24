@@ -1,5 +1,11 @@
-int		main()
+int	main(void)
 {
-	printf("SALUT");
+	int x;
+
+	x = 0;
+	while (x < 10)
+	{
+		printf("%d", x++);
+	}
 	return (0);
 }
