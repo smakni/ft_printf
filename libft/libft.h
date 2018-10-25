@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:28:24 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 16:47:52 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 11:59:47 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void				ft_memdel(void **ap);
 void				ft_strdel(char **as);
 void				ft_putchar(wchar_t c);
 void				ft_putchar1(wchar_t c);
-void    			ft_putchar2(wchar_t c);
-void   				ft_putchar3(wchar_t c);
-void    			ft_putchar4(wchar_t c);
+void				ft_putchar2(wchar_t c);
+void				ft_putchar3(wchar_t c);
+void				ft_putchar4(wchar_t c);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
 void				ft_strclr(char *s);
@@ -75,7 +75,7 @@ char				*ft_itoa_base_ui(unsigned int n, int len, int flag);
 char				*ft_itoa_base_uit(size_t n, int len, int flag);
 char				*ft_itoa_base_it(size_t n, int len, int flag);
 char				*ft_itoa_base_lui(unsigned long int n, int len, int flag);
-char				*ft_itoa_base_llui(unsigned long long int n, int len, int flag);
+char				*ft_itoa_base_llui(unsigned long long int n, int l, int f);
 char				*ft_itoa(int n);
 char				*ft_itoa_ui(unsigned int n);
 char				*ft_itoa_lui(unsigned long int n);
@@ -117,7 +117,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstmove_last(t_list **alst, t_list *elem);
 t_list				*ft_llast(t_list *lst, void *content, size_t content_size);
 void				*ft_memjoin(void *s1, const void *s2, size_t n1, size_t n2);
-void				*ft_memcpy_from(void *dst, const void *src, int start, size_t n);
+void				*ft_memcpy_from(void *dst, const void *src, int s, int n);
 void				ft_putstr_printf(char const *s, size_t len);
 
 #endif

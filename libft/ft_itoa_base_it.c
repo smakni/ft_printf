@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 16:50:48 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 12:29:52 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char			*ft_itoa_base_it(size_t n, int len, int flag)
 {
 	char	*str;
 	int		size;
-	char 	*base;
+	char	*base;
 
 	if (flag == 0)
 		base = "0123456789abcdef";

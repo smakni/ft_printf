@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 23:47:43 by sabri             #+#    #+#             */
-/*   Updated: 2018/06/20 23:48:16 by sabri            ###   ########.fr       */
+/*   Updated: 2018/10/25 11:43:51 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_strlen_from(char *str, char start, char end)
 {
-	int i;	
+	int i;
 	int count;
 
 	i = 0;

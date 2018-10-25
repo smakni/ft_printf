@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/07/20 18:11:50 by sabri            ###   ########.fr       */
+/*   Updated: 2018/10/25 11:58:59 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static long int		ft_size(long int n)
 	return (size);
 }
 
-char			*ft_itoa_li(long int n)
+char				*ft_itoa_li(long int n)
 {
-	char	*str;
-	long int		i;
-	long int		size;
+	char		*str;
+	long int	i;
+	long int	size;
 
 	i = 0;
 	size = ft_size(n);
