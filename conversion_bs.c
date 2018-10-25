@@ -6,13 +6,13 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 16:04:15 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 14:58:10 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	check_error_C(unsigned int c)
+static int		check_error_c(unsigned int c)
 {
 	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
@@ -29,7 +29,7 @@ static int	check_error_C(unsigned int c)
 	return (-1);
 }
 
-static int	check_x(unsigned int c)
+static int		check_x(unsigned int c)
 {
 	if (c <= 127)
 		return (1);
@@ -45,7 +45,7 @@ static int	check_x(unsigned int c)
 		return (0);
 }
 
-static int	ft_strwlen2(const wchar_t *src)
+static int		ft_strwlen2(const wchar_t *src)
 {
 	int		i;
 
@@ -55,10 +55,19 @@ static int	ft_strwlen2(const wchar_t *src)
 	return (i);
 }
 
-char		*conversion_bs(t_format *arg, va_list av)
+static	char	*get_c(char *ret, wchar_t c, int x)
+{
+	char *tmp_c;
+
+	tmp_c = ft_memalloc(x);
+	tmp_c = ft_strdup(ft_putchar_printf(c, tmp_c, x));
+	ret = ft_strjoin(ret, tmp_c);
+	return (ret);
+}
+
+char			*conversion_bs(t_format *arg, va_list av)
 {
 	wchar_t	*tmp;
-	char	*tmp_c;
 	int		x;
 	int		len;
 	int		i;
@@ -74,15 +83,12 @@ char		*conversion_bs(t_format *arg, va_list av)
 		x = check_x(tmp[i]);
 		if (arg->precision > 0 && (i + x) > arg->precision)
 			break ;
-		if ((x = check_error_C(tmp[i])) == -1)
+		if ((x = check_error_c(tmp[i])) == -1)
 		{
 			arg->check = -1;
 			break ;
 		}
-		tmp_c = ft_memalloc(x);
-		tmp_c = ft_strdup(ft_putchar_printf(tmp[i], tmp_c, x));
-		ret = ft_strjoin(ret, tmp_c);
-		i++;
+		ret = get_c(ret, tmp[i++], x);
 	}
 	arg->count = ft_strlen(ret);
 	return (ret);

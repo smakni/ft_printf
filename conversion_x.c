@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 13:07:08 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/24 16:40:23 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 14:33:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	conversion_x(t_format *arg, va_list av)
 	arg->count = ft_strlen(arg->res);
 }
 
-void	conversion_X(t_format *arg, va_list av)
+void	conversion_bx(t_format *arg, va_list av)
 {
 	unsigned int	nb;
 	int				tmp;

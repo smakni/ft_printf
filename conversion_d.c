@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/24 16:35:14 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 15:08:37 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,12 +212,12 @@ int		conversion_null(t_format *arg, char *nb)
 char	*conversion_x1(t_format *arg, char *nb)
 {
 	char *x;
-	char *X;
+	char *bx;
 
 	if (nb[0] == '0' && ft_strlen(nb) == 1)
 		return (ft_strdup("0"));
 	x = NULL;
-	X = NULL;
+	bx = NULL;
 	if (arg->type == 'x' && ft_strchr(arg->option, '#') != 0)
 	{
 		x = ft_memalloc(3 + ft_strlen(nb));
@@ -231,14 +231,14 @@ char	*conversion_x1(t_format *arg, char *nb)
 	}
 	else if (arg->type == 'X' && ft_strchr(arg->option, '#') != 0)
 	{
-		X = ft_memalloc(3 + ft_strlen(nb));
-		X[0] = '0';
-		X[1] = 'X';
-		X[2] = '\0';
-		X = ft_strcat(X, nb);
+		bx = ft_memalloc(3 + ft_strlen(nb));
+		bx[0] = '0';
+		bx[1] = 'X';
+		bx[2] = '\0';
+		bx = ft_strcat(bx, nb);
 		ft_strdel(&nb);
-		nb = ft_strdup(X);
-		ft_strdel(&X);
+		nb = ft_strdup(bx);
+		ft_strdel(&bx);
 	}
 	return (nb);
 }

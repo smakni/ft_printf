@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 15:55:28 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 15:00:28 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*check_option(char *str)
 	j = 0;
 	opt = NULL;
 	tmp = NULL;
-	while (OPTION)
+	while (str[i] == ' ' || str[i] == '#' || str[i] == '+' || str[i] == '-'
+			|| str[i] == '0')
 		i++;
 	tmp = ft_strsub(str, 0, i);
 	opt = ft_memalloc(i + 1);
@@ -55,10 +56,7 @@ char	*check_option(char *str)
 	while (OPT[i])
 	{
 		if (ft_strchr(tmp, OPT[i]) != 0)
-		{
-			opt[j] = OPT[i];
-			j++;
-		}
+			opt[j++] = OPT[i];
 		i++;
 	}
 	ft_strdel(&tmp);
@@ -72,7 +70,8 @@ int		check_widht(char *str)
 	char	*tmp;
 
 	i = 0;
-	while (OPTION)
+	while (str[i] == ' ' || str[i] == '#' || str[i] == '+' || str[i] == '-'
+			|| str[i] == '0')
 		i++;
 	if (ft_strchr(str, '.') != 0)
 		tmp = ft_strsub(str, i, ft_strlen_c(str, '.'));
@@ -112,7 +111,8 @@ int		check_str(char *str)
 	int i;
 
 	i = 0;
-	while (OPTION)
+	while (str[i] == ' ' || str[i] == '#' || str[i] == '+' || str[i] == '-'
+			|| str[i] == '0')
 		i++;
 	while (str[i] && str[i] != '.')
 	{

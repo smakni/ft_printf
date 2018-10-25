@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/24 16:13:11 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 15:03:29 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	check_error(int c)
 	return (-1);
 }
 
-static int	check_error_C(unsigned int c)
+static int	check_error_c(unsigned int c)
 {
 	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
@@ -93,7 +93,7 @@ void		conversion_c(t_format *arg, va_list av)
 
 	c = va_arg(av, wchar_t);
 	if (((arg->type == 'c' && ft_strcmp(arg->size, "l") == 0)
-			|| arg->type == 'C') && (arg->check = check_error_C(c)) == -1)
+			|| arg->type == 'C') && (arg->check = check_error_c(c)) == -1)
 		return ;
 	else if ((arg->check = check_error(c)) == -1)
 		return ;
