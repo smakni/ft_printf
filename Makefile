@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/10/24 16:45:35 by smakni           ###   ########.fr        #
+#    Updated: 2018/10/25 18:32:14 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= 	libftprintf.a
 
 CC		=	@gcc
 
-CFLAGS	+=	-Wall -Werror -Wextra -g
+CFLAGS	+=	-Wall -Werror -Wextra 
 
 SRCS	=	ft_printf.c		\
 			check.c 		\
