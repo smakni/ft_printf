@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/25 14:36:13 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 17:09:02 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,16 @@ typedef struct	s_format
 	char	*res;
 	int		check;
 	int		count;
+	int		save;
 }				t_format;
+
+typedef struct s_control
+{
+	int		i;
+	int		ret;
+	int		len;
+	char	*result;
+}				t_control;
 
 int				ft_printf(const char *format, ...);
 void			ft_analyse(t_format *arg);

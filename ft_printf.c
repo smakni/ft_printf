@@ -6,13 +6,13 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 16:42:59 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/25 17:40:20 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	init_struc(t_format *arg)
+void	init_struc(t_format *arg, t_control *ctr)
 {
 	arg->str = NULL;
 	arg->len = 0;
@@ -24,6 +24,10 @@ void	init_struc(t_format *arg)
 	arg->res = NULL;
 	arg->check = 0;
 	arg->count = 0;
+	ctr->i = 0;
+	ctr->ret = 0;
+	ctr->len = 0;
+	ctr->result = ft_memalloc(1);;
 }
 
 void	free_arg(t_format *arg)
@@ -50,56 +54,61 @@ int		len_x(const char *str, int x, char c)
 	return (count);
 }
 
+int case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
+{
+	arg->type = check_conv(format, ctr->i);
+	ctr->len = len_x(format, ctr->i, arg->type);
+	arg->str = ft_strsub(format, ctr->i + 1, ctr->len);
+	ft_analyse(arg);
+	ft_conversion(arg, av);
+	if (arg->check == -1)
+	{
+		write(1, ctr->result, arg->save);
+		return (-1);
+	}
+	ctr->result = ft_memjoin(ctr->result, arg->res, ctr->ret, arg->count);
+	ctr->ret += arg->count;
+	arg->save = ctr->ret;
+	ctr->i += (ft_strlen(arg->str) + 1);
+	free_arg(arg);
+	return (0);
+}
+
+void	case_2(t_control *ctr, const char *format)
+{
+	char *tmp;
+
+	ctr->len = len_x(format, ctr->i, '%');
+	tmp = ft_strsub(format, ctr->i, ctr->len);
+	ctr->result = ft_memjoin(ctr->result, tmp, ctr->ret, ctr->len);
+	ctr->ret += ctr->len;
+	ctr->i += ctr->len;
+}
+
 int		ft_printf(const char *format, ...)
 {
 	va_list		av;
-	int			i;
-	int			ret;
-	int			len;
-	int			save;
-	char		*result;
 	t_format	*arg;
+	t_control	*ctr;
 
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		return (0);
-	init_struc(arg);
+	if (!(ctr = ft_memalloc(sizeof(t_control))))
+		return (0);
+	init_struc(arg, ctr);
 	va_start(av, format);
-	result = ft_memalloc(1);
-	save = 0;
-	i = 0;
-	ret = 0;
-	len = 0;
-	while (format[i])
+	while (format[ctr->i])
 	{
-		if (format[i] == '%')
+		if (format[ctr->i] == '%')
 		{
-			arg->type = check_conv(format, i);
-			len = len_x(format, i, arg->type);
-			arg->str = ft_strsub(format, i + 1, len);
-			ft_analyse(arg);
-			ft_conversion(arg, av);
-			if (arg->check == -1)
-			{
-				write(1, result, save);
+			if (case_1(arg, ctr, format, av) == -1)
 				return (-1);
-			}
-			result = ft_memjoin(result, arg->res, ret, arg->count);
-			ret += arg->count;
-			save = ret;
-			free_arg(arg);
-			i++;
 		}
 		else
-		{
-			len = len_x(format, i, '%');
-			result = ft_memjoin(result, ft_strsub(format, i, len), ret, len);
-			ret += len;
-		}
-		i += len;
+			case_2(ctr, format);
 	}
-	write(1, result, ret);
-	ft_strdel(&result);
-	free(arg);
+	//ft_strdel(&result);
+	//free(arg);
 	va_end(av);
-	return (ret);
+	return (write(1, ctr->result, ctr->ret));
 }
