@@ -149,3 +149,22 @@ char	*check_size(char *str)
 	tmp[1] = '\0';
 	return (tmp);
 }
+/*
+void	check_size(t_format *arg)
+{
+	//char *tmp;
+
+	if (ft_strstr(arg->str, HH) != 0)
+		arg->size = ft_strdup(HH);
+	else if (ft_strstr(arg->str, LL) != 0)
+		arg->size = ft_strdup(LL);
+	//tmp = ft_memalloc(2);
+	else if (ft_strchr(arg->str, 'l') != 0)
+		arg->size = ft_strdup("l");
+	else if (ft_strchr(arg->str, 'h') != 0)
+		arg->size = ft_strdup("h");
+	else if (ft_strchr(arg->str, 'j') != 0)
+		arg->size = ft_strdup("j");
+	else if (ft_strchr(arg->str, 'z') != 0)
+		arg->size = ft_strdup("z");
+}*/

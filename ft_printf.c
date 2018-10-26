@@ -27,7 +27,6 @@ void	init_struc(t_format *arg, t_control *ctr)
 	ctr->i = 0;
 	ctr->ret = 0;
 	ctr->len = 0;
-	ctr->result = ft_memalloc(1);;
 }
 
 void	free_arg(t_format *arg)
@@ -37,7 +36,7 @@ void	free_arg(t_format *arg)
 	ft_strdel(&arg->option);
 	arg->width = 0;
 	arg->precision = 0;
-	if (!ft_strcmp(arg->size, HH) && !ft_strcmp(arg->size, LL))
+	if (ft_strcmp(arg->size, HH) != 0 && ft_strcmp(arg->size, LL) != 0)
 		ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
@@ -83,6 +82,7 @@ void	case_2(t_control *ctr, const char *format)
 	ctr->result = ft_memjoin(ctr->result, tmp, ctr->ret, ctr->len);
 	ctr->ret += ctr->len;
 	ctr->i += ctr->len;
+	ft_strdel(&tmp);
 }
 
 int		ft_printf(const char *format, ...)
@@ -90,6 +90,7 @@ int		ft_printf(const char *format, ...)
 	va_list		av;
 	t_format	*arg;
 	t_control	*ctr;
+	int			ret;
 
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		return (0);
@@ -107,8 +108,11 @@ int		ft_printf(const char *format, ...)
 		else
 			case_2(ctr, format);
 	}
-	//ft_strdel(&result);
-	//free(arg);
+	write(1, ctr->result, ctr->ret);
+	ft_strdel(&(ctr)->result);
+	ret = ctr->ret;
+	free(ctr);
+	free(arg);
 	va_end(av);
-	return (write(1, ctr->result, ctr->ret));
+	return (ret);
 }

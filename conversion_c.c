@@ -74,6 +74,7 @@ static void	conversion_c1(t_format *arg, int check)
 		return ;
 	ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(arg->res, tmp, check, (arg->width - check));
+	ft_strdel(&tmp);
 }
 
 static void	conversion_c2(t_format *arg, int check)
@@ -84,6 +85,7 @@ static void	conversion_c2(t_format *arg, int check)
 		return ;
 	ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
+	ft_strdel(&tmp);
 }
 
 void		conversion_c(t_format *arg, va_list av)
