@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/25 15:02:50 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 17:21:36 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ void	conversion_s(t_format *arg, va_list av)
 	int		len;
 	int		i;
 
-	if ((arg->type == 's' && ft_strcmp(arg->size, "l") == 0)
-		|| arg->type == 'S')
-		tmp = conversion_bs(arg, av);
-	else
-		tmp = va_arg(av, char *);
-	i = 0;
 	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
 			&& arg->width == 0)
 	{
@@ -31,10 +25,15 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->count = 0;
 		return ;
 	}
+	if ((arg->type == 's' && ft_strcmp(arg->size, "l") == 0)
+		|| arg->type == 'S')
+		tmp = conversion_bs(arg, av);
+	else
+		tmp = va_arg(av, char *);
 	if (tmp == NULL || (arg->precision == 0 && ft_strchr(arg->str, '.') != 0))
 		tmp = ft_strdup("(null)");
-	else
-		tmp = ft_strdup(tmp);
+	i = 0;
+	len = 0;
 	len = ft_strlen(tmp);
 	if (arg->type == 's' && ft_strcmp(arg->size, "") == 0
 			&& arg->precision < len && arg->precision != 0)
@@ -49,7 +48,6 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);
-	ft_strdel(&tmp);
 	arg->count = ft_strlen(arg->res);
 }
 
@@ -60,7 +58,7 @@ char	*conversion_s1(t_format *arg, char *tmp)
 	i = 0;
 	while (tmp[i] && i < arg->precision)
 		i++;
-	tmp = ft_strsub_free(tmp, 0, i);
+	tmp = ft_strsub(tmp, 0, i);
 	return (tmp);
 }
 

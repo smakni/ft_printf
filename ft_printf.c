@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/25 17:40:20 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 14:31:56 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_struc(t_format *arg, t_control *ctr)
 	ctr->i = 0;
 	ctr->ret = 0;
 	ctr->len = 0;
+	//ctr->result = NULL;
 }
 
 void	free_arg(t_format *arg)
@@ -70,6 +71,7 @@ int case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 	arg->save = ctr->ret;
 	ctr->i += (ft_strlen(arg->str) + 1);
 	free_arg(arg);
+	//free(arg);
 	return (0);
 }
 
@@ -77,12 +79,14 @@ void	case_2(t_control *ctr, const char *format)
 {
 	char *tmp;
 
+	tmp = NULL;
 	ctr->len = len_x(format, ctr->i, '%');
 	tmp = ft_strsub(format, ctr->i, ctr->len);
 	ctr->result = ft_memjoin(ctr->result, tmp, ctr->ret, ctr->len);
 	ctr->ret += ctr->len;
 	ctr->i += ctr->len;
 	ft_strdel(&tmp);
+	//free(ctr);
 }
 
 int		ft_printf(const char *format, ...)
@@ -109,7 +113,7 @@ int		ft_printf(const char *format, ...)
 			case_2(ctr, format);
 	}
 	write(1, ctr->result, ctr->ret);
-	ft_strdel(&(ctr)->result);
+	ft_strdel(&ctr->result);
 	ret = ctr->ret;
 	free(ctr);
 	free(arg);

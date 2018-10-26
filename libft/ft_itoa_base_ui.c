@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/25 12:29:27 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 15:32:48 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,30 @@ static int		ft_size(unsigned int n, int base)
 	return (size);
 }
 
+static char 	*get_base(int len, int flag)
+{
+	char *tmp;
+	char *base;
+
+	base = NULL;
+	if (flag == 0)
+		tmp = "0123456789abcdef";
+	else
+		tmp = "0123456789ABCDEF";
+	if (len > 9)
+		base = ft_strsub(tmp, 0, len);
+	else
+		base = ft_strdup(tmp);
+	return (base);
+}
+
 char			*ft_itoa_base_ui(unsigned int n, int len, int flag)
 {
 	char	*str;
 	int		size;
 	char	*base;
 
-	if (flag == 0)
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
-	if (len > 9)
-		base = ft_strsub(base, 0, len);
+	base = get_base(len, flag);
 	size = ft_size(n, len);
 	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
 		return (0);
@@ -50,5 +62,6 @@ char			*ft_itoa_base_ui(unsigned int n, int len, int flag)
 		n /= len;
 		size--;
 	}
+	ft_strdel(&base);
 	return (str);
 }

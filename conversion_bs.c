@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/25 14:58:10 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 17:07:32 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static	char	*get_c(char *ret, wchar_t c, int x)
 {
 	char *tmp_c;
 
-	tmp_c = ft_memalloc(x);
-	tmp_c = ft_strdup(ft_putchar_printf(c, tmp_c, x));
-	ret = ft_strjoin(ret, tmp_c);
+	tmp_c = ft_memalloc(x + 1);
+	tmp_c = ft_putchar_printf(c, tmp_c, x);
+	ret = ft_strjoin_free(ret, tmp_c);
 	return (ret);
 }
 

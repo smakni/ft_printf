@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 16:19:34 by smakni            #+#    #+#             */
-/*   Updated: 2018/05/31 16:20:03 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 17:09:54 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		str_joined[i + j] = s2[j];
 		j++;
 	}
-	str_joined[i + j] = '\0';
+	str_joined[len] = '\0';
 	ft_strdel(&s1);
+	ft_strdel(&s2);
 	return (str_joined);
 }

@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/25 15:03:29 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/26 16:02:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	conversion_c2(t_format *arg, int check)
 		return ;
 	ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
-	ft_strdel(&tmp);
+	//ft_strdel(&tmp);
 }
 
 void		conversion_c(t_format *arg, va_list av)
@@ -100,8 +100,8 @@ void		conversion_c(t_format *arg, va_list av)
 	else if ((arg->check = check_error(c)) == -1)
 		return ;
 	check = check_c(arg, c);
-	arg->res = ft_memalloc(check);
-	arg->res = ft_strdup(ft_putchar_printf(c, arg->res, check));
+	arg->res = ft_memalloc(check + 1);
+	arg->res = ft_putchar_printf(c, arg->res, check);
 	if (arg->width > check)
 	{
 		if (ft_strchr(arg->option, '-') != 0)
