@@ -37,7 +37,7 @@ SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_itoa_base_ui.c ft_itoa_base_llui.c ft_itoa_base_lui.c		 \
 			ft_itoa_base_it.c ft_itoa_base_uit.c ft_putchar2.c				 \
 			ft_putchar1.c ft_putchar3.c ft_putchar4.c ft_memjoin.c			 \
-			ft_memcpy_from.c ft_putstr_printf.c
+			ft_memcpy_from.c ft_putstr_printf.c ft_itoa_sit.c
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -84,6 +84,7 @@ char				*ft_itoa_uit(uintmax_t n);
 char				*ft_itoa_li(long int n);
 char				*ft_itoa_lli(long long int n);
 char				*ft_itoa_imax(intmax_t n);
+char				*ft_itoa_sit(ssize_t n);
 char				*ft_itoa_it(size_t n);
 char				*ft_strtoupper(char *str);
 char				*ft_strtolower(char *str);

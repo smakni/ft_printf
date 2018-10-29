@@ -27,18 +27,30 @@ static int		ft_size(unsigned long long int n, int base)
 	return (size);
 }
 
+static char 	*get_base(int l, int f)
+{
+	char *tmp;
+	char *base;
+
+	base = NULL;
+	if (f == 0)
+		tmp = "0123456789abcdef";
+	else
+		tmp = "0123456789ABCDEF";
+	if (l > 9)
+		base = ft_strsub(tmp, 0, l);
+	else
+		base = ft_strdup(tmp);
+	return (base);
+}
+
 char			*ft_itoa_base_llui(unsigned long long int n, int l, int f)
 {
 	char	*str;
 	int		size;
 	char	*base;
 
-	if (f == 0)
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
-	if (l > 9)
-		base = ft_strsub(base, 0, l);
+	base = get_base(l, f);
 	size = ft_size(n, l);
 	if ((str = malloc(sizeof(char) * (size + 1))) == NULL)
 		return (0);
@@ -50,5 +62,6 @@ char			*ft_itoa_base_llui(unsigned long long int n, int l, int f)
 		n /= l;
 		size--;
 	}
+	ft_strdel(&base);
 	return (str);
 }
