@@ -18,18 +18,19 @@ void	conversion_s(t_format *arg, va_list av)
 	int		len;
 	int		i;
 
-	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
-			&& arg->width == 0)
-	{
-		arg->res = ft_strdup("");
-		arg->count = 0;
-		return ;
-	}
 	if ((arg->type == 's' && ft_strcmp(arg->size, "l") == 0)
 		|| arg->type == 'S')
 		tmp = conversion_bs(arg, av);
 	else
 		tmp = va_arg(av, char *);
+	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
+			&& arg->width == 0)
+	{
+		arg->res = ft_strdup("");
+		arg->count = 0;
+		//ft_strdel(&tmp);
+		return ;
+	}
 	if (tmp == NULL || (arg->precision == 0 && ft_strchr(arg->str, '.') != 0))
 		tmp = ft_strdup("(null)");
 	i = 0;
@@ -48,6 +49,7 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);
+	//ft_strdel(&tmp);
 	arg->count = ft_strlen(arg->res);
 }
 
