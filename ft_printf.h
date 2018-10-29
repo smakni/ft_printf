@@ -66,6 +66,7 @@ char			*conversion_d0_d(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_u(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_o(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_x(t_format *arg, char *nb, va_list av);
+char			*conversion_d0_bx(t_format *arg, char *nb, va_list av);
 char			*conversion_x1(t_format *arg, char *nb);
 char			*conversion_d1(t_format *arg, char *nb);
 char			*conversion_d2(t_format *arg, char *nb);
