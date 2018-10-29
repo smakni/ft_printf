@@ -20,17 +20,21 @@ char	*conversion_d0(t_format *arg, char *nb, va_list av)
 		nb = conversion_d0_u(arg, nb, av);
 	else if (arg->type == 'o' || arg->type == 'O')
 		nb = conversion_d0_o(arg, nb, av);
-	else if (arg->type == 'x' || arg->type == 'X')
+	else if (arg->type == 'x')
 		nb = conversion_d0_x(arg, nb, av);
+	else if (arg->type == 'X')
+		nb = conversion_d0_bx(arg, nb, av);
 	return (nb);
 }
 
 char	*conversion_d0_d(t_format *arg, char *nb, va_list av)
 {
-	if ((arg->size[0] == '\0' && arg->type != 'D')
-			|| (ft_strcmp(arg->size, "h") == 0)
-			|| (ft_strcmp(arg->size, "hh") == 0))
+	if (arg->size[0] == '\0' && arg->type != 'D')
 		nb = ft_itoa(va_arg(av, int));
+	else if (ft_strcmp(arg->size, "h") == 0)
+		nb = ft_itoa((short)va_arg(av, int));
+	else if (ft_strcmp(arg->size, "hh") == 0)
+		nb = ft_itoa((char)va_arg(av, int));
 	else if (arg->type == 'D' || (ft_strcmp(arg->size, "l") == 0))
 		nb = ft_itoa_li(va_arg(av, long int));
 	else if (ft_strcmp(arg->size, "ll") == 0)
@@ -38,7 +42,7 @@ char	*conversion_d0_d(t_format *arg, char *nb, va_list av)
 	else if (ft_strcmp(arg->size, "j") == 0)
 		nb = ft_itoa_imax(va_arg(av, intmax_t));
 	else if (ft_strcmp(arg->size, "z") == 0)
-		nb = ft_itoa_it(va_arg(av, size_t));
+		nb = ft_itoa_sit(va_arg(av, ssize_t));
 	return (nb);
 }
 
@@ -55,7 +59,7 @@ char	*conversion_d0_u(t_format *arg, char *nb, va_list av)
 	else if (ft_strcmp(arg->size, "j") == 0)
 		nb = ft_itoa_uit(va_arg(av, uintmax_t));
 	else if (ft_strcmp(arg->size, "z") == 0)
-		nb = ft_itoa_it(va_arg(av, size_t));
+		nb = ft_itoa_it(va_arg(av, ssize_t));
 	return (nb);
 }
 
@@ -78,12 +82,10 @@ char	*conversion_d0_o(t_format *arg, char *nb, va_list av)
 
 char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 {
-	if ((arg->size[0] == '\0' && arg->type != 'X')
+	if ((arg->size[0] == '\0')
 		|| (ft_strcmp(arg->size, "h") == 0)
 		|| (ft_strcmp(arg->size, "hh") == 0))
 		nb = ft_itoa_base_ui(va_arg(av, unsigned int), 16, 0);
-	else if (arg->type == 'X')
-		nb = ft_itoa_base_lui(va_arg(av, unsigned long int), 16, 1);
 	else if ((ft_strcmp(arg->size, "l") == 0))
 		nb = ft_itoa_base_lui(va_arg(av, unsigned long), 16, 0);
 	else if (ft_strcmp(arg->size, "ll") == 0)
@@ -92,5 +94,22 @@ char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 		nb = ft_itoa_base_uit(va_arg(av, uintmax_t), 16, 0);
 	else if (ft_strcmp(arg->size, "z") == 0)
 		nb = ft_itoa_base_it(va_arg(av, size_t), 16, 0);
+	return (nb);
+}
+
+char	*conversion_d0_bx(t_format *arg, char *nb, va_list av)
+{
+	if ((arg->size[0] == '\0')
+		|| (ft_strcmp(arg->size, "h") == 0)
+		|| (ft_strcmp(arg->size, "hh") == 0))
+		nb = ft_itoa_base_ui(va_arg(av, unsigned int), 16, 1);
+	else if ((ft_strcmp(arg->size, "l") == 0))
+		nb = ft_itoa_base_lui(va_arg(av, unsigned long), 16, 1);
+	else if (ft_strcmp(arg->size, "ll") == 0)
+		nb = ft_itoa_base_llui(va_arg(av, unsigned long long int), 16, 1);
+	else if (ft_strcmp(arg->size, "j") == 0)
+		nb = ft_itoa_base_uit(va_arg(av, uintmax_t), 16, 1);
+	else if (ft_strcmp(arg->size, "z") == 0)
+		nb = ft_itoa_base_it(va_arg(av, size_t), 16, 1);
 	return (nb);
 }
