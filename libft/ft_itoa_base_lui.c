@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/26 15:35:13 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 12:40:07 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		ft_size(unsigned long int n, int base)
 	return (size);
 }
 
-static char 	*get_base(int len, int flag)
+static	char	*get_base(int len, int flag)
 {
 	char *tmp;
 	char *base;

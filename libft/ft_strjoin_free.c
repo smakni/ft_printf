@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/31 16:19:34 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/26 17:09:54 by smakni           ###   ########.fr       */
+/*   Created: 2018/10/30 12:32:38 by smakni            #+#    #+#             */
+/*   Updated: 2018/10/30 12:32:40 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		j++;
 	}
 	str_joined[len] = '\0';
-	ft_strdel(&s1);
 	ft_strdel(&s2);
 	return (str_joined);
 }
