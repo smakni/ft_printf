@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/26 15:57:40 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 14:28:56 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	conversion_d(t_format *arg, va_list av)
 	nb = conversion_d0(arg, nb, av);
 	nb = conversion_d1(arg, nb);
 	check = conversion_null(arg, nb);
-	if (check == 0 && ft_strcmp(nb, "0") == 0 && arg->precision == 0 
+	if (check == 0 && ft_strcmp(nb, "0") == 0 && arg->precision == 0
 			&& ft_strchr(arg->str, '.') != 0)
 		nb = ft_strdup("");
 	if (arg->precision >= (len_nb = ft_strlen(nb)))
@@ -37,7 +37,7 @@ void	conversion_d(t_format *arg, va_list av)
 	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
 			&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
-	if (ft_strchr(arg->option, ' ') != 0
+	if (arg->type != 'u' && arg->type != 'U' && ft_strchr(arg->option, ' ') != 0
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
 	{
 		tmp = ft_memalloc(2 + ft_strlen(arg->res));
@@ -59,19 +59,18 @@ char	*conversion_d1(t_format *arg, char *nb)
 {
 	char *tmp;
 
-	if (ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
+	if (arg->type != 'u' && arg->type != 'U' && 
+			ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
 	{
-		tmp = ft_memalloc(2 + ft_strlen(nb));
-		tmp[0] = '+';
-		nb = ft_strcat(tmp, nb);
+		tmp = "+";
+		nb = ft_strjoin_free(tmp, nb);
 	}
 	else if ((arg->type == 'o' || arg->type == 'O')
 				&& ft_strchr(arg->option, '#') != 0
 				&& nb[0] != '0')
 	{
-		tmp = ft_memalloc(2 + ft_strlen(nb));
-		tmp[0] = '0';
-		nb = ft_strcat(tmp, nb);
+		tmp = "0";
+		nb = ft_strjoin_free(tmp, nb);
 	}
 	return (nb);
 }
@@ -146,18 +145,18 @@ void	conversion_d3(t_format *arg, char *nb, int len_nb)
 			arg->res[i] = nb[i];
 			i++;
 		}
-	else 
-	{	
-		if ((nb[0] == '-' || nb[0] == '+') 
+	else
+	{
+		if ((nb[0] == '-' || nb[0] == '+')
 				&& ft_strchr(arg->option, '0') != 0
 				&& arg->precision == 0)
 			arg->res[i++] = nb[0];
-		else if ((arg->type == 'x' || arg->type == 'X') 
+		else if ((arg->type == 'x' || arg->type == 'X')
 				&& ft_strchr(arg->option, '#') != 0
 				&& ft_strchr(arg->option, '0') != 0
 				&& ft_strchr(arg->str, '.') == 0
 				&& ft_strcmp(nb, "0") != 0)
-		{	
+		{
 			arg->res[i++] = nb[0];
 			arg->res[i++] = nb[1];
 		}

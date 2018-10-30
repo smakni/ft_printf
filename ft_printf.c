@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/26 14:31:56 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 18:06:30 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	init_struc(t_format *arg, t_control *ctr)
 	ctr->i = 0;
 	ctr->ret = 0;
 	ctr->len = 0;
-	//ctr->result = NULL;
 }
 
 void	free_arg(t_format *arg)
@@ -37,8 +36,6 @@ void	free_arg(t_format *arg)
 	ft_strdel(&arg->option);
 	arg->width = 0;
 	arg->precision = 0;
-	if (ft_strcmp(arg->size, HH) != 0 && ft_strcmp(arg->size, LL) != 0)
-		ft_strdel(&arg->size);
 	arg->type = 0;
 	ft_strdel(&arg->res);
 	arg->check = 0;
@@ -54,7 +51,7 @@ int		len_x(const char *str, int x, char c)
 	return (count);
 }
 
-int case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
+int		case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 {
 	arg->type = check_conv(format, ctr->i);
 	ctr->len = len_x(format, ctr->i, arg->type);
@@ -63,6 +60,7 @@ int case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 	ft_conversion(arg, av);
 	if (arg->check == -1)
 	{
+		free_arg(arg);
 		write(1, ctr->result, arg->save);
 		return (-1);
 	}
@@ -71,7 +69,6 @@ int case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 	arg->save = ctr->ret;
 	ctr->i += (ft_strlen(arg->str) + 1);
 	free_arg(arg);
-	//free(arg);
 	return (0);
 }
 
@@ -86,7 +83,6 @@ void	case_2(t_control *ctr, const char *format)
 	ctr->ret += ctr->len;
 	ctr->i += ctr->len;
 	ft_strdel(&tmp);
-	//free(ctr);
 }
 
 int		ft_printf(const char *format, ...)
@@ -107,7 +103,11 @@ int		ft_printf(const char *format, ...)
 		if (format[ctr->i] == '%')
 		{
 			if (case_1(arg, ctr, format, av) == -1)
+			{
+				free(ctr);
+				free(arg);
 				return (-1);
+			}
 		}
 		else
 			case_2(ctr, format);

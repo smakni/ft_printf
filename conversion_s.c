@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 15:41:00 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/26 17:21:36 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 11:09:24 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	conversion_s(t_format *arg, va_list av)
 	if ((arg->type == 's' && ft_strcmp(arg->size, "l") == 0)
 		|| arg->type == 'S')
 		tmp = conversion_bs(arg, av);
-	else
-		tmp = va_arg(av, char *);
+	else if ((tmp = va_arg(av, char *)) != NULL)
+		tmp = ft_strdup(tmp);
 	if (arg->precision == 0 && ft_strchr(arg->str, '.') != 0
 			&& arg->width == 0)
 	{
 		arg->res = ft_strdup("");
 		arg->count = 0;
-		//ft_strdel(&tmp);
+		ft_strdel(&tmp);
 		return ;
 	}
 	if (tmp == NULL || (arg->precision == 0 && ft_strchr(arg->str, '.') != 0))
@@ -49,7 +49,7 @@ void	conversion_s(t_format *arg, va_list av)
 		arg->res = conversion_s2(arg, tmp, len, i);
 	else
 		arg->res = ft_strdup(tmp);
-	//ft_strdel(&tmp);
+	ft_strdel(&tmp);
 	arg->count = ft_strlen(arg->res);
 }
 
