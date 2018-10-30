@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/25 17:09:02 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 12:51:36 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_format
 	int		save;
 }				t_format;
 
-typedef struct s_control
+typedef	struct	s_control
 {
 	int		i;
 	int		ret;
