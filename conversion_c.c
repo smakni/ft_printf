@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/26 16:02:45 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/30 12:55:01 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void	conversion_c2(t_format *arg, int check)
 		return ;
 	ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
-	//ft_strdel(&tmp);
 }
 
 void		conversion_c(t_format *arg, va_list av)
