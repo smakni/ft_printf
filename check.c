@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/30 12:19:48 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 14:13:50 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 char	check_conv(const char *str, int x)
 {
 	int	j;
+	char *check_str;
 
 	j = 0;
+	check_str = "0123456789 +-#hljz.";
 	x++;
 	if (str[x] == CONV[j])
 		return (CONV[j]);
@@ -29,37 +31,51 @@ char	check_conv(const char *str, int x)
 				j++;
 			if (str[x] == CONV[j])
 				return (CONV[j]);
+			else if (ft_strchr(check_str, str[x]) == 0)
+				return (str[x]);
 		}
 		x++;
 	}
 	return ('0');
 }
 
-char	*check_option(char *str)
+int		check_opt_0(char *str)
 {
-	int		i;
-	int		j;
-	char	*opt;
-	char	*tmp;
+	int i;
 
 	i = 0;
-	j = 0;
-	opt = NULL;
-	tmp = NULL;
-	while (str[i] == ' ' || str[i] == '#' || str[i] == '+' || str[i] == '-'
-			|| str[i] == '0')
-		i++;
-	tmp = ft_strsub(str, 0, i);
-	opt = ft_memalloc(i + 1);
-	i = 0;
-	j = 0;
-	while (OPT[i])
+	while (str[i] && str[i] != '.')
 	{
-		if (ft_strchr(tmp, OPT[i]) != 0)
-			opt[j++] = OPT[i];
+		if (str[i] == '0' && ft_isdigit(str[i - 1]) == 0)
+			return (1);
 		i++;
 	}
-	ft_strdel(&tmp);
+	return (0);
+}
+
+char	*check_option(char *str)
+{
+	int i;
+	int j;
+	int check;
+	char *opt;
+	
+	i = -1;
+	j = 0;
+	opt = NULL;
+	check = check_opt_0(str);
+	while (OPT[++i])
+		if (ft_strchr(str, OPT[i]) != 0)
+			j++;
+	if (!(opt = ft_memalloc(j + check)))
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (OPT[++i])
+		if (ft_strchr(str, OPT[i]) != 0)
+			opt[j++] = OPT[i];
+	if (check == 1)
+		opt[j] = '0';
 	return (opt);
 }
 
@@ -71,7 +87,8 @@ int		check_widht(char *str)
 
 	i = 0;
 	while (str[i] == ' ' || str[i] == '#' || str[i] == '+' || str[i] == '-'
-			|| str[i] == '0')
+			|| str[i] == '0' || str[i] == 'h' || str[i] == 'l' || str[i] == 'j'
+			|| str[i] == 'z')
 		i++;
 	if (ft_strchr(str, '.') != 0)
 		tmp = ft_strsub(str, i, ft_strlen_c(str, '.'));
