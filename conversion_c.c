@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/30 12:55:01 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 14:14:06 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ static void	conversion_c1(t_format *arg, int check)
 
 	if ((tmp = ft_memalloc(arg->width - check)) == NULL)
 		return ;
-	ft_memset(tmp, ' ', arg->width - check);
+	if (ft_strchr(arg->option, '0') != 0)
+		ft_memset(tmp, '0', arg->width - check);
+	else
+		ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(arg->res, tmp, check, (arg->width - check));
 	ft_strdel(&tmp);
 }
@@ -83,7 +86,10 @@ static void	conversion_c2(t_format *arg, int check)
 
 	if ((tmp = ft_memalloc(arg->width - check + 1)) == NULL)
 		return ;
-	ft_memset(tmp, ' ', arg->width - check);
+	if (ft_strchr(arg->option, '0') != 0)
+		ft_memset(tmp, '0', arg->width - check);
+	else
+		ft_memset(tmp, ' ', arg->width - check);
 	arg->res = ft_memjoin(tmp, arg->res, (arg->width - check), check);
 }
 
