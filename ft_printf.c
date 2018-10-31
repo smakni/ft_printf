@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/30 18:06:30 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 12:00:12 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,26 @@ int		len_x(const char *str, int x, char c)
 	return (count);
 }
 
+void	case_3(t_format *arg, t_control *ctr, const char *format)
+{
+	char *tmp;
+
+	tmp = NULL;
+	ctr->len = len_x(format, ctr->i, arg->type);
+	tmp = ft_strsub(format, ctr->i + 1, 0);
+	ctr->result = ft_memjoin(ctr->result, tmp, ctr->ret, 0);
+	ctr->i += ctr->len;
+	ft_strdel(&tmp);
+}
+
 int		case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 {
 	arg->type = check_conv(format, ctr->i);
+	if (ft_strchr(CONV, arg->type) == 0)
+	{	
+		case_3(arg, ctr, format);
+		return (0);
+	}
 	ctr->len = len_x(format, ctr->i, arg->type);
 	arg->str = ft_strsub(format, ctr->i + 1, ctr->len);
 	ft_analyse(arg);
