@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 13:44:40 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 15:28:52 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <stdio.h>
 # include <inttypes.h>
 
-# define HH		"hh"
-# define LL		"ll"
 # define OPT	" +-#"
 # define CONV 	"sSpdDioOuUxXcC%%"
 
