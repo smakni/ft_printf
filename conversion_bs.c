@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/30 11:57:00 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 15:34:04 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ char			*conversion_bs(t_format *arg, va_list av)
 
 	i = 0;
 	x = 0;
-	tmp = va_arg(av, wchar_t *);
+	if ((tmp = va_arg(av, wchar_t *)) == NULL)
+		return (NULL);
 	len = ft_strwlen2(tmp);
 	ret = ft_memalloc(1);
 	while (i <= len)
