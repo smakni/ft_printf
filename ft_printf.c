@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 12:00:12 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 18:54:04 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,42 @@ int		len_x(const char *str, int x, char c)
 	return (count);
 }
 
-void	case_3(t_format *arg, t_control *ctr, const char *format)
+void	case_3(t_format *arg, t_control *ctr)
 {
 	char *tmp;
+	char *tmp2;
 
 	tmp = NULL;
-	ctr->len = len_x(format, ctr->i, arg->type);
-	tmp = ft_strsub(format, ctr->i + 1, 0);
-	ctr->result = ft_memjoin(ctr->result, tmp, ctr->ret, 0);
+	tmp2 = NULL;
+	arg->width = check_widht(arg->str);
+	tmp = ft_strsub(arg->str, ctr->len, 1);
+	if (arg->width > 1)
+	{
+		tmp2 = ft_memalloc(arg->width + 1);
+		ft_memset(tmp2, ' ', arg->width);
+		tmp = ft_strjoin(tmp2, tmp);
+	}
+	ctr->result = ft_strjoin(ctr->result, tmp);
+	if (arg->width > 1)
+		ctr->ret += arg->width - 1;
+	else
+		ctr->ret += 1;
 	ctr->i += ctr->len;
 	ft_strdel(&tmp);
+	ft_strdel(&tmp2);
+	free_arg(arg);
 }
 
 int		case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 {
 	arg->type = check_conv(format, ctr->i);
-	if (ft_strchr(CONV, arg->type) == 0)
-	{	
-		case_3(arg, ctr, format);
-		return (0);
-	}
 	ctr->len = len_x(format, ctr->i, arg->type);
 	arg->str = ft_strsub(format, ctr->i + 1, ctr->len);
+	if (ft_strchr(CONV, arg->type) == 0)
+	{	
+		case_3(arg, ctr);
+		return (0);
+	}
 	ft_analyse(arg);
 	ft_conversion(arg, av);
 	if (arg->check == -1)
