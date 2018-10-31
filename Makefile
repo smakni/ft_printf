@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/10/25 18:32:14 by smakni           ###   ########.fr        #
+#    Updated: 2018/10/31 16:25:57 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,19 @@ NAME	= 	libftprintf.a
 
 CC		=	@gcc
 
-CFLAGS	+=	-Wall -Werror -Wextra 
+CFLAGS	+=	-Wall -Werror -Wextra -g3
 
-SRCS	=	ft_printf.c		\
-			check.c 		\
-			analyse.c		\
-			conversion_c.c 	\
-			conversion_d.c	\
-			conversion_d0.c \
-			conversion_s.c	\
-			conversion_bs.c	\
-			conversion_p.c	\
-			conversion_x.c	\
-			conversion_0.c	\
+SRCS	=	ft_printf.c			\
+			check.c 			\
+			analyse.c			\
+			conversion_c.c 		\
+			conversion_d.c		\
+			conversion_d0.c 	\
+			conversion_s.c		\
+			conversion_bs.c		\
+			conversion_p.c		\
+			conversion_x.c		\
+			conversion_0.c		\
 			ft_putchar_printf.c 
 
 OBJF	=	libft/*.o
