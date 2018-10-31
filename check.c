@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 14:13:50 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 18:54:07 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,17 +148,23 @@ int		check_str(char *str)
 
 char	*check_size(char *str)
 {
-	if (ft_strstr(str, HH) != 0)
-		return (HH);
-	else if (ft_strstr(str, LL) != 0)
-		return (LL);
-	if (ft_strchr(str, 'l') != 0)
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{	
+		if (str[i] == 'h')
+			count++;
+		i++;
+	}
+	if (ft_strchr(str, 'l') != 0 || ft_strchr(str, 'j') != 0 
+			|| ft_strchr(str, 'z') != 0)
 		return ("l");
-	else if (ft_strchr(str, 'h') != 0)
-		return ("h");
-	else if (ft_strchr(str, 'j') != 0)
-		return ("j");
-	else if (ft_strchr(str, 'z') != 0)
-		return ("z");
+	else if (count >= 2)
+		return ("hh");
+	else if (count == 1)
+		return("h");
 	return ("");
 }
