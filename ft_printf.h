@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/30 12:51:36 by smakni           ###   ########.fr       */
+/*   Updated: 2018/10/31 13:44:40 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define HH		"hh"
 # define LL		"ll"
-# define OPT	" 0+-#"
+# define OPT	" +-#"
 # define CONV 	"sSpdDioOuUxXcC%%"
 
 typedef struct	s_format
