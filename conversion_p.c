@@ -15,39 +15,29 @@
 void	conversion_p(t_format *arg, va_list av)
 {
 	void				*adr;
-	int					tmp;
+	char				*tmp;
 	char				*str_tmp;
-	long unsigned int	nb;
-	int					i;
+	unsigned long		nb;
 
-	i = 0;
-	tmp = 0;
 	str_tmp = NULL;
+	tmp = NULL;
 	adr = va_arg(av, void*);
-	nb = (long unsigned int)adr;
-	while (nb > 0)
-	{
-		i++;
-		nb = nb / 16;
+	nb = (unsigned long)adr;
+	tmp = ft_itoa_base_lui(nb, 16, 0);
+	if ((int)ft_strlen(tmp) >= arg->precision)
+		str_tmp = ft_memalloc(2);
+	else
+	{		
+		str_tmp = ft_memalloc(arg->precision - (int)ft_strlen(tmp) + 2);
+		ft_memset(str_tmp, '0',arg->precision - (int)ft_strlen(tmp) + 2);
 	}
-	str_tmp = ft_memalloc(i + 3);
 	str_tmp[0] = '0';
 	str_tmp[1] = 'x';
-	nb = (long unsigned int)adr;
-	i += 2;
-	if (nb == 0)
-		str_tmp[i] = '0';
-	while (nb > 0)
-	{
-		i--;
-		tmp = nb % 16;
-		if (tmp < 10)
-			tmp = tmp + 48;
-		else
-			tmp = tmp + 87;
-		str_tmp[i] = tmp;
-		nb = nb / 16;
-	}
+	if (ft_strcmp(tmp, "0") == 0 && arg->precision == 0 
+			&& ft_strchr(arg->str, '.') != 0)
+		ft_strdel(&tmp);
+	else
+		str_tmp = ft_strjoin(str_tmp, tmp);
 	if (arg->width > (int)ft_strlen(str_tmp))
 	{
 		arg->res = ft_memalloc(arg->width - (int)ft_strlen(str_tmp));
