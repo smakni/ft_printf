@@ -27,6 +27,7 @@ SRCS	=	ft_printf.c			\
 			conversion_p.c		\
 			conversion_x.c		\
 			conversion_0.c		\
+			conversion_none.c	\
 			ft_putchar_printf.c 
 
 OBJF	=	libft/*.o

@@ -23,6 +23,7 @@
 # include <inttypes.h>
 
 # define OPT	" +-#"
+# define SIZE	"lhjz"
 # define CONV 	"sSpdDioOuUxXcC%%"
 
 typedef struct	s_format
@@ -81,6 +82,7 @@ void			conversion_x(t_format *arg, va_list av);
 void			conversion_bx(t_format *arg, va_list av);
 void			conversion_o(t_format *arg, va_list av);
 void			conversion_0(t_format *arg);
+void			conversion_none(t_format *arg);
 void			ft_aff_param(t_format *arg);
 char			*ft_strcpy_from(char *dst, const char *src, int start);
 char			*ft_putchar_printf(wchar_t c, char *str, int check);
