@@ -37,7 +37,7 @@ void	conversion_d(t_format *arg, va_list av)
 	else if (check == 0 || ((arg->type == 'o' || arg->type == 'O')
 			&& ft_strchr(arg->option, '#') != 0))
 		arg->res = ft_strdup(nb);
-	if (arg->type != 'u' && arg->type != 'U' && ft_strchr(arg->option, ' ') != 0
+	if ((arg->type == 'd' || arg->type == 'D' || arg->type == 'i') && ft_strchr(arg->option, ' ') != 0
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
 	{
 		tmp = ft_memalloc(2 + ft_strlen(arg->res));
@@ -59,7 +59,7 @@ char	*conversion_d1(t_format *arg, char *nb)
 {
 	char *tmp;
 
-	if (arg->type != 'u' && arg->type != 'U' && 
+	if ((arg->type == 'd' || arg->type == 'D' || arg->type == 'i') && 
 			ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
 	{
 		tmp = "+";
