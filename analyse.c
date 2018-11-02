@@ -36,5 +36,7 @@ void	ft_conversion(t_format *arg, va_list av)
 		conversion_p(arg, av);
 	else if (arg->type == '%')
 		conversion_0(arg);
+	else if (ft_strchr(SIZE, arg->type) == 0  && arg->type != '0')
+		conversion_none(arg);
 	return ;
 }
