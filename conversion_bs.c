@@ -82,7 +82,7 @@ char			*conversion_bs(t_format *arg, va_list av)
 	while (i <= len)
 	{
 		x = check_x(tmp[i]);
-		if (arg->precision > 0 && (i + x) > arg->precision)
+		if (arg->precision > 0 && (i + x) >= arg->precision)
 			break ;
 		if ((x = check_error_c(tmp[i])) == -1)
 		{
