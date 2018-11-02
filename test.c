@@ -14,10 +14,11 @@
 
 int		main()
 {
+	setlocale(LC_ALL, "");
 	int x;
 	int y;
-	ft_printf("{%15Z}\n", 123);
-	printf("{%15Z}\n", 123);
+	x = ft_printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	y = printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	printf("me = %d\ncp = %d\n", x, y);
 	return (0);
 }
