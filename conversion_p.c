@@ -25,22 +25,26 @@ void	conversion_p(t_format *arg, va_list av)
 	nb = (unsigned long)adr;
 	tmp = ft_itoa_base_lui(nb, 16, 0);
 	if ((int)ft_strlen(tmp) >= arg->precision)
-		str_tmp = ft_memalloc(2);
+		str_tmp = ft_strdup("0x"); 
 	else
-	{		
-		str_tmp = ft_memalloc(arg->precision - (int)ft_strlen(tmp) + 2);
-		ft_memset(str_tmp, '0',arg->precision - (int)ft_strlen(tmp) + 2);
+	{
+		str_tmp = ft_memalloc(arg->precision - (int)ft_strlen(tmp) + 3);
+		ft_memset(str_tmp, '0', arg->precision - (int)ft_strlen(tmp) + 3);
+		str_tmp[0] = '0';
+		str_tmp[1] = 'x';
+		str_tmp[arg->precision - (int)ft_strlen(tmp) + 2] = '\0';
 	}
-	str_tmp[0] = '0';
-	str_tmp[1] = 'x';
 	if (ft_strcmp(tmp, "0") == 0 && arg->precision == 0 
 			&& ft_strchr(arg->str, '.') != 0)
 		ft_strdel(&tmp);
 	else
-		str_tmp = ft_strjoin(str_tmp, tmp);
+	{
+		str_tmp = ft_memjoin(str_tmp, tmp, ft_strlen(str_tmp), ft_strlen(tmp));
+		ft_strdel(&tmp);
+	}
 	if (arg->width > (int)ft_strlen(str_tmp))
 	{
-		arg->res = ft_memalloc(arg->width - (int)ft_strlen(str_tmp));
+		arg->res = ft_memalloc(arg->width - (int)ft_strlen(str_tmp) + 1);
 		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
 			ft_memset(arg->res, '0', arg->width - (int)ft_strlen(str_tmp));
 		else
