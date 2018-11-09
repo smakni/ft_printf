@@ -43,8 +43,6 @@ char		*ft_putchar_printf(wchar_t c, char *str, int check)
 		str[3] = '\0';
 	}
 	else if (check == 4)
-	{
 		str = case_4(c, str);
-	}
 	return (str);
 }
