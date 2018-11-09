@@ -17,8 +17,12 @@ int		main()
 	setlocale(LC_ALL, "");
 	int x;
 	int y;
+	//x = ft_printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	//y = printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	x = ft_printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	y = printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	//ft_printf("%10p\n", 43);
+	//printf("%10p\n", 43);
 	printf("me = %d\ncp = %d\n", x, y);
 	return (0);
 }
