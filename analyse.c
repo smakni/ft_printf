@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 15:39:30 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/24 15:51:01 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:12:56 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_conversion(t_format *arg, va_list av)
 		conversion_p(arg, av);
 	else if (arg->type == '%')
 		conversion_0(arg);
-	else if (ft_strchr(SIZE, arg->type) == 0  && arg->type != '0')
+	else if (ft_strchr(SIZE, arg->type) == 0 && arg->type != '0')
 		conversion_none(arg);
 	return ;
 }

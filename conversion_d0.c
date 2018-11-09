@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 12:33:02 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/31 15:12:19 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:25:51 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*conversion_d0_d(t_format *arg, char *nb, va_list av)
 	x = va_arg(av, long);
 	if (arg->size[0] == '\0' && arg->type != 'D')
 		nb = ft_itoa((int)x);
-	if (ft_strcmp(arg->size, "h") == 0  && arg->type != 'D')
+	if (ft_strcmp(arg->size, "h") == 0 && arg->type != 'D')
 		nb = ft_itoa((short)x);
 	else if (ft_strcmp(arg->size, "hh") == 0 && arg->type != 'D')
 		nb = ft_itoa((char)x);
@@ -64,7 +64,7 @@ char	*conversion_d0_o(t_format *arg, char *nb, va_list av)
 	x = va_arg(av, unsigned long);
 	if (arg->size[0] == '\0' && arg->type == 'o')
 		nb = ft_itoa_base_ui((unsigned int)x, 8, 0);
-	else if	(ft_strcmp(arg->size, "h") == 0 && arg->type == 'o')
+	else if (ft_strcmp(arg->size, "h") == 0 && arg->type == 'o')
 		nb = ft_itoa_base_ui((unsigned short)x, 8, 0);
 	else if (ft_strcmp(arg->size, "hh") == 0 && arg->type == 'o')
 		nb = ft_itoa_base_ui((unsigned char)x, 8, 0);
@@ -75,7 +75,7 @@ char	*conversion_d0_o(t_format *arg, char *nb, va_list av)
 
 char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 {
-	long 	x;
+	long	x;
 	int		f;
 
 	x = va_arg(av, unsigned long);
@@ -93,4 +93,3 @@ char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 		nb = ft_itoa_base_lui(x, 16, f);
 	return (nb);
 }
-

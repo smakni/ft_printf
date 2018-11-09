@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:22:09 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/31 17:43:00 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:38:33 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	conversion_p(t_format *arg, va_list av)
 	nb = (unsigned long)adr;
 	tmp = ft_itoa_base_lui(nb, 16, 0);
 	if ((int)ft_strlen(tmp) >= arg->precision)
-		str_tmp = ft_strdup("0x"); 
+		str_tmp = ft_strdup("0x");
 	else
 	{
 		str_tmp = ft_memalloc(arg->precision - (int)ft_strlen(tmp) + 3);
@@ -34,7 +34,7 @@ void	conversion_p(t_format *arg, va_list av)
 		str_tmp[1] = 'x';
 		str_tmp[arg->precision - (int)ft_strlen(tmp) + 2] = '\0';
 	}
-	if (ft_strcmp(tmp, "0") == 0 && arg->precision == 0 
+	if (ft_strcmp(tmp, "0") == 0 && arg->precision == 0
 			&& ft_strchr(arg->str, '.') != 0)
 		ft_strdel(&tmp);
 	else
@@ -45,11 +45,13 @@ void	conversion_p(t_format *arg, va_list av)
 	if (arg->width > (int)ft_strlen(str_tmp))
 	{
 		arg->res = ft_memalloc(arg->width - (int)ft_strlen(str_tmp) + 1);
-		if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
+		if (ft_strchr(arg->option, '0') != 0
+			&& ft_strchr(arg->option, '-') == 0)
 			ft_memset(arg->res, '0', arg->width - (int)ft_strlen(str_tmp));
 		else
 			ft_memset(arg->res, ' ', arg->width - (int)ft_strlen(str_tmp));
-		if (ft_strchr(arg->option, '0') != 0 || ft_strchr(arg->option, '-') != 0)
+		if (ft_strchr(arg->option, '0') != 0
+			|| ft_strchr(arg->option, '-') != 0)
 			arg->res = ft_strjoin(str_tmp, arg->res);
 		else
 			arg->res = ft_strjoin(arg->res, str_tmp);

@@ -6,28 +6,35 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 13:07:08 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/25 14:33:45 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:35:57 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	conversion_x(t_format *arg, va_list av)
+static	int	get_len_x(unsigned nb)
 {
-	unsigned int	nb;
-	int				tmp;
-	int				i;
+	int i;
 
 	i = 0;
-	nb = va_arg(av, int);
-	tmp = nb;
 	while (nb != 0)
 	{
 		i++;
 		nb = nb / 16;
 	}
+	return (i);
+}
+
+void		conversion_x(t_format *arg, va_list av)
+{
+	unsigned int	nb;
+	int				tmp;
+	int				i;
+
+	nb = va_arg(av, int);
+	tmp = nb;
+	i = get_len_x(nb);
 	arg->res = ft_memalloc(i + 1);
-	nb = tmp;
 	while (nb != 0)
 	{
 		i--;
@@ -42,22 +49,16 @@ void	conversion_x(t_format *arg, va_list av)
 	arg->count = ft_strlen(arg->res);
 }
 
-void	conversion_bx(t_format *arg, va_list av)
+void		conversion_bx(t_format *arg, va_list av)
 {
 	unsigned int	nb;
 	int				tmp;
 	int				i;
 
-	i = 0;
 	nb = va_arg(av, int);
 	tmp = nb;
-	while (nb != 0)
-	{
-		i++;
-		nb = nb / 16;
-	}
+	i = get_len_x(nb);
 	arg->res = ft_memalloc(i + 1);
-	nb = tmp;
 	while (nb != 0)
 	{
 		i--;

@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 18:54:07 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:23:59 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	check_conv(const char *str, int x)
 {
-	int	j;
-	char *check_str;
+	int		j;
+	char	*check_str;
 
 	j = 0;
 	check_str = "0123456789 +-#hljz.";
@@ -55,11 +55,11 @@ int		check_opt_0(char *str)
 
 char	*check_option(char *str)
 {
-	int i;
-	int j;
-	int check;
-	char *opt;
-	
+	int		i;
+	int		j;
+	int		check;
+	char	*opt;
+
 	i = -1;
 	j = 0;
 	opt = NULL;
@@ -154,17 +154,17 @@ char	*check_size(char *str)
 	i = 0;
 	count = 0;
 	while (str[i])
-	{	
+	{
 		if (str[i] == 'h')
 			count++;
 		i++;
 	}
-	if (ft_strchr(str, 'l') != 0 || ft_strchr(str, 'j') != 0 
+	if (ft_strchr(str, 'l') != 0 || ft_strchr(str, 'j') != 0
 			|| ft_strchr(str, 'z') != 0)
 		return ("l");
 	else if (count >= 2)
 		return ("hh");
 	else if (count == 1)
-		return("h");
+		return ("h");
 	return ("");
 }

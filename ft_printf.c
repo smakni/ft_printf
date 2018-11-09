@@ -6,13 +6,13 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 18:54:04 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 15:54:11 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	init_struc(t_format *arg, t_control *ctr)
+void		init_struc(t_format *arg, t_control *ctr)
 {
 	arg->str = NULL;
 	arg->len = 0;
@@ -29,7 +29,7 @@ void	init_struc(t_format *arg, t_control *ctr)
 	ctr->len = 0;
 }
 
-void	free_arg(t_format *arg)
+void		free_arg(t_format *arg)
 {
 	ft_strdel(&arg->str);
 	arg->len = 0;
@@ -41,7 +41,7 @@ void	free_arg(t_format *arg)
 	arg->check = 0;
 }
 
-int		len_x(const char *str, int x, char c)
+int			len_x(const char *str, int x, char c)
 {
 	int count;
 
@@ -51,10 +51,11 @@ int		len_x(const char *str, int x, char c)
 	return (count);
 }
 
-int		case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
+int			case_1(t_format *arg, t_control *ctr,
+					const char *format, va_list av)
 {
 	if ((arg->type = check_conv(format, ctr->i)) == '0')
-	{	
+	{
 		ctr->i += len_x(format, ctr->i, '\0');
 		return (0);
 	}
@@ -76,7 +77,7 @@ int		case_1(t_format *arg, t_control *ctr, const char *format, va_list av)
 	return (0);
 }
 
-void	case_2(t_control *ctr, const char *format)
+void		case_2(t_control *ctr, const char *format)
 {
 	char *tmp;
 
@@ -89,12 +90,24 @@ void	case_2(t_control *ctr, const char *format)
 	ft_strdel(&tmp);
 }
 
-int		ft_printf(const char *format, ...)
+static	int	final(t_format *arg, t_control *ctr, va_list av)
+{
+	int ret;
+
+	ret = ctr->ret;
+	write(1, ctr->result, ctr->ret);
+	ft_strdel(&ctr->result);
+	free(ctr);
+	free(arg);
+	va_end(av);
+	return (ret);
+}
+
+int			ft_printf(const char *format, ...)
 {
 	va_list		av;
 	t_format	*arg;
 	t_control	*ctr;
-	int			ret;
 
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		return (0);
@@ -116,11 +129,5 @@ int		ft_printf(const char *format, ...)
 		else
 			case_2(ctr, format);
 	}
-	write(1, ctr->result, ctr->ret);
-	ft_strdel(&ctr->result);
-	ret = ctr->ret;
-	free(ctr);
-	free(arg);
-	va_end(av);
-	return (ret);
+	return (final(arg, ctr, av));
 }
