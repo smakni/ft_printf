@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 15:34:04 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 18:00:25 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ static int		check_x(unsigned int c)
 {
 	if (c <= 127)
 		return (1);
-	else if (c < 256 && MB_CUR_MAX == 1)
+	else if (c < 256)
 		return (1);
-	else if (c <= 2047 && MB_CUR_MAX >= 2)
+	else if (c <= 2047)
 		return (2);
-	else if (c <= 65536 && MB_CUR_MAX >= 3)
+	else if (c <= 65536)
 		return (3);
-	else if (c < 1114111 && MB_CUR_MAX >= 4)
+	else if (c < 1114111)
 		return (4);
 	else
-		return (0);
+		return (1);
 }
 
 static int		ft_strwlen2(const wchar_t *src)
@@ -69,35 +69,27 @@ char			*conversion_bs(t_format *arg, va_list av)
 {
 	wchar_t	*tmp;
 	int		x;
-	int		len;
 	int		i;
-	char	*ret;
 	int		stop;
+	char	*ret;
 
 	i = 0;
 	x = 0;
-	stop = 1;
+	stop = 0;
 	if ((tmp = va_arg(av, wchar_t *)) == NULL)
 		return (NULL);
-	len = ft_strwlen2(tmp);
 	ret = ft_memalloc(1);
-	while (i <= len)
+	while (i < ft_strwlen2(tmp))
 	{
-		x = check_x(tmp[i]);
-		//printf("i = %d\n", i);
-		//printf("x = %d\n", x);
-		//printf("tmp[i] = %c\n", tmp[i]);
-		if (arg->precision > 0 && (stop > arg->precision 
-				|| (i + x) > arg->precision))
+		stop += (x = check_x(tmp[i]));
+		if (arg->precision > 0 && stop > arg->precision)
 			break ;
-		if ((x = check_error_c(tmp[i])) == -1)
+		if (check_error_c(tmp[i]) == -1)
 		{
 			arg->check = -1;
 			break ;
 		}
 		ret = get_c(ret, tmp[i++], x);
-		stop += x;
 	}
-	arg->count = ft_strlen(ret);
 	return (ret);
 }
