@@ -33,13 +33,13 @@ static int		check_x(unsigned int c)
 {
 	if (c <= 127)
 		return (1);
-	else if (c < 256)
+	else if (c < 256 && MB_CUR_MAX == 1)
 		return (1);
-	else if (c <= 2047)
+	else if (c <= 2047 && MB_CUR_MAX >= 2)
 		return (2);
-	else if (c <= 65536)
+	else if (c <= 65536 && MB_CUR_MAX >= 3)
 		return (3);
-	else if (c < 1114111)
+	else if (c < 1114111 && MB_CUR_MAX >= 4)
 		return (4);
 	else
 		return (0);
@@ -61,7 +61,7 @@ static	char	*get_c(char *ret, wchar_t c, int x)
 
 	tmp_c = ft_memalloc(x + 1);
 	tmp_c = ft_putchar_printf(c, tmp_c, x);
-	ret = ft_strjoin_2free(ret, tmp_c);
+	ret = ft_strjoin_free(ret, tmp_c);
 	return (ret);
 }
 
@@ -72,9 +72,11 @@ char			*conversion_bs(t_format *arg, va_list av)
 	int		len;
 	int		i;
 	char	*ret;
+	int		stop;
 
 	i = 0;
 	x = 0;
+	stop = 1;
 	if ((tmp = va_arg(av, wchar_t *)) == NULL)
 		return (NULL);
 	len = ft_strwlen2(tmp);
@@ -82,7 +84,11 @@ char			*conversion_bs(t_format *arg, va_list av)
 	while (i <= len)
 	{
 		x = check_x(tmp[i]);
-		if (arg->precision > 0 && (i + x) >= arg->precision)
+		//printf("i = %d\n", i);
+		//printf("x = %d\n", x);
+		//printf("tmp[i] = %c\n", tmp[i]);
+		if (arg->precision > 0 && (stop > arg->precision 
+				|| (i + x) > arg->precision))
 			break ;
 		if ((x = check_error_c(tmp[i])) == -1)
 		{
@@ -90,6 +96,7 @@ char			*conversion_bs(t_format *arg, va_list av)
 			break ;
 		}
 		ret = get_c(ret, tmp[i++], x);
+		stop += x;
 	}
 	arg->count = ft_strlen(ret);
 	return (ret);
