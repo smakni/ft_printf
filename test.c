@@ -6,23 +6,28 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 11:01:25 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 18:54:10 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/09 18:00:21 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int		main()
-{
-	setlocale(LC_ALL, "");
+{	
+	wchar_t	s[5];
+
+	s[0] = 'S';
+	s[1] = 256;
+	s[2] = 'u';
+	s[3] = 945;
+	s[4] = '\0';
+	//setlocale(LC_ALL, "");
 	int x;
 	int y;
-	//x = ft_printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	//y = printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	x = ft_printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	y = printf("%.4S\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	//ft_printf("%10p\n", 43);
-	//printf("%10p\n", 43);
+//	x = ft_printf("%.4S\n", L"我是一只猫。");
+//	y = printf("%.4S\n", L"我是一只猫。");
+	x = ft_printf("%.1ls\n", s);
+	y = printf("%.1ls\n", s);
 	printf("me = %d\ncp = %d\n", x, y);
 	return (0);
 }
