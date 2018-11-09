@@ -67,7 +67,7 @@ char	*check_option(char *str)
 	while (OPT[++i])
 		if (ft_strchr(str, OPT[i]) != 0)
 			j++;
-	if (!(opt = ft_memalloc(j + check)))
+	if (!(opt = ft_memalloc(j + check + 1)))
 		return (NULL);
 	i = -1;
 	j = 0;
