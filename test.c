@@ -21,13 +21,13 @@ int		main()
 	s[2] = 'u';
 	s[3] = 945;
 	s[4] = '\0';
-	//setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 	int x;
 	int y;
-//	x = ft_printf("%.4S\n", L"我是一只猫。");
-//	y = printf("%.4S\n", L"我是一只猫。");
-	x = ft_printf("%.1ls\n", s);
-	y = printf("%.1ls\n", s);
+	x = ft_printf("%.4S\n", L"我是一只猫。");
+	y = printf("%.4S\n", L"我是一只猫。");
+//	x = ft_printf("%.1ls\n", s);
+//	y = printf("%.1ls\n", s);
 	printf("me = %d\ncp = %d\n", x, y);
 	return (0);
 }
