@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 16:52:47 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 17:51:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int			case_1(t_format *arg, t_control *ctr,
 	{
 		free_arg(arg);
 		write(1, ctr->result, arg->save);
+		ft_strdel(&ctr->result);
 		return (-1);
 	}
 	ctr->result = ft_memjoin(ctr->result, arg->res, ctr->ret, arg->count);
@@ -41,7 +42,7 @@ int			case_1(t_format *arg, t_control *ctr,
 void		case_2(t_control *ctr, const char *format)
 {
 	char *tmp;
-	
+
 	tmp = NULL;
 	ctr->len = len_x(format, ctr->i, '%');
 	tmp = ft_strsub(format, ctr->i, ctr->len);
