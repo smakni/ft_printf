@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 18:13:03 by sabri             #+#    #+#             */
-/*   Updated: 2018/10/31 14:14:06 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 11:38:28 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,6 @@ static int	check_c(t_format *arg, wchar_t c)
 }
 
 static int	check_error(int c)
-{
-	if ((c >= 55296 && c <= 57343) || c > 1114111)
-		return (-1);
-	if (c <= 127)
-		return (1);
-	else if (c < 256 && MB_CUR_MAX == 1)
-		return (1);
-	else if (c <= 2047 && MB_CUR_MAX >= 2)
-		return (2);
-	else if (c <= 65536 && MB_CUR_MAX >= 3)
-		return (3);
-	else if (c < 1114111 && MB_CUR_MAX >= 4)
-		return (4);
-	return (-1);
-}
-
-static int	check_error_c(unsigned int c)
 {
 	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);

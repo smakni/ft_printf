@@ -6,13 +6,13 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/09 18:00:25 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 11:38:30 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		check_error_c(unsigned int c)
+int				check_error_c(unsigned c)
 {
 	if ((c >= 55296 && c <= 57343) || c > 1114111)
 		return (-1);
@@ -29,7 +29,7 @@ static int		check_error_c(unsigned int c)
 	return (-1);
 }
 
-static int		check_x(unsigned int c)
+static int		check_x(unsigned c)
 {
 	if (c <= 127)
 		return (1);
@@ -44,17 +44,7 @@ static int		check_x(unsigned int c)
 	else
 		return (1);
 }
-/*
-static int		ft_strwlen2(const wchar_t *src)
-{
-	int		i;
 
-	i = 0;
-	while (src[i])
-		i++;
-	return (i);
-}
-*/
 static	char	*get_c(char *ret, wchar_t c, int x)
 {
 	char *tmp_c;
@@ -80,7 +70,7 @@ char			*conversion_bs(t_format *arg, va_list av)
 		return (NULL);
 	ret = ft_memalloc(1);
 	while (tmp[i])
-	{	
+	{
 		stop += (x = check_x(tmp[i]));
 		if (arg->precision > 0 && stop > arg->precision)
 			break ;

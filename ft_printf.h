@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/31 15:28:52 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 15:52:05 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,34 +57,31 @@ int				check_widht(char *str);
 int				check_precision(char *str);
 int				check_str(char *str);
 char			*check_size(char *str);
+int				check_error_c(unsigned c);
 void			ft_conversion(t_format *arg, va_list av);
 void			conversion_d(t_format *arg, va_list av);
-int				conversion_null(t_format *arg, char *nb);
 char			*conversion_d0(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_d(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_u(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_o(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_x(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_bx(t_format *arg, char *nb, va_list av);
-char			*conversion_x1(t_format *arg, char *nb);
-char			*conversion_d1(t_format *arg, char *nb);
 char			*conversion_d2(t_format *arg, char *nb);
 char			*conversion_d2x(t_format *arg, char *nb);
 void			conversion_d3(t_format *arg, char *nb, int len_nb);
-void			conversion_d4(t_format *arg);
 void			conversion_s(t_format *arg, va_list av);
-char			*conversion_s1(t_format *arg, char *tmp);
-char			*conversion_s2(t_format *arg, char *tmp, int len, int i);
 char			*conversion_bs(t_format *arg, va_list av);
 void			conversion_c(t_format *arg, va_list av);
 void			conversion_p(t_format *arg, va_list av);
 void			conversion_x(t_format *arg, va_list av);
+char			*conversion_x1(t_format *arg, char *nb);
 void			conversion_bx(t_format *arg, va_list av);
 void			conversion_o(t_format *arg, va_list av);
 void			conversion_0(t_format *arg);
 void			conversion_none(t_format *arg);
-void			ft_aff_param(t_format *arg);
-char			*ft_strcpy_from(char *dst, const char *src, int start);
 char			*ft_putchar_printf(wchar_t c, char *str, int check);
+int				len_x(const char *str, int x, char c);
+void			free_arg(t_format *arg);
+void			init_struc(t_format *arg, t_control *ctr);
 
 #endif
