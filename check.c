@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 16:13:58 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 17:51:03 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ static int		check_opt_0(char *str)
 	int i;
 
 	i = 0;
+	if (str[i] == '0')
+		return (1);
+	else
+		i++;
 	while (str[i] && str[i] != '.')
 	{
 		if (str[i] == '0' && ft_isdigit(str[i - 1]) == 0)
