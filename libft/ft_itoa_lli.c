@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_lli.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:03:20 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 13:18:46 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 19:47:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static long long int	ft_size(unsigned long long int n)
 static	char			*result(int sign, char *str,
 								unsigned long long tmp_n, long long size)
 {
-	int i;
+	long long i;
 
 	i = 0;
 	str[size] = '\0';
@@ -53,12 +53,10 @@ char					*ft_itoa_lli(long long int n)
 {
 	unsigned long long	tmp_n;
 	char				*str;
-	long long			i;
 	long long			size;
 	int					sign;
 
 	sign = 0;
-	i = 0;
 	size = 0;
 	if (n < 0)
 	{
