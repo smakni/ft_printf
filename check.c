@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 17:51:03 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 20:02:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char			*check_option(char *str)
 		if (ft_strchr(str, OPT[i]) != 0)
 			j++;
 	if (!(opt = ft_memalloc(j + check + 1)))
-		return (NULL);
+		exit(-1);
 	i = -1;
 	j = 0;
 	while (OPT[++i])

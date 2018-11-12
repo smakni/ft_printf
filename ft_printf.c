@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 17:51:45 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/12 20:00:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int			case_1(t_format *arg, t_control *ctr,
 	if (arg->check == -1)
 	{
 		free_arg(arg);
+		free(arg);
+		free(ctr);
 		write(1, ctr->result, arg->save);
 		ft_strdel(&ctr->result);
 		return (-1);
@@ -71,6 +73,8 @@ int			ft_printf(const char *format, ...)
 	t_format	*arg;
 	t_control	*ctr;
 
+	if (format == NULL)
+		return (-1);
 	if (!(arg = ft_memalloc(sizeof(t_format))))
 		exit(-1);
 	if (!(ctr = ft_memalloc(sizeof(t_control))))
@@ -82,11 +86,7 @@ int			ft_printf(const char *format, ...)
 		if (format[ctr->i] == '%')
 		{
 			if (case_1(arg, ctr, format, av) == -1)
-			{
-				free(ctr);
-				free(arg);
 				return (-1);
-			}
 		}
 		else
 			case_2(ctr, format);
