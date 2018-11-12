@@ -44,7 +44,7 @@ static int		check_x(unsigned int c)
 	else
 		return (1);
 }
-
+/*
 static int		ft_strwlen2(const wchar_t *src)
 {
 	int		i;
@@ -54,7 +54,7 @@ static int		ft_strwlen2(const wchar_t *src)
 		i++;
 	return (i);
 }
-
+*/
 static	char	*get_c(char *ret, wchar_t c, int x)
 {
 	char *tmp_c;
@@ -79,8 +79,8 @@ char			*conversion_bs(t_format *arg, va_list av)
 	if ((tmp = va_arg(av, wchar_t *)) == NULL)
 		return (NULL);
 	ret = ft_memalloc(1);
-	while (i < ft_strwlen2(tmp))
-	{
+	while (tmp[i])
+	{	
 		stop += (x = check_x(tmp[i]));
 		if (arg->precision > 0 && stop > arg->precision)
 			break ;
