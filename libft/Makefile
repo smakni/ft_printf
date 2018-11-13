@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/10 10:28:08 by smakni            #+#    #+#              #
-#    Updated: 2018/10/30 11:51:14 by smakni           ###   ########.fr        #
+#    Updated: 2018/11/13 18:14:56 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRCS	=	ft_putchar.c ft_putstr.c ft_putnbr.c ft_strlen.c ft_strdup.c     \
 			ft_itoa_base_it.c ft_itoa_base_uit.c ft_putchar2.c				 \
 			ft_putchar1.c ft_putchar3.c ft_putchar4.c ft_memjoin.c			 \
 			ft_memcpy_from.c ft_putstr_printf.c ft_itoa_sit.c				 \
-			ft_strjoin_2free.c
+			ft_strjoin_2free.c ft_strjoin_free1.c
 
 OBJS	=	$(SRCS:.c=.o)
 

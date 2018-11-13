@@ -6,7 +6,7 @@
 /*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 12:33:02 by sabri             #+#    #+#             */
-/*   Updated: 2018/11/09 15:25:51 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 19:04:18 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*conversion_d0(t_format *arg, char *nb, va_list av)
 		nb = conversion_d0_o(arg, nb, av);
 	else if (arg->type == 'x' || arg->type == 'X')
 		nb = conversion_d0_x(arg, nb, av);
+	else if (arg->type == 'f' || arg->type == 'F')
+		nb = conversion_f(arg, av);
 	return (nb);
 }
 

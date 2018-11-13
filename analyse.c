@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 15:39:30 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/09 15:12:56 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 18:40:14 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_conversion(t_format *arg, va_list av)
 	if (arg->type == 'd' || arg->type == 'D' || arg->type == 'i'
 			|| arg->type == 'u' || arg->type == 'U'
 			|| arg->type == 'o' || arg->type == 'O'
-			|| arg->type == 'x' || arg->type == 'X')
+			|| arg->type == 'x' || arg->type == 'X'
+			|| arg->type == 'f' || arg->type == 'F')
 		conversion_d(arg, av);
 	else if (arg->type == 'c' || arg->type == 'C')
 		conversion_c(arg, av);

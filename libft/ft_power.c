@@ -6,13 +6,13 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 16:00:23 by smakni            #+#    #+#             */
-/*   Updated: 2018/04/27 19:14:31 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 15:35:45 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_power(int nb, int power)
+long long		ft_power(long long  nb, int power)
 {
 	if (power < 0)
 		return (0);

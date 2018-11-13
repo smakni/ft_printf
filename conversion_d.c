@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 23:12:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/11/12 15:53:32 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 18:52:28 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ static	char	*conversion_d1(t_format *arg, char *nb)
 {
 	char *tmp;
 
-	if ((arg->type == 'd' || arg->type == 'D' || arg->type == 'i') &&
-			ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
+	if ((arg->type == 'd' || arg->type == 'D' || arg->type == 'i'
+				|| arg->type == 'f' || arg->type == 'F') 
+			&& ft_strchr(arg->option, '+') != 0 && nb[0] != '-')
 	{
 		tmp = "+";
 		nb = ft_strjoin_free(tmp, nb);

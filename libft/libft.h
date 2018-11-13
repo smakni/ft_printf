@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 10:28:24 by smakni            #+#    #+#             */
-/*   Updated: 2018/10/30 15:10:23 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 18:15:33 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strsub_free(char *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_free(char *s1, char *s2);
+char				*ft_strjoin_free1(char *s1, char *s2);
 char				*ft_strjoin_2free(char *s1, char *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa_base(int n, int len, int flag);
@@ -103,7 +104,7 @@ int					ft_isalnum(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isprint(int c);
-int					ft_power(int nb, int power);
+long long			ft_power(long long nb, int power);
 int					ft_factorial(int nb);
 int					ft_sqrt(int nb);
 int					ft_strlen_c(const char *str, char c);

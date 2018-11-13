@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 15:19:57 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 20:02:39 by marvin           ###   ########.fr       */
+/*   Updated: 2018/11/13 18:30:08 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char			check_conv(const char *str, int x)
 	char	*check_str;
 
 	j = 0;
-	check_str = "0123456789 +-#hljz.";
+	check_str = "0123456789 +-#hljzL.";
 	x++;
 	if (str[x] == CONV[j])
 		return (CONV[j]);

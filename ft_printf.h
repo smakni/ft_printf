@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 15:52:05 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 19:18:26 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include "libft/libft.h"
+# include <float.h>
 # include <wchar.h>
 # include <locale.h>
 # include <stdlib.h>
@@ -24,7 +25,7 @@
 
 # define OPT	" +-#"
 # define SIZE	"lhjz"
-# define CONV 	"sSpdDioOuUxXcC%%"
+# define CONV 	"sSfpdDioOuUxXcC%%"
 
 typedef struct	s_format
 {
@@ -59,6 +60,7 @@ int				check_str(char *str);
 char			*check_size(char *str);
 int				check_error_c(unsigned c);
 void			ft_conversion(t_format *arg, va_list av);
+char			*conversion_f(t_format *arg, va_list av);
 void			conversion_d(t_format *arg, va_list av);
 char			*conversion_d0(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_d(t_format *arg, char *nb, va_list av);

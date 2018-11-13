@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:45:11 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 15:53:28 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/13 19:06:20 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,22 @@ static	void	conversion_d4(t_format *arg)
 		ft_memset(arg->res, ' ', arg->width);
 }
 
+static	void	conversion_d4_f(t_format *arg)
+{
+	arg->res = ft_memalloc(arg->width + 1);
+	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
+		ft_memset(arg->res, '0', arg->width);
+	else
+		ft_memset(arg->res, ' ', arg->width);
+}
+
 static	void	conversion_d3_1(t_format *arg, char *nb, int len_nb)
 {
 	int i;
 
 	i = 0;
 	if ((nb[0] == '-' || nb[0] == '+') && ft_strchr(arg->option, '0') != 0
-			&& arg->precision == 0)
+			&& arg->precision == 0 && ft_strchr(arg->str, '.') == 0)
 		arg->res[i++] = nb[0];
 	else if ((arg->type == 'x' || arg->type == 'X')
 				&& ft_strchr(arg->option, '#') != 0
@@ -51,7 +60,10 @@ void			conversion_d3(t_format *arg, char *nb, int len_nb)
 	int i;
 
 	i = 0;
-	conversion_d4(arg);
+	if (arg->type != 'f' && arg->type != 'F')
+		conversion_d4(arg);
+	else
+		conversion_d4_f(arg);
 	if (ft_strchr(arg->option, '-') != 0)
 		while (nb[i])
 		{
