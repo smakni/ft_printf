@@ -27,8 +27,6 @@ int			case_1(t_format *arg, t_control *ctr,
 	if (arg->check == -1)
 	{
 		free_arg(arg);
-		free(arg);
-		free(ctr);
 		write(1, ctr->result, arg->save);
 		ft_strdel(&ctr->result);
 		return (-1);
@@ -86,7 +84,11 @@ int			ft_printf(const char *format, ...)
 		if (format[ctr->i] == '%')
 		{
 			if (case_1(arg, ctr, format, av) == -1)
+			{	
+				free(arg);
+				free(ctr);
 				return (-1);
+			}
 		}
 		else
 			case_2(ctr, format);
