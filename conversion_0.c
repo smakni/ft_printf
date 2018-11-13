@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 01:10:30 by sabri             #+#    #+#             */
-/*   Updated: 2018/11/12 20:28:33 by marvin           ###   ########.fr       */
+/*   Updated: 2018/11/13 10:18:31 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	case_1(t_format *arg)
+static	void	case_1(t_format *arg)
 {
 	if (!(arg->res = ft_memalloc(arg->width + 1)))
 		exit(-1);
@@ -36,7 +36,7 @@ static	void	conversion_0_2(t_format *arg)
 	arg->res[arg->width - 1] = '%';
 }
 
-void		conversion_0(t_format *arg)
+void			conversion_0(t_format *arg)
 {
 	if (arg->width > 1)
 	{

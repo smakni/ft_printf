@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:45:26 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 20:00:14 by marvin           ###   ########.fr       */
+/*   Updated: 2018/11/13 10:27:20 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int			case_1(t_format *arg, t_control *ctr,
 		free_arg(arg);
 		write(1, ctr->result, arg->save);
 		ft_strdel(&ctr->result);
+		free(arg);
+		free(ctr);
 		return (-1);
 	}
 	ctr->result = ft_memjoin(ctr->result, arg->res, ctr->ret, arg->count);
@@ -84,11 +86,7 @@ int			ft_printf(const char *format, ...)
 		if (format[ctr->i] == '%')
 		{
 			if (case_1(arg, ctr, format, av) == -1)
-			{	
-				free(arg);
-				free(ctr);
 				return (-1);
-			}
 		}
 		else
 			case_2(ctr, format);
