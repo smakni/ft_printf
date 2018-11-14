@@ -23,6 +23,7 @@ SRCS	=	ft_printf.c			\
 			analyse.c			\
 			conversion_c.c 		\
 			conversion_f.c 		\
+			conversion_f0.c 	\
 			conversion_d0.c 	\
 			conversion_d.c		\
 			conversion_d2.c		\
