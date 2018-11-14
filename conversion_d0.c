@@ -23,7 +23,7 @@ char	*conversion_d0(t_format *arg, char *nb, va_list av)
 	else if (arg->type == 'x' || arg->type == 'X')
 		nb = conversion_d0_x(arg, nb, av);
 	else if (arg->type == 'f' || arg->type == 'F')
-		nb = conversion_f(arg, av);
+		nb = conversion_f(arg, nb, av);
 	return (nb);
 }
 
@@ -95,3 +95,5 @@ char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 		nb = ft_itoa_base_lui(x, 16, f);
 	return (nb);
 }
+
+
