@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 11:02:54 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/17 15:18:30 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/17 15:23:38 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char			*ft_itoa_f(t_format *arg, double n)
 	char	*tmp2;
 	int		precision;
 	int		s;
-	long x;
 
 	tmp = NULL;
 	s = 1;

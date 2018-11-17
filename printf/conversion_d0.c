@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_d0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabri <sabri@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 12:33:02 by sabri             #+#    #+#             */
-/*   Updated: 2018/11/13 19:04:18 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/17 15:28:48 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,3 @@ char	*conversion_d0_x(t_format *arg, char *nb, va_list av)
 		nb = ft_itoa_base_lui(x, 16, f);
 	return (nb);
 }
-
-
