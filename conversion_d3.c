@@ -14,7 +14,8 @@
 
 static	void	conversion_d4(t_format *arg)
 {
-	arg->res = ft_memalloc(arg->width + 1);
+	if (!(arg->res = ft_memalloc(arg->width + 1)))
+		exit(-1);
 	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0
 		&& arg->precision == 0 && ft_strchr(arg->str, '.') == 0)
 		ft_memset(arg->res, '0', arg->width);
@@ -24,7 +25,8 @@ static	void	conversion_d4(t_format *arg)
 
 static	void	conversion_d4_f(t_format *arg)
 {
-	arg->res = ft_memalloc(arg->width + 1);
+	if (!(arg->res = ft_memalloc(arg->width + 1)))
+		exit(-1);
 	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
 		ft_memset(arg->res, '0', arg->width);
 	else

@@ -24,9 +24,11 @@ static	char	*f0(int precision)
 {
 	char *tmp;
 
+	tmp = NULL;
 	if (precision == 0)
 		return (ft_strdup("0"));
-	tmp = ft_memalloc(precision + 1);
+	if (!(tmp = ft_memalloc(precision + 1)))
+		exit(-1);
 	ft_memset(tmp, '0', precision);
 	tmp = ft_strjoin_free("0.", tmp);
 	return (tmp);
@@ -73,7 +75,8 @@ char	*ft_itoa_f(t_format *arg, double n)
 	if (tmp2[precision] > '4')
 	{
 		ft_strdel(&tmp2);
-		tmp2 = ft_itoa_lli((n - (long long)n) * s * ft_power(10, (precision)) + 1);
+		tmp2 = ft_itoa_lli((n - (long long)n) * s *
+								ft_power(10, (precision)) + 1);
 	}
 	tmp = ft_memjoin(tmp, tmp2, ft_strlen(tmp), precision);
 	ft_strdel(&tmp2);
@@ -99,7 +102,8 @@ char			*ft_itoa_bf(t_format *arg, long double n)
 	if (tmp2[precision] > '4')
 	{
 		ft_strdel(&tmp2);
-		tmp2 = ft_itoa_lli((n - (long long)n) * s * ft_power(10, (precision)) + 1);
+		tmp2 = ft_itoa_lli((n - (long long)n) * s *
+								ft_power(10, (precision)) + 1);
 	}
 	tmp = ft_memjoin(tmp, tmp2, ft_strlen(tmp), precision);
 	ft_strdel(&tmp2);

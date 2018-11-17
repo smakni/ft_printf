@@ -14,7 +14,8 @@
 
 static	char	*x1_1(char *x, char *nb)
 {
-	x = ft_memalloc(3 + ft_strlen(nb));
+	if (!(x = ft_memalloc(3 + ft_strlen(nb))))
+		exit(-1);
 	x[0] = '0';
 	x[1] = 'x';
 	x[2] = '\0';
@@ -23,7 +24,8 @@ static	char	*x1_1(char *x, char *nb)
 
 static	char	*x1_2(char *bx, char *nb)
 {
-	bx = ft_memalloc(3 + ft_strlen(nb));
+	if (!(bx = ft_memalloc(3 + ft_strlen(nb))))
+		exit(-1);
 	bx[0] = '0';
 	bx[1] = 'X';
 	bx[2] = '\0';

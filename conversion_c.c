@@ -88,7 +88,8 @@ void		conversion_c(t_format *arg, va_list av)
 	else if ((arg->check = check_error(c)) == -1)
 		return ;
 	check = check_c(arg, c);
-	arg->res = ft_memalloc(check + 1);
+	if (!(arg->res = ft_memalloc(check + 1)))
+		exit(-1);
 	arg->res = ft_putchar_printf(c, arg->res, check);
 	if (arg->width > check)
 	{

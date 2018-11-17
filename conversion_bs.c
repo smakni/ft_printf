@@ -29,7 +29,7 @@ int				check_error_c(unsigned c)
 	return (-1);
 }
 
-static int		check_x(unsigned c)
+static int		len(unsigned c)
 {
 	if (c <= 127)
 		return (1);
@@ -49,7 +49,8 @@ static	char	*get_c(char *ret, wchar_t c, int x)
 {
 	char *tmp_c;
 
-	tmp_c = ft_memalloc(x + 1);
+	if(!(tmp_c = ft_memalloc(x + 1)))
+		exit(-1);
 	tmp_c = ft_putchar_printf(c, tmp_c, x);
 	ret = ft_strjoin_free(ret, tmp_c);
 	return (ret);
@@ -68,11 +69,11 @@ char			*conversion_bs(t_format *arg, va_list av)
 	stop = 0;
 	if ((tmp = va_arg(av, wchar_t *)) == NULL)
 		return (NULL);
-	ret = ft_memalloc(1);
+	if (!(ret = ft_memalloc(1)))
+		exit(-1);
 	while (tmp[i])
 	{
-		stop += (x = check_x(tmp[i]));
-		if (arg->precision > 0 && stop > arg->precision)
+		if ((stop += (x = len(tmp[i]))) > arg->precision && arg->precision > 0)
 			break ;
 		if (check_error_c(tmp[i]) == -1)
 		{

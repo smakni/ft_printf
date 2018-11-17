@@ -41,14 +41,16 @@ static	int		conversion_null(t_format *arg, char *nb)
 	if (nb[0] == '0' && ft_strchr(arg->str, '.') != 0
 			&& arg->precision == 0 && arg->width == 0)
 	{
-		arg->res = ft_memalloc(1);
+		if (!(arg->res = ft_memalloc(1)))
+			exit(-1);
 		check = 1;
 	}
 	else if (ft_isdigit(nb[0]) == 0 && nb[1] == '0'
 		&& ft_strchr(arg->str, '.') != 0 && arg->precision == 0
 		&& arg->width == 0)
 	{
-		arg->res = ft_memalloc(2);
+		if (!(arg->res = ft_memalloc(2)))
+			exit(-1);
 		arg->res[0] = nb[0];
 		check = 2;
 	}
@@ -61,7 +63,8 @@ static	void	final(t_format *arg, char *tmp, char *nb, int len_nb)
 		&& ft_strchr(arg->option, ' ') != 0
 		&& arg->width <= len_nb && ft_isdigit(nb[0]) != 0)
 	{
-		tmp = ft_memalloc(2 + ft_strlen(arg->res));
+		if (!(tmp = ft_memalloc(2 + ft_strlen(arg->res))))
+			exit(-1);
 		tmp[0] = ' ';
 		tmp[1] = '\0';
 		tmp = ft_strcat(tmp, arg->res);

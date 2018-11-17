@@ -34,7 +34,8 @@ void		conversion_x(t_format *arg, va_list av)
 	nb = va_arg(av, int);
 	tmp = nb;
 	i = get_len_x(nb);
-	arg->res = ft_memalloc(i + 1);
+	if (!(arg->res = ft_memalloc(i + 1)))
+		exit(-1);
 	while (nb != 0)
 	{
 		i--;
@@ -58,7 +59,8 @@ void		conversion_bx(t_format *arg, va_list av)
 	nb = va_arg(av, int);
 	tmp = nb;
 	i = get_len_x(nb);
-	arg->res = ft_memalloc(i + 1);
+	if (!(arg->res = ft_memalloc(i + 1)))
+		exit(-1);
 	while (nb != 0)
 	{
 		i--;

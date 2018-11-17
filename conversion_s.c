@@ -35,7 +35,8 @@ static	char	*conversion_s1(t_format *arg, char *tmp)
 
 static	char	*conversion_s2(t_format *arg, char *tmp, int len, int i)
 {
-	arg->res = ft_memalloc(arg->width + 1);
+	if (!(arg->res = ft_memalloc(arg->width + 1)))
+		exit(-1);
 	if (ft_strchr(arg->option, '0') != 0 && ft_strchr(arg->option, '-') == 0)
 		ft_memset(arg->res, '0', arg->width);
 	else
