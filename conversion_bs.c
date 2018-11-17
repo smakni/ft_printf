@@ -6,7 +6,7 @@
 /*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 14:59:36 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/12 11:38:30 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/17 13:36:39 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static	char	*get_c(char *ret, wchar_t c, int x)
 {
 	char *tmp_c;
 
-	if(!(tmp_c = ft_memalloc(x + 1)))
+	if (!(tmp_c = ft_memalloc(x + 1)))
 		exit(-1);
 	tmp_c = ft_putchar_printf(c, tmp_c, x);
 	ret = ft_strjoin_free(ret, tmp_c);

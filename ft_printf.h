@@ -6,7 +6,7 @@
 /*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 14:48:17 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/13 19:18:26 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/17 13:40:53 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char			*check_size(char *str);
 int				check_error_c(unsigned c);
 void			ft_conversion(t_format *arg, va_list av);
 char			*conversion_f(t_format *arg, char *nb, va_list av);
+char			*f0(int precision);
 void			conversion_d(t_format *arg, va_list av);
 char			*conversion_d0(t_format *arg, char *nb, va_list av);
 char			*conversion_d0_d(t_format *arg, char *nb, va_list av);

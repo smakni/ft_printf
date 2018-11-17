@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_f.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smakni <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: smakni <smakni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 11:02:54 by smakni            #+#    #+#             */
-/*   Updated: 2018/11/13 19:22:37 by smakni           ###   ########.fr       */
+/*   Updated: 2018/11/17 15:18:30 by smakni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	get_precision(t_format *arg)
+static	int		get_precision(t_format *arg)
 {
 	if (ft_strchr(arg->str, '.') == 0)
 		return (6);
@@ -20,21 +20,7 @@ static	int	get_precision(t_format *arg)
 		return (arg->precision);
 }
 
-static	char	*f0(int precision)
-{
-	char *tmp;
-
-	tmp = NULL;
-	if (precision == 0)
-		return (ft_strdup("0"));
-	if (!(tmp = ft_memalloc(precision + 1)))
-		exit(-1);
-	ft_memset(tmp, '0', precision);
-	tmp = ft_strjoin_free("0.", tmp);
-	return (tmp);
-} 
-
-static	char	*around(double n, int precision ,char c)
+static	char	*around(double n, int precision, char c)
 {
 	if (precision != 0)
 		return (ft_strjoin_free1(ft_itoa_lli(n), "."));
@@ -44,7 +30,7 @@ static	char	*around(double n, int precision ,char c)
 		return (ft_itoa_lli(n));
 }
 
-static	char	*around_bf(long double n, int precision ,char c)
+static	char	*around_bf(long double n, int precision, char c)
 {
 	if (n == 0)
 		return (ft_strdup("0.00000"));
@@ -56,12 +42,13 @@ static	char	*around_bf(long double n, int precision ,char c)
 		return (ft_itoa_lli(n));
 }
 
-char	*ft_itoa_f(t_format *arg, double n)
+char			*ft_itoa_f(t_format *arg, double n)
 {
 	char	*tmp;
 	char	*tmp2;
 	int		precision;
 	int		s;
+	long x;
 
 	tmp = NULL;
 	s = 1;
@@ -109,4 +96,3 @@ char			*ft_itoa_bf(t_format *arg, long double n)
 	ft_strdel(&tmp2);
 	return (tmp);
 }
-
