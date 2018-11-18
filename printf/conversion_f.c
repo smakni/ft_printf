@@ -45,68 +45,50 @@ static	char	*int_part_bf(long double n, int precision, char c)
 static	char	*floating_part(int precision, double n)
 {
 	char		*tmp;
-	double	x;
 	int			i;
 	int			stop;
 
-	tmp = "";
 	if (n < 0)
-		x = -n;
-	else
-		x = n;
+		n = -n;
+	if (!(tmp = ft_memalloc(1)))
+		exit(-1);
 	i = 1;
 	stop = 0;
-	printf("X = %F\n", x);
 	while (stop < precision - 1)
 	{
-		x = (x - (long long)x) * ft_power(10, (i));
-		printf("STOP = %d\n", stop);
-		printf("i = %d\n", i);
-		printf("X = %f\n", x);
-		printf("TMP2 = %s\n", tmp);
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x));
+		n = (n - (long long)n) * ft_power(10, (i));
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n));
 		stop += i;
 	}
-	x = (x - (long long)x) * ft_power(10, (i));
-	if ((x - (long long)x) * ft_power(10, (i)) > 4)
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x + 1));
+	if ((n = (n - (long long)n) * ft_power(10, (i))) > 4)
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n + 1));
 	else
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x));
-	printf("tmpfinal = %s\n", tmp);
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n));
 	return (tmp);
 }
 
 static	char	*floating_part_bf(int precision, long double n)
 {
 	char		*tmp;
-	long double	x;
 	int			i;
 	int			stop;
 
 	if (n < 0)
-		x = -n;
-	else
-		x = n;
-	tmp = "";
+		n = -n;
+	if (!(tmp = ft_memalloc(1)))
+		exit(-1);
 	i = 1;
 	stop = 0;
-	//printf("X = %.20LF\n", x);
 	while (stop < precision - 1)
 	{
-		x = (x - (long long)x) * ft_power(10, (i));
-		/*printf("STOP = %d\n", stop);
-		printf("i = %d\n", i);
-		printf("X = %Lf\n", x);
-		printf("TMP2 = %s\n", tmp);*/
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x));
+		n = (n - (long long)n) * ft_power(10, (i));
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n));
 		stop += i;
 	}
-	x = (x - (long long)x) * ft_power(10, (i));
-	if ((x - (long long)x) * ft_power(10, (i)) > 4)
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x + 1));
+	if ((n = (n - (long long)n) * ft_power(10, (i))) > 4)
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n + 1));
 	else
-		tmp = ft_strjoin(tmp, ft_itoa_lli(x));
-	//printf("tmpfinal = %s\n", tmp);
+		tmp = ft_strjoin_2free(tmp, ft_itoa_lli(n));
 	return (tmp);
 }
 
