@@ -33,7 +33,7 @@ char	*ft_strjoin_2free(char *s1, char *s2)
 		str_joined[i + j] = s2[j];
 		j++;
 	}
-	str_joined[len + 1] = '\0';
+	str_joined[len] = '\0';
 	ft_strdel(&s1);
 	ft_strdel(&s2);
 	return (str_joined);
