@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/11/17 17:06:35 by smakni           ###   ########.fr        #
+#    Updated: 2018/11/19 18:21:42 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,10 +148,10 @@ $(NAME): $(OBJS)
 		@echo "[BUILD SUCCESS]"
 
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
 fclean:	clean
-	$(RM) $(NAME)
+		$(RM) $(NAME)
 
 re:	fclean all
 
