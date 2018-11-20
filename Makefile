@@ -6,7 +6,7 @@
 #    By: smakni <smakni@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 20:30:37 by sabri             #+#    #+#              #
-#    Updated: 2018/11/19 18:21:42 by smakni           ###   ########.fr        #
+#    Updated: 2018/11/20 15:49:41 by smakni           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC		=	gcc
 
 CFLAGS	+=	-Wall -Werror -Wextra
 
-SRCS	=	./printf/ft_printf.c \
+SRCS	=	./get_next_line/get_next_line.c \
+			./printf/ft_printf.c \
 			./printf/ft_aux.c \
 			./printf/check.c \
 			./printf/check_2.c \
@@ -134,7 +135,7 @@ SRCS	=	./printf/ft_printf.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
-HEAD	=	-I ./libft/libft.h -I ft_printf.h
+HEAD	=	-I ./libft/libft.h ft_printf.h ./get_next_line/get_next_line.h
 
 LM		=	@ar rc
 
